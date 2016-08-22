@@ -1,0 +1,212 @@
+
+@import "utils";
+
+// @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300,400italic&subset=latin,latin-ext);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,300,300italic&subset=latin,latin-ext);
+@import url(https://fonts.googleapis.com/css?family=Biryani:400,800,700&subset=latin,latin-ext);
+
+body {
+    // background-color: #445364;
+    background-color: #ffffff;
+
+    font-family: 'Open Sans', sans-serif;
+
+    // background-image: url(../img/bg.png);
+    // background-repeat: repeat;
+}
+
+
+#mainContainer {
+    // background-color: white;
+    // padding: 20px;
+    // padding-top:0px;
+    // border-radius: 3px;
+    @media(max-width: 768px) {
+        border-radius: 0px;
+    }
+}
+
+div#js-off {
+    background-color: #efefee;
+    margin:40px;
+    padding: 30px 20px;
+    box-shadow: 3px 3px 0px rgba(50,50,0,0.1);
+    border: solid 1px rgb(220,220,220);
+    border-radius: 3px;
+    text-align:center;
+    h1 {
+        color: grey;
+    }
+}
+
+div#js-on {
+    display: none;
+}
+
+div.cleanup {
+    clear: both;
+}
+
+h1 {
+    margin-bottom:40px;
+}
+
+
+a.tipword {
+    border-bottom: 1px dashed #999;
+    text-decoration: none;
+}
+
+
+
+body {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Biryani', 'Arial Black', sans-serif;
+    font-weight: bolder;
+}
+
+.geoloc-depend {
+    display: none;
+}
+
+h1 { font-size: 180%; }
+h2 { font-size: 140%; }
+h3 { font-size: 110%; }
+h4 { font-size: 100%; }
+h5 { font-size: 90%; }
+
+p { margin: 8px 0px; }
+
+h1 {
+    text-align: center;
+    border-bottom: dashed 1px #5894DB;
+    padding-bottom: 10px;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+
+input, select, textarea {
+    &.form-control{
+        border-radius: 0px;
+        border: solid 1px #6EB8FF;
+        color: lighten(#144E86, 10%);
+        box-shadow: none;
+        font-size: 20px;
+        padding: 8px 12px;
+        height: auto;
+
+        transition: all 0.3s;
+
+
+        .placeholder-color(#B6D8F8);
+
+
+        &:focus {
+            box-shadow: 0px 0px 10px rgba(106, 166, 238,0.1);
+            border: solid 1px darken(#6EB8FF,10%);
+            color: darken(#144E86,10%);
+        }
+    }
+}
+
+button, .btn {
+    border-radius: 0px;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 18px;
+    padding: 12px 18px;
+    transition: background 0.3s;
+    height:auto;
+
+    .glyphicon {
+        top:3px;
+        margin-right: 9px;
+    }
+
+    &.btn-default {
+        border-color: #333;
+        &:hover { background-color: #eee; }
+    }
+}
+
+nav {
+    ul.navbar-nav a {
+        font-size: 18px;
+        transition: all 0.3s;
+        font-family: 'Open Sans Light', sans-serif;
+        padding: 20px;
+    }
+
+    .navbar-brand {
+        opacity: 0.8;
+        transition: opacity 0.3s;
+        &:hover {
+            opacity:1;
+        }
+        @media screen and (min-width: 768px) {
+            padding:20px;
+        }
+    }
+    ul.dropdown-menu {
+
+
+        a {
+            color: white;
+            font-size: 16px;
+            padding-top: 9px;
+            padding-bottom: 9px;
+            &:hover {
+                background-color: #4F96EC;
+                color: black;
+            }
+        }
+        @media screen and (min-width: 768px) {
+            &:before {
+                content: "";
+                font-size: 0px;
+                top: -15px;
+                right: 20px;
+                display:block;
+                position:absolute;
+                width: 32px;
+                height:16px;
+                padding:0px;
+                background-image: url(../img/tip.png);
+                border:white;
+                // border-bottom: none;
+            }
+
+        }
+        background-color: #080808;
+        // position: relative;
+        top: calc(100% + 30px);
+        border: dashed 1px #444;
+        box-shadow: 4px 10px 20px rgba(0,0,0,0.5);
+    }
+
+}
+
+
+p.form-descr {
+    font-weight:normal;
+    font-size: 80%;
+    color: #777;
+}
+
+div.vsep1 {
+    height:10px;
+}
+
+div.vsep2 {
+    height:20px;
+}
+
+div.vsep3 {
+    height:30px;
+}

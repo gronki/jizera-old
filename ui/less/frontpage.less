@@ -1,0 +1,52 @@
+@import "variables";
+@import "utils";
+
+
+body#frontpage {
+    h1, h2, h3, p, td, div {
+        color: #ddd;
+    }
+    h1 {
+        width: 100%;
+        border-bottom: none;
+        // border-bottom: dashed 2px rgba(255,255,255,0.2);
+        padding-bottom: 0px;
+        margin-bottom: 15px;
+    }
+
+    #pane1 {
+        text-align:center;  height:auto; padding:115px 25px 80px 25px;
+        position: relative;
+        // min-height: 100vh;
+        .row {
+            position: relative;
+            // top: 100px;
+            // transform: translate(0%,-50%);
+        }
+        .btnbot {
+            color: white;
+        }
+        .btnadd {
+            clear: both;
+            @media screen and (min-width: @width-xs) {
+                float:right;
+                clear:none;
+            }
+        }
+    }
+
+    input {
+        font-size: 28px;
+        color: white;
+        background: none;
+        border: solid 1px rgba(255,255,255,0.4);
+        box-shadow: none !important;
+        transition: all 0.5s;
+        &:focus {
+            border:none;
+            border-bottom: solid 2px rgba(255,255,255,0.6);
+        }
+        text-align:center;
+        .placeholder-color(rgba(255,255,255,0.2));
+    }
+}
