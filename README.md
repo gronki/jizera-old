@@ -23,5 +23,9 @@ source venv/bin/activate
 ```
 Instalujemy wymagane paczki za pomocą menedżera **pip**.
 ```
-pip install Flask Flask-Login Flask-Mail Flask-SQLAlchemy SQLAlchemy-Migrate Flask-OpenID Flask-Babel
+pip install Flask Flask-Login Flask-Mail Flask-WTF Flask-SQLAlchemy SQLAlchemy-Migrate Flask-OpenID Flask-Babel
 ```
+
+## Uruchamianie
+
+W budowie.
