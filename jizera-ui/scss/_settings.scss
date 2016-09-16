@@ -44,9 +44,9 @@
 
 // 1. Global
 // ---------
-
+$rem-base: 18px;
 $global-font-size: 100%;
-$global-width: rem-calc(1200);
+$global-width: rem-calc(1013);
 $global-lineheight: 1.5;
 $foundation-palette: (
   primary: #4ca2db,
@@ -78,8 +78,8 @@ $print-transparent-backgrounds: true;
 // 2. Breakpoints
 // --------------
 
-$width-medium: 720px;
-$width-large: 1024px;
+$width-medium: 640px;
+$width-large: 960px;
 $breakpoints: (
   small: 0,
   medium: $width-medium,
@@ -118,11 +118,11 @@ $header-sizes: (
     'h6': 16,
   ),
   medium: (
-    'h1': 48,
-    'h2': 40,
-    'h3': 31,
-    'h4': 25,
-    'h5': 20,
+    'h1': 36,
+    'h2': 32,
+    'h3': 27,
+    'h4': 22,
+    'h5': 18,
     'h6': 16,
   ),
 );
@@ -235,7 +235,7 @@ $breadcrumbs-item-slash: true;
 // 11. Button
 // ----------
 
-$button-padding: 0.85em 1em;
+$button-padding: 0.95em 1.1em;
 $button-margin: 0 0 $global-margin 0;
 $button-fill: solid;
 $button-background: $primary-color;
@@ -380,7 +380,7 @@ $mediaobject-image-width-stacked: 100%;
 
 $menu-margin: 0;
 $menu-margin-nested: 1rem;
-$menu-item-padding: 0.7rem 1rem;
+$menu-item-padding: 1.2rem 1.3rem;
 $menu-item-color-active: $white;
 $menu-item-background-active: map-get($foundation-palette, primary);
 $menu-icon-spacing: 0.25rem;
@@ -561,8 +561,8 @@ $tooltip-radius: $global-radius;
 // -----------
 
 $topbar-padding: 0.0rem;
-$topbar-background: #3c3c3c;
-$topbar-submenu-background: $topbar-background;
+$topbar-background: #21282b;
+$topbar-submenu-background: #21282b;
 $topbar-title-spacing: 1.5rem;
 $topbar-input-width: 200px;
 $topbar-unstack-breakpoint: medium;

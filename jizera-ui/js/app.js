@@ -33,8 +33,8 @@ function run_geolocation(handler,handler_error) {
 function scriptFrontPage() {
     $(document).ready(function(){
         run_geolocation(function(ll){
-            $('#fp-search-geoloc [name=lat]').val(ll.lat);
-            $('#fp-search-geoloc [name=lng]').val(ll.lng);
+            $('#fp-search-geoloc [name=lat]').val(ll.lat.toFixed(4));
+            $('#fp-search-geoloc [name=lng]').val(ll.lng.toFixed(4));
             $('.geoloc-depend').show();
             $('span.geoloc-depend').css('display','inline');
         });

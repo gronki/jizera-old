@@ -1,3 +1,5 @@
+@import 'https://fonts.googleapis.com/css?family=Biryani:300|Fira+Mono:400,700|Open+Sans:400,400i,700&subset=latin-ext';
+
 @charset 'utf-8';
 
 @import 'settings';
@@ -85,6 +87,7 @@ div#js-on {
 }
 
 #branding {
+    height: 30px;
     margin: 13px 16px;
 }
 
@@ -98,6 +101,7 @@ div#js-on {
 .top-bar-title button {
     margin-left: 14px;
 }
+
 
 // @media screen and (max-width: $width-medium) {
 //     #responsive-menu > div > ul > li {
@@ -113,44 +117,45 @@ div#js-on {
 .top-bar .menu {
 
     li a {
-        padding: 20px;
-    }
-
-    .vertical.submenu {
-
-
-        a {
-            color: white;
-            font-size: 16px;
-            padding-top: 9px;
-            padding-bottom: 9px;
-            &:hover {
-                background-color: #4F96EC;
-                color: black;
-            }
-        }
-        @media screen and (min-width: 768px) {
-            &:before {
-                content: "";
-                font-size: 0px;
-                top: -15px;
-                right: 20px;
-                display:block;
-                position:absolute;
-                width: 32px;
-                height:16px;
-                padding:0px;
-                background-image: url(../img/tip.png);
-                border:white;
-                // border-bottom: none;
-            }
-
-        }
-        background-color: #080808;
-        // position: relative;
-        top: 60px;
-        border: dashed 1px #444;
-        box-shadow: 4px 10px 20px rgba(0,0,0,0.5);
+        // padding: 20px 25px;
     }
 
 }
+//     .vertical.submenu {
+//
+//
+//         a {
+//             color: white;
+//             font-size: 16px;
+//             padding-top: 9px;
+//             padding-bottom: 9px;
+//             &:hover {
+//                 background-color: #4F96EC;
+//                 color: black;
+//             }
+//         }
+//         @media screen and (min-width: 768px) {
+//             &:before {
+//                 content: "";
+//                 font-size: 0px;
+//                 top: -15px;
+//                 right: 20px;
+//                 display:block;
+//                 position:absolute;
+//                 width: 32px;
+//                 height:16px;
+//                 padding:0px;
+//                 background-image: url(../img/tip.png);
+//                 border:white;
+//                 // border-bottom: none;
+//             }
+//
+//         }
+//         background-color: #080808;
+//         // position: relative;
+//         top: 60px;
+//         border: dashed 1px #444;
+//         box-shadow: 4px 10px 20px rgba(0,0,0,0.5);
+//     }
+//
+// }
