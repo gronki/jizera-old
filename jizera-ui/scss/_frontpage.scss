@@ -17,32 +17,28 @@ body#frontpage {
     }
 
     #pane1 {
-        text-align:center;  height:auto; padding:105px 25px 105px 25px;
+        text-align:center;
+        // height:auto;
+        padding:75px 25px 75px 25px;
+        @include breakpoint(medium) {
+            padding:125px 25px 125px 25px;
+        }
+        @include breakpoint(large) {
+            padding:155px 25px 155px 25px;
+        }
+
         position: relative;
         // min-height: 100vh;
 
         .input-group {
             background-color: $white;
+            border: none;
+            padding: 0;
         }
-        input {
+        input[type="search"] {
             box-shadow: none !important;
-            // border: solid 1px #222;
+            border: none;
         }
     }
 
-    // input {
-    //     font-size: 28px;
-    //     color: white;
-    //     background: none;
-    //     // border: solid 1px rgba(255,255,255,0.4);
-    //     border: none;
-    //     box-shadow: none !important;
-    //     transition: all 0.5s;
-    //     &:focus {
-    //         border:none;
-    //         border-bottom: solid 3px rgba(255,255,255,0.6);
-    //     }
-    //     text-align:center;
-    //     @include placeholder-color(rgba(255,255,255,0.2));
-    // }
 }
