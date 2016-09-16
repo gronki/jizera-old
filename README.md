@@ -15,6 +15,12 @@ sudo yum install -y git python python-pip python-virtualenv nodejs npm
 
 ## Instalacja
 
+Pobieramy katalog projektu na nasz dysk:
+
+```
+git clone https://github.com/gronki/jizera.git
+```
+
 Tworzymy środowisko wirtualne w katalogu projektu i aktywujemy je
 w sesji basha.
 ```
