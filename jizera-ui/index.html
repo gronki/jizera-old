@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="css/app.css" rel="stylesheet" type="text/css">
+        <title>Baza ciemnego nieba WYGASZ</title>
+    </head>
+    <body id="frontpage">
+
+
+        <div class="top-bar">
+          <div class="top-bar-title">
+            <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
+              <button class="menu-icon" type="button" data-toggle></button>
+            </span>
+            <img src="img/wygasz-beta.png" style="height: 30px" alt="wygasz" id="branding" />
+          </div>
+          <div id="responsive-menu">
+            <div class="top-bar-right">
+              <ul class="dropdown menu"  data-dropdown-menu>
+                <li>
+                  <a href="#">One</a>
+                  <ul class="menu vertical">
+                    <li><a href="#">One</a></li>
+                    <li><a href="#">Two</a></li>
+                    <li><a href="#">Three</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Two</a></li>
+                <li><a href="#">Three</a></li>
+              </ul>
+            </div>
+            <!-- <div class="top-bar-right">
+              <ul class="menu frontpage-hide">
+                <li><input type="search" placeholder="Search"></li>
+                <li><button type="button" class="button">Search</button></li>
+              </ul>
+            </div> -->
+          </div>
+        </div>
+
+       <div style="background-image:url(img/bg1.jpg); position:relative;   background-position: center 0px; background-repeat:no-repeat; background-width:100% ">
+           <div class="container" id="pane1">
+
+
+               <h1>Gdzie zobaczę ciemne niebo?</h1>
+               <div class="row">
+                   <div class="col-md-1 col-lg-2"></div>
+                   <div class="col-md-10 col-lg-8">
+                       <p style="margin-bottom:30px">Wyszukaj miejscówki obserwacyjne w pobliżu pożądanej
+                           lokalizacji<span class="geoloc-depend"> lub
+                           kliknij <span class="glyphicon glyphicon-screenshot"></span> by znaleźć
+                            miejsca o zmierzonej
+                           jasności tła nieba w Twojej okolicy</span>. </p>
+                       <form>
+                           <div class="form-group">
+                           <input type="search" class="form-control input-lg" placeholder="Wrocław"  />
+                           </div>
+                       </form>
+
+                           <div class="geoloc-depend">
+                               <p>lub</p>
+
+                               <form id="fp-search-geoloc" method="GET" action="/ui/browse.html">
+                                   <div class="form-group">
+                                       <input name="lat" type="hidden">
+                                       <input name="lng" type="hidden">
+                                       <button class=" button btn-primary input-lg"><span class="glyphicon glyphicon-screenshot"></span> Wyszukaj w mojej lokalizacji</button>
+                                   </div>
+                               </form>
+                           </div>
+
+
+                       <div style="margin-top:40px; text-align:left">
+                           <p>
+                           <a class="button btnbot">
+                                <span class="glyphicon glyphicon-list" ></span> Przeglądaj bazę</a>
+                            <a class="button btnbot btnadd">
+                                 <span class="glyphicon glyphicon-plus" ></span> Dodaj wpis</a>
+                            </p>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+
+       <script src="bower_components/jquery/dist/jquery.js"></script>
+       <script src="bower_components/what-input/what-input.js"></script>
+       <script src="bower_components/foundation-sites/dist/foundation.js"></script>
+       <script src="js/app.js"></script>
+
+       <script type="text/javascript"> scriptFrontPage(); </script>
+    </body>
+</html>

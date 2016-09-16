@@ -1,5 +1,3 @@
-@import "variables";
-@import "utils";
 
 
 body#frontpage {
@@ -12,6 +10,10 @@ body#frontpage {
         // border-bottom: dashed 2px rgba(255,255,255,0.2);
         padding-bottom: 0px;
         margin-bottom: 15px;
+    }
+
+    .frontpage-hide {
+        display: none;
     }
 
     #pane1 {
@@ -28,7 +30,7 @@ body#frontpage {
         }
         .btnadd {
             clear: both;
-            @media screen and (min-width: @width-xs) {
+            @include breakpoint(medium) {
                 float:right;
                 clear:none;
             }
@@ -44,9 +46,9 @@ body#frontpage {
         transition: all 0.5s;
         &:focus {
             border:none;
-            border-bottom: solid 2px rgba(255,255,255,0.6);
+            border-bottom: solid 3px rgba(255,255,255,0.6);
         }
         text-align:center;
-        .placeholder-color(rgba(255,255,255,0.2));
+        @include placeholder-color(rgba(255,255,255,0.2));
     }
 }

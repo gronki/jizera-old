@@ -1,3 +1,6 @@
+$(document).foundation();
+
+
 function latlng2str(latlng) {
     return ""+parseFloat(latlng.lat()).toFixed(6)+", "+parseFloat(latlng.lng()).toFixed(6);
 }
