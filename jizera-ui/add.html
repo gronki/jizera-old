@@ -5,40 +5,54 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="noindex, noimageindex, nofollow" />
+        <meta name="google" content="notranslate" />
+        <meta name="description" content="Opis strony" />
+        <meta name="og:description" content="Opis strony" />
+        <meta name="og:image" content="img/wygasz.png" />
         <link href="css/app.css" rel="stylesheet" type="text/css">
         <title>Baza ciemnego nieba WYGASZ</title>
+        <meta name="og:title" content="Opis strony" />
     </head>
     <body>
 
-        <nav class="navbar navbar-inverse navbar-static-top">
-         <div class="container">
-           <!-- Brand and toggle get grouped for better mobile display -->
-           <div class="navbar-header">
-             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-               <span class="sr-only">Toggle navigation</span>
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
-             </button>
-             <a class="navbar-brand" href="index.html"><img src="img/wygasz.png" style="height:25px;width:auto"></a>
-           </div>
 
-           <!-- Collect the nav links, forms, and other content for toggling -->
-           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="title-bar" data-responsive-toggle="menu" data-hide-for="tablet">
+            <div class="mobile-branding-wrapper float-left">
+                <img src="img/wygasz-beta.png" alt="wygasz" class="mobile-branding" />
+            </div>
+            <div class="data-toggle-wrapper float-right">
+                <button class="menu-icon" type="button" data-toggle></button>
+            </div>
+        </div>
 
-             <ul class="nav navbar-nav">
+        <div class="top-bar" id="menu"
+            data-toggler data-animate="hinge-in-from-top">
+            <div class="row">
+                <div class="columns medium-12">
+                    <div class="top-bar-title show-for-tablet">
+                        <img src="img/wygasz-beta.png" alt="wygasz" id="branding" />
+                    </div>
+                    <div class="top-bar-right">
 
-             </ul>
+                        <ul class="vertical tablet-horizontal menu"  data-responsive-menu="drilldown tablet-dropdown">
+                            <li class="active"> <a>Dodaj</a> </li>
+                            <li> <a>Przeglądaj</a> </li>
+                            <li>
+                                <a>Przewodnik</a>
+                                <ul class="vertical menu" data-submenu>
+                                    <li> <a>Ciemność nieba</a> </li>
+                                    <li> <a>Jak mierzyć?</a> </li>
+                                </ul>
+                            </li>
+                            <li> <a>Model</a> </li>
+                        </ul>
+                    </div>
 
-             <ul class="nav navbar-nav navbar-right">
-               <li class="active"><a href="add.html" title="Dodaj">Dodaj</a></li>
-               <li><a href="browse.html" title="Dodaj">Przeglądaj</a></li>
-               <li><a href="#" title="Dodaj">Przewodnik</a></li>
-               <li><a href="#" title="Dodaj">Model</a></li>
-             </ul>
-           </div><!-- /.navbar-collapse -->
-         </div><!-- /.container-fluid -->
-       </nav>
+                </div>
+            </div>
+        </div>
+
 
        <div class="container" id="mainContainer">
 

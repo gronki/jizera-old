@@ -14,6 +14,7 @@
         <title>Baza ciemnego nieba WYGASZ</title>
         <meta name="og:title" content="Opis strony" />
     </head>
+
     <body id="frontpage">
 
 
@@ -26,8 +27,7 @@
             </div>
         </div>
 
-        <div class="top-bar" id="menu"
-            data-toggler data-animate="hinge-in-from-top">
+        <nav class="top-bar" id="menu">
             <div class="row">
                 <div class="columns medium-12">
                     <div class="top-bar-title show-for-tablet">
@@ -35,12 +35,14 @@
                     </div>
                     <div class="top-bar-right">
 
-                        <ul class="vertical tablet-horizontal menu"  data-responsive-menu="drilldown tablet-dropdown">
+                        <ul class="vertical tablet-horizontal menu"
+                                data-responsive-menu="drilldown tablet-dropdown">
                             <li class="active"> <a>Dodaj</a> </li>
                             <li> <a>Przeglądaj</a> </li>
                             <li>
                                 <a>Przewodnik</a>
                                 <ul class="vertical menu" data-submenu>
+                                    <li class="js-drilldown-back"><a>Wstecz</a></li>
                                     <li> <a>Ciemność nieba</a> </li>
                                     <li> <a>Jak mierzyć?</a> </li>
                                 </ul>
@@ -51,7 +53,7 @@
 
                 </div>
             </div>
-        </div>
+        </nav>
 
        <div style="background-image:url(img/bg2.jpg);  background-size: cover;" id="pane1">
            <div class="row align-center">

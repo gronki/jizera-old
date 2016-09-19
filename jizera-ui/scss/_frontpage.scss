@@ -24,10 +24,10 @@ body#frontpage {
             padding:95px 15px;
         }
         @include breakpoint(medium) {
-            padding:125px 15px ;
+            padding:115px 15px ;
         }
         @include breakpoint(large) {
-            padding:155px 15px;
+            padding:145px 15px;
         }
 
         position: relative;
