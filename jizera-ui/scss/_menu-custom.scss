@@ -1,12 +1,16 @@
 @import "settings";
 
 
-#branding {
+// glowne logo wygasza
+nav.top-bar div.top-bar-title > img {
     height: 30px;
     margin: 12px 13px 2px 13px;
 }
 
+
+// ustawiamy kolorki glownego menu
 .menu {
+    // tak wyglada item aktywny (tzn odpowiadajacy stronie na ktorej jestesmy)
     li.active > a {
         background-color: $topbar-background;
         box-shadow: inset -4px -4px 20px rgba(black,0.6);
@@ -21,6 +25,8 @@
         color: $black;
         &::before { border-right-color: $black; }
     }
+    // element aktywny -- na przyklad, w przypadku glownego poziomu menu, ktory jest
+    // wcisniety kiedy wyswietlane jest submenu. chcemy zeby byl bialy jak submenu
     li.is-active{
         & > a {
             background-color: $white;
@@ -35,6 +41,8 @@
             background-color: $black;
         }
     }
+
+    // chcemy, zeby przycisk "wstecz" byl zawsze na niebiesko
     ul[data-submenu] li.js-drilldown-back {
         @include breakpoint(tablet) {
             display: none;
