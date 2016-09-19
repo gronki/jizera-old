@@ -58,7 +58,7 @@ $foundation-palette: (
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
-$black: #1a1a1a;
+$black: #242424;
 $white: #f2f2f2;
 $body-background: $white;
 $body-font-color: $black;
@@ -78,16 +78,15 @@ $print-transparent-backgrounds: true;
 // 2. Breakpoints
 // --------------
 
-$width-medium: 640px;
-$width-large: 960px;
+
 $breakpoints: (
   small: 0,
-  medium: $width-medium,
-  large: $width-large,
-  xlarge: 1200px,
-  xxlarge: 1440px,
+  tablet: 480px,
+  medium: 640px,
+  large: 1000px,
+  desktop: 1200px
 );
-$breakpoint-classes: (small medium large);
+$breakpoint-classes: (small tablet medium large desktop);
 
 // 3. The Grid
 // -----------
@@ -538,11 +537,11 @@ $thumbnail-radius: $global-radius;
 
 $titlebar-background: $black;
 $titlebar-color: $white;
-$titlebar-padding: 0.5rem;
+$titlebar-padding: 0.6rem;
 $titlebar-text-font-weight: bold;
-$titlebar-icon-color: $white;
-$titlebar-icon-color-hover: $medium-gray;
-$titlebar-icon-spacing: 0.25rem;
+$titlebar-icon-color: $medium-gray;
+$titlebar-icon-color-hover: $white;
+$titlebar-icon-spacing: 0.55rem;
 
 // 35. Tooltip
 // -----------
@@ -565,4 +564,4 @@ $topbar-background: #21282b;
 $topbar-submenu-background: $white;
 $topbar-title-spacing: 1.5rem;
 $topbar-input-width: 200px;
-$topbar-unstack-breakpoint: medium;
+$topbar-unstack-breakpoint: tablet;

@@ -1,0 +1,32 @@
+@import "settings";
+
+
+#branding {
+    height: 30px;
+    margin: 12px 13px 2px 13px;
+}
+
+.menu {
+    li.active > a {
+        background-color: $black;
+    }
+    a:hover {
+        // background-color: darken($dropdownmenu-background,10%);
+        // transition: background-color 0.2s;
+        background-color: $white;
+    }
+    li.is-active{
+        & > a {
+            background-color: $white;
+            color: $black;
+            &::after {
+                border-color: $black transparent transparent !important;
+            }
+
+        }
+        ul.menu li a:hover {
+            color: $white;
+            background-color: $black;
+        }
+    }
+}

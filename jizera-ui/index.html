@@ -17,19 +17,30 @@
     <body id="frontpage">
 
 
-        <div class="top-bar">
+        <div class="title-bar" data-responsive-toggle="menu" data-hide-for="tablet">
+            <div class="mobile-branding-wrapper float-left">
+                <img src="img/wygasz-beta.png" alt="wygasz" class="mobile-branding" />
+            </div>
+            <div class="data-toggle-wrapper float-right">
+                <button class="menu-icon" type="button" data-toggle></button>
+            </div>
+        </div>
+
+        <div class="top-bar" id="menu"
+            data-toggler data-animate="hinge-in-from-top">
             <div class="row">
                 <div class="columns medium-12">
-                    <div class="top-bar-title">
+                    <div class="top-bar-title show-for-tablet">
                         <img src="img/wygasz-beta.png" alt="wygasz" id="branding" />
                     </div>
                     <div class="top-bar-right">
-                        <ul class="dropdown menu"  data-dropdown-menu>
+
+                        <ul class="vertical tablet-horizontal menu"  data-responsive-menu="drilldown tablet-dropdown">
                             <li class="active"> <a>Dodaj</a> </li>
                             <li> <a>Przeglądaj</a> </li>
                             <li>
                                 <a>Przewodnik</a>
-                                <ul class="vertical menu">
+                                <ul class="vertical menu" data-submenu>
                                     <li> <a>Ciemność nieba</a> </li>
                                     <li> <a>Jak mierzyć?</a> </li>
                                 </ul>
@@ -51,15 +62,15 @@
            </div>
 
            <div class="row align-center">
-               <div class="large-8 medium-12 medium-centered columns" style="text-align:center">
+               <div class="large-7 medium-10 medium-centered columns" style="text-align:center">
                    <p style="margin-bottom:30px">Wpisz nazwę miejscowości lub współrzędne by wyszukać miejsca o zmierzonej jasności tła
                         nieba<span class="geoloc-depend"> lub wyszukaj najlepsze
                         miejscówki w pobliżu Twojej lokalizacji</span>!
                    </p>
 
-                   <form>
+                   <form method="GET">
                        <div class="input-group">
-                           <input type="search" placeholder="Gdzie jesteś?" class="input-group-field" />
+                           <input name="search" type="search" placeholder="Gdzie jesteś?" class="input-group-field" />
                            <div class="input-group-button">
                                <div class="button-group">
                                    <button type="submit" class="button">Szukaj!</button>
@@ -71,7 +82,7 @@
                    <div class="geoloc-depend">
                        <p>lub</p>
 
-                       <form id="fp-search-geoloc" method="GET" action="/ui/browse.html">
+                       <form id="fp-search-geoloc" method="GET" action="/jizera-ui/browse.html">
                            <div class="form-group">
                                <input name="lat" type="hidden">
                                <input name="lng" type="hidden">
