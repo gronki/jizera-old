@@ -10,7 +10,7 @@ Aplikacja jest napisana we frameworku **Flask**, z użyciem **SQLAlchemy** oraz 
 W systemie operacyjnym
 musi być zainstalowany **Python 2.7** i **virtualenv**. W systemie Fedora 24 zależności te zainstalujemy poleceniem:
 ```
-sudo yum install -y git python python-pip python-virtualenv nodejs npm
+sudo yum install -y git python python-pip python-virtualenv
 ```
 
 ## Instalacja
@@ -47,6 +47,7 @@ pip install ipython notebook
 Szablon graficzny został napisany w środowisku Foundation. Aby zmienić wygląd strony,
 należy przekompilować go. Upewniamy się, że mamy zainstalowane Foundation w systemie.
 ```
+sudo yum install -y nodejs npm
 sudo npm install -g foundation-cli
 ```
 Następnie w katalogu **jizera-ui** kompilujemy szablon poleceniem
