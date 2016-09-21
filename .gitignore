@@ -1,3 +1,5 @@
 venv/*
 scratch
 db
+*.pyc
+test/.ipynb*

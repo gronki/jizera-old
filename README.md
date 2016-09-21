@@ -27,9 +27,18 @@ w sesji basha.
 virtualenv venv
 source venv/bin/activate
 ```
+Jeżeli wszystko przebiegnie poprawnie, adnotacja o tym, ze jesteśmy w środowisku wirtualnym zostanie umieszczone na lewo od znaku zachęty.
+```
+(venv) [uzytkownik@maszyna jizera]$
+```
 Instalujemy wymagane paczki za pomocą menedżera **pip**.
 ```
 pip install Flask Flask-Login Flask-Mail Flask-WTF Flask-SQLAlchemy SQLAlchemy-Migrate Flask-OpenID Flask-Babel
+```
+
+Aby móc uruchamiać notatniki z katalogu **test**, instalujemy ipython notebook:
+```
+pip install ipython notebook
 ```
 
 ### Aby zmodyfikować szablony

@@ -1,6 +1,7 @@
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime,timedelta
 
 app = Flask('JizeraApp')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../db/jizera.db'
@@ -18,7 +19,7 @@ class Location(db.Model):
     modified = db.Column(db.DateTime)
     # name of the observing spot -- entered by the user or
     # taken from google geolocalization
-    name = db.Column(db.String(200))
+    name = db.Column(db.Unicode(200))
     # location and altitude
     latitude = db.Column(db.Float)
     longitude = db.Column(db.Float)
@@ -30,10 +31,17 @@ class Location(db.Model):
         self.latitude = latitude
         self.longitude = longitude
         if name != None:
-            self.name = name
+            self.name = name.decode('utf-8')
 
     def __str__(self):
-        return ( '%.5f' % self.longitude ) + ', ' + ( '%.5f' % self.latitude )
+        nswe = '%.4f %s, %.4f %s' % (\
+            abs(self.latitude), \
+            'N' if self.latitude >= 0 else 'S', \
+            abs(self.longitude),  \
+            'E' if self.longitude >= 0 else 'W'  )
+        if self.name != None:
+            return '%s (%s)' % ( self.name.encode('utf-8'), nswe )
+        return  nswe
 
 
 
@@ -45,16 +53,23 @@ class Observer(db.Model):
     created = db.Column(db.DateTime)
     modified = db.Column(db.DateTime)
     # observer info
-    name = db.Column(db.String(45))
-    lastname = db.Column(db.String(45))
+    name = db.Column(db.Unicode(45))
+    lastname = db.Column(db.Unicode(45))
     email = db.Column(db.String(120), unique=True)
     # OpenID
     openid_openid = db.Column(db.String(255), unique=True)
     openid_identity = db.Column(db.String(255))
     openid_server = db.Column(db.String(255))
 
+    def __init__(self,name,lastname,email):
+        self.created = datetime.now()
+        self.modified = self.created
+        self.name = name.decode('utf-8')
+        self.lastname = lastname.decode('utf-8')
+        self.email = email
+
     def __str__(self):
-        return self.name + ' ' + self.lastname + ' (' + self.code + ')'
+        return '%s %s <%s>' % (self.name.encode('utf-8'), self.lastname.encode('utf-8'), self.email)
 
 
 
@@ -65,20 +80,40 @@ class Observation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     created = db.Column(db.DateTime)
     modified = db.Column(db.DateTime)
-    # observer name
-    name = db.Column(db.String(100))
     # date of begin and end
-    obs_date_start = db.Column(db.DateTime)
-    obs_date_end = db.Column(db.DateTime)
+    date_start = db.Column(db.DateTime)
+    date_end = db.Column(db.DateTime)
     # conditions: clouds, moon and milky way
-    cond_clouds = db.Column(db.Integer)
-    cond_moon = db.Column(db.Integer)
-    cond_milkyway = db.Column(db.Integer)
+    cond_clouds = db.Column(db.Boolean)
+    cond_moon = db.Column(db.Boolean)
+    cond_milkyway = db.Column(db.Boolean)
     # relations
     location = db.Column(db.Integer, db.ForeignKey('locations.id'))
     observer = db.Column(db.Integer, db.ForeignKey('observers.id'))
 
+    def __init__(self, location, observer, date_start=None, date_end=None):
 
+        self.created = datetime.now()
+        self.modified = self.created
+
+        self.location = location
+        self.observer = observer
+
+        if date_start != None:
+            self.date_start = date_start
+        else:
+            self.date_start = (datetime.now() + timedelta(days=-1)) \
+                .replace(hour=22,minute=0,second=0,microsecond=0)
+
+        if date_end != None:
+            self.date_end = date_end
+        else:
+            self.date_end = self.date_start + timedelta(hours=1)
+
+
+    def __str__(self):
+        return 'observation performed on %s by %s in location %s'   \
+            % (self.date_start,self.observer,self.location)
 
 # optional review that can be written for given location
 class Review(db.Model):
@@ -89,14 +124,25 @@ class Review(db.Model):
     created = db.Column(db.DateTime)
     modified = db.Column(db.DateTime)
     # survey about the observation spot
-    has_current = db.Column(db.Integer)
-    has_sleeping = db.Column(db.Integer)
-    has_horizon = db.Column(db.Integer)
+    has_current = db.Column(db.Boolean)
+    has_sleeping = db.Column(db.Boolean)
+    has_horizon = db.Column(db.Boolean)
     # comment where user can put additional notes
-    comment = db.Column(db.String(400))
+    comment = db.Column(db.Unicode(400))
     # relations
     location = db.Column(db.Integer, db.ForeignKey('locations.id'))
+    observer = db.Column(db.Integer, db.ForeignKey('observers.id'))
     # observation = db.Column(db.Integer, db.ForeignKey('observations.id'))
+
+
+    def __init__(self, location, observer, comment):
+        self.location = location
+        self.observer = observer
+        self.comment = comment.decode('utf-8')
+
+    def __str__(self):
+        return '%s commented on location %s: %s' % (self.observer, self.location, self.comment.encode('utf-8'))
+
 
 # Following entries are various kinds of measurments
 
