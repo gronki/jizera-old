@@ -1,5 +1,4 @@
 venv/*
-scratch
-db
+scratch/*
 *.pyc
 test/.ipynb*
