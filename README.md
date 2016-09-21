@@ -33,15 +33,16 @@ Jeżeli wszystko przebiegnie poprawnie, adnotacja o tym, ze jesteśmy w środowi
 ```
 Instalujemy wymagane paczki za pomocą menedżera **pip**.
 ```
-pip install Flask Flask-Login Flask-Mail Flask-WTF Flask-SQLAlchemy SQLAlchemy-Migrate Flask-OpenID Flask-Babel
+pip install Flask Flask-SQLAlchemy
 ```
+### Uruchamianie testów
 
 Aby móc uruchamiać notatniki z katalogu **test**, instalujemy ipython notebook:
 ```
 pip install ipython notebook
 ```
 
-### Aby zmodyfikować szablony
+### Modyfikacja szablonów
 
 Szablon graficzny został napisany w środowisku Foundation. Aby zmienić wygląd strony,
 należy przekompilować go. Upewniamy się, że mamy zainstalowane Foundation w systemie.
@@ -55,4 +56,10 @@ foundation build
 
 ## Uruchamianie
 
-W budowie.
+### Notatniki testowe
+
+By móc testować bazę, będąc w środowisku wirtualnym przechodzimy do folderu **test** i uruchamiamy jupytera poleceniem:
+```
+cd test
+ipython notebook TestBazy.ipynb
+```
