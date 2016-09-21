@@ -61,6 +61,7 @@ foundation build
 
 By móc testować bazę, będąc w środowisku wirtualnym przechodzimy do folderu **test** i uruchamiamy jupytera poleceniem:
 ```
+ln -srv jizera test/ # to wykonujemy tylko za pierwszym razem
 cd test
 ipython notebook TestBazy.ipynb
 ```
