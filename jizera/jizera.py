@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime,timedelta
 
 app = Flask('JizeraApp')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../db/jizera.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/jizera-testing.db'
 
 db = SQLAlchemy(app)
 
