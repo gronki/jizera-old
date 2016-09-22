@@ -154,6 +154,13 @@ class BortleData(db.Model):
     # relations
     observation = db.Column(db.Integer, db.ForeignKey('observations.id'))
 
+    def __init__(self, observation, bortle):
+        this.observation = observation
+        this.bortle = bortle
+
+    def __str__(self):
+        return '%d in Bortle scale' % self.bortle
+
 
 # entries for dslr measurments
 class DSLRData(db.Model):
