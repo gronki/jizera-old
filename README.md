@@ -25,7 +25,7 @@ Tworzymy środowisko wirtualne w katalogu projektu i aktywujemy je
 w sesji basha.
 ```
 virtualenv venv
-source venv/bin/activate
+. venv/bin/activate
 ```
 Jeżeli wszystko przebiegnie poprawnie, adnotacja o tym, ze jesteśmy w środowisku wirtualnym zostanie umieszczone na lewo od znaku zachęty.
 ```
