@@ -8,7 +8,7 @@ od obserwatorów w całej Polsce.
 Aplikacja jest napisana we frameworku **Flask**, z użyciem **SQLAlchemy** oraz **SQLite** do obsługi bazy danych (w wersji testowej). Front-end jest oparty na frameworku **Foundation**, zaś arkusze stylów są generowane ze skryptów **scss**.
 
 W systemie operacyjnym
-musi być zainstalowany **Python 2.7** i **virtualenv**. W systemie Fedora 24 zależności te zainstalujemy poleceniem:
+musi być zainstalowany **Python 2.7** i **virtualenv**. W systemie Fedora/CentOS/RHEL zależności te zainstalujemy poleceniem:
 ```
 sudo yum install -y git python python-pip python-virtualenv
 ```
@@ -35,12 +35,8 @@ Instalujemy wymagane paczki za pomocą menedżera **pip**.
 ```
 pip install Flask Flask-SQLAlchemy
 ```
-### Uruchamianie testów
 
-Aby móc uruchamiać notatniki z katalogu **test**, instalujemy ipython notebook:
-```
-pip install ipython notebook
-```
+## Narzędzia programistyczne
 
 ### Modyfikacja szablonów
 
@@ -55,13 +51,23 @@ Następnie w katalogu **jizera-ui** kompilujemy szablon poleceniem
 foundation build
 ```
 
-## Uruchamianie
-
 ### Notatniki testowe
 
-By móc testować bazę, będąc w środowisku wirtualnym przechodzimy do folderu **test** i uruchamiamy jupytera poleceniem:
+Aby móc uruchamiać notatniki z katalogu **test**, instalujemy ipython notebook:
+```
+pip install ipython notebook
+```
+By przetestować model ORM bazy, będąc w środowisku wirtualnym przechodzimy do folderu **test** i uruchamiamy jupytera. Następnie klikamy na interesujący nas test.
 ```
 ln -srv jizera test/ # to wykonujemy tylko za pierwszym razem
 cd test
 ipython notebook &
+```
+
+### Przeglądanie bazy SQLite
+
+W celu przeglądania struktury bazy danych, można użyć narzędzia **sqlitebrowser**.
+```
+sudo yum install -y sqlitebrowser
+sqlitebrowser /tmp/jizera-testing.db &
 ```
