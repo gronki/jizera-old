@@ -5,7 +5,6 @@ from datetime import datetime,timedelta
 
 from jizera import app, db
 
-
 # location
 class Location(db.Model):
 
