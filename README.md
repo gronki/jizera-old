@@ -24,6 +24,7 @@ git clone https://github.com/gronki/jizera.git
 Tworzymy środowisko wirtualne w katalogu projektu i aktywujemy je
 w sesji basha.
 ```
+cd jizera
 virtualenv venv
 . venv/bin/activate
 ```
