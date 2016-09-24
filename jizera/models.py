@@ -14,9 +14,9 @@ class Observer(db.Model):
     created = db.Column(db.DateTime)
     modified = db.Column(db.DateTime)
     # observer info
-    name = db.Column(db.Unicode(45))
-    lastname = db.Column(db.Unicode(45))
-    email = db.Column(db.String(120), unique=True)
+    name = db.Column(db.Unicode(60))
+    lastname = db.Column(db.Unicode(60))
+    email = db.Column(db.Unicode(255), unique=True)
     # OpenID
     openid_openid = db.Column(db.String(255), unique=True)
     openid_identity = db.Column(db.String(255))
@@ -29,12 +29,16 @@ class Observer(db.Model):
     def __init__(self,name,lastname,email):
         self.created = datetime.now()
         self.modified = self.created
-        self.name = name.decode('utf-8')
-        self.lastname = lastname.decode('utf-8')
+        self.name = name
+        self.lastname = lastname
         self.email = email
 
+    def __unicode__(self):
+        return u'%s %s <%s>' % (self.name, self.lastname, self.email)
+        # return '%s' % self.name
+
     def __str__(self):
-        return '%s %s <%s>' % (self.name.encode('utf-8'), self.lastname.encode('utf-8'), self.email)
+        return self.__unicode__().encode('utf-8')
 
 
 # location
@@ -62,16 +66,19 @@ class Location(db.Model):
         self.latitude = latitude
         self.longitude = longitude
         if name != None:
-            self.name = name.decode('utf-8')
+            self.name = name
 
     def __str__(self):
-        nswe = '%.4f %s, %.4f %s' % (\
+        return self.__unicode__().encode('utf-8')
+
+    def __unicode__(self):
+        nswe = u'%.4f %s, %.4f %s' % (\
             abs(self.latitude), \
             'N' if self.latitude >= 0 else 'S', \
             abs(self.longitude),  \
             'E' if self.longitude >= 0 else 'W'  )
         if self.name != None:
-            return '%s (%s)' % ( self.name.encode('utf-8'), nswe )
+            return u'%s (%s)' % ( self.name, nswe )
         return  nswe
 
 
@@ -100,10 +107,13 @@ class Review(db.Model):
     def __init__(self, location, observer, comment):
         self.location = location
         self.observer = observer
-        self.comment = comment.decode('utf-8')
+        self.comment = comment
+
+    def __unicode__(self):
+        return u'%s commented on location %s: %s' % (self.observer, self.location, self.comment)
 
     def __str__(self):
-        return '%s commented on location %s: %s' % (self.observer, self.location, self.comment.encode('utf-8'))
+        return self.__unicode__().encode('utf-8')
 
 
 # class for observations (1 filled form = 1 observation)
@@ -153,9 +163,12 @@ class Observation(db.Model):
             self.date_end = self.date_start + timedelta(hours=1)
 
 
-    def __str__(self):
-        return 'observation performed on %s by %s in location %s'   \
+    def __unicode__(self):
+        return u'observation performed on %s by %s in location %s'   \
             % (self.date_start,self.observer,self.location)
+
+    def __str__(self):
+        return self.__unicode__().encode('utf-8')
 
 
 # Following entries are various kinds of measurments
@@ -167,7 +180,7 @@ class BortleData(db.Model):
     # bortle degree of sky darkness
     bortle = db.Column(db.Integer)
     # comment from the observer
-    comment = db.Column(db.String(400))
+    comment = db.Column(db.Unicode(400))
     # relations
     observation = db.relationship('Observation', back_populates='bortle_data')
     # foreign keys
@@ -177,8 +190,11 @@ class BortleData(db.Model):
         this.observation = observation
         this.bortle = bortle
 
+    def __unicode__(self):
+        return u'%d in Bortle scale' % self.bortle
+
     def __str__(self):
-        return '%d in Bortle scale' % self.bortle
+        return self.__unicode__().encode('utf-8')
 
 
 # entries for dslr measurments
@@ -186,8 +202,8 @@ class DSLRData(db.Model):
     __tablename__ = 'dslr_data'
     id = db.Column(db.Integer, primary_key=True)
     # info about camera
-    info_camera = db.Column(db.String(200))
-    info_lens = db.Column(db.String(200))
+    info_camera = db.Column(db.Unicode(200))
+    info_lens = db.Column(db.Unicode(200))
     # field number
     field_nr = db.Column(db.Integer)
     # data as copied from the spreadsheet
@@ -195,7 +211,7 @@ class DSLRData(db.Model):
     # result: DSLR magnitude of background glow
     dlsr_mag = db.Column(db.Float)
     # comment from the observer
-    comment = db.Column(db.String(400))
+    comment = db.Column(db.Unicode(400))
     # relations
     observation = db.relationship('Observation', back_populates='dslr_data')
     # foreign keys
@@ -213,7 +229,7 @@ class MeteorData(db.Model):
     # result: limiting magnitude
     lim_mag = db.Column(db.Float)
     # comment from the observer
-    comment = db.Column(db.String(400))
+    comment = db.Column(db.Unicode(400))
     # relations
     observation = db.relationship('Observation', back_populates='meteor_data')
     # foreign keys
@@ -235,7 +251,7 @@ class SQMData(db.Model):
     sqm_mag_w = db.Column(db.Float)
     sqm_mag_e = db.Column(db.Float)
     # comment from the observer
-    comment = db.Column(db.String(400))
+    comment = db.Column(db.Unicode(400))
     # relations
     observation = db.relationship('Observation', back_populates='sqm_data')
     # foreign keys
@@ -256,7 +272,7 @@ class TubeData(db.Model):
     # result: stars visible in the sky
     sky_stars = db.Column(db.Integer)
     # comment from the observer
-    comment = db.Column(db.String(400))
+    comment = db.Column(db.Unicode(400))
     # relations
     observation = db.relationship('Observation', back_populates='tube_data')
     # foreign keys
