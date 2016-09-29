@@ -187,8 +187,8 @@ class BortleData(db.Model):
     observation_id = db.Column(db.Integer, db.ForeignKey('observations.id'))
 
     def __init__(self, observation, bortle):
-        this.observation = observation
-        this.bortle = bortle
+        self.observation = observation
+        self.bortle = bortle
 
     def __unicode__(self):
         return u'%d in Bortle scale' % self.bortle
@@ -217,6 +217,20 @@ class DSLRData(db.Model):
     # foreign keys
     observation_id = db.Column(db.Integer, db.ForeignKey('observations.id'))
 
+    def __init__(self, observation, field_nr, dslr_mag):
+        self.observation = observation
+        self.field_nr = field_nr
+        self.dslr_mag = dslr_mag
+
+    def __unicode__(self):
+        return u'DSLR observation in field %d with result %0.2f' \
+            % ( self.field_nr, self.dslr_mag )
+
+    def __str__(self):
+        return self.__unicode__().encode('utf-8')
+
+def yfun(x1,y1,x2,y2,x):
+    return float(x - x1) * (y2-y1)/float(x2-x1) + y1
 
 # entries for meteor (limiting magniude) method
 class MeteorData(db.Model):
@@ -234,6 +248,19 @@ class MeteorData(db.Model):
     observation = db.relationship('Observation', back_populates='meteor_data')
     # foreign keys
     observation_id = db.Column(db.Integer, db.ForeignKey('observations.id'))
+
+    def __init__(self, observation, field_nr, stars):
+        self.observation = observation
+        self.field_nr = field_nr
+        self.stars = stars
+        self.lim_mag = yfun(10,3.5,60,7.5,stars)
+
+    def __unicode__(self):
+        return u'%d stars in field %d which yields limiting magnitude %0.2f' \
+            % ( self.stars, self.field_nr, self.lim_mag )
+
+    def __str__(self):
+        return self.__unicode__().encode('utf-8')
 
 
 # SQM measurments
@@ -257,6 +284,19 @@ class SQMData(db.Model):
     # foreign keys
     observation_id = db.Column(db.Integer, db.ForeignKey('observations.id'))
 
+    def __init__(self, observation, sqm_mag_tuple):
+        ( self.sqm_mag, self.sqm_mag_n, self.sqm_mag_e, self.sqm_mag_s, \
+            self.sqm_mag_w ) = sqm_mag_tuple
+        self.observation = observation
+
+    def __unicode__(self):
+        return u'SQM results: zenith %0.2f, N %0.2f, E %0.2f, S %0.2f, W %0.2f' \
+            % ( self.sqm_mag, self.sqm_mag_n, self.sqm_mag_e, self.sqm_mag_s, \
+                self.sqm_mag_w )
+
+    def __str__(self):
+        return self.__unicode__().encode('utf-8')
+
 
 # Tube measurments
 class TubeData(db.Model):
@@ -277,3 +317,13 @@ class TubeData(db.Model):
     observation = db.relationship('Observation', back_populates='tube_data')
     # foreign keys
     observation_id = db.Column(db.Integer, db.ForeignKey('observations.id'))
+
+    def __init__(self, observation, sky_stars):
+        self.observation = observation
+        self.sky_stars = sky_stars
+
+    def __unicode__(self):
+        return u'total of %d stars in the sky' % self.sky_stars
+
+    def __str__(self):
+        return self.__unicode__().encode('utf-8')
