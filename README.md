@@ -52,18 +52,16 @@ Następnie w katalogu **jizera-ui** kompilujemy szablon poleceniem
 foundation build
 ```
 
-### Notatniki testowe
+###  Baza testowa
 
-Aby móc uruchamiać notatniki z katalogu **test**, instalujemy ipython notebook:
+Jest możliwość wygenerowania testowej bazy z fikcyjnymi wpisami. Wystarczy uruchomić
+skrypt ``test_create.py``. Należy pamiętać, że spowoduje to całkowite wykasowanie bazy!
+Wcześniej konieczne jest zainicjowanie środowiska wirtualnego (``venv``).
 ```
-pip install ipython notebook
-```
-By przetestować model ORM bazy, będąc w środowisku wirtualnym przechodzimy do folderu **test** i uruchamiamy jupytera. Następnie klikamy na interesujący nas test.
-```
-ln -srv jizera test/ # to wykonujemy tylko za pierwszym razem
 cd test
-ipython notebook &
+python test_create.py
 ```
+Modyfikując parametry skryptu, można zmienić ilość wygenerowanych wpisów.
 
 ### Przeglądanie bazy SQLite
 
