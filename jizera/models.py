@@ -190,6 +190,9 @@ class BortleData(db.Model):
         self.observation = observation
         self.bortle = bortle
 
+    def recalc(self):
+        pass
+
     def __unicode__(self):
         return u'%d in Bortle scale' % self.bortle
 
@@ -221,6 +224,9 @@ class DSLRData(db.Model):
         self.observation = observation
         self.field_nr = field_nr
         self.dslr_mag = dslr_mag
+
+    def recalc(self):
+        pass
 
     def __unicode__(self):
         return u'DSLR observation in field %d with result %0.2f' \
@@ -254,6 +260,9 @@ class MeteorData(db.Model):
         self.field_nr = field_nr
         self.stars = stars
         self.lim_mag = yfun(10,3.5,60,7.5,stars)
+
+    def recalc(self):
+        pass
 
     def __unicode__(self):
         return u'%d stars in field %d which yields limiting magnitude %0.2f' \
@@ -289,6 +298,9 @@ class SQMData(db.Model):
             self.sqm_mag_w ) = sqm_mag_tuple
         self.observation = observation
 
+    def recalc(self):
+        pass
+
     def __unicode__(self):
         return u'SQM results: zenith %0.2f, N %0.2f, E %0.2f, S %0.2f, W %0.2f' \
             % ( self.sqm_mag, self.sqm_mag_n, self.sqm_mag_e, self.sqm_mag_s, \
@@ -321,6 +333,9 @@ class TubeData(db.Model):
     def __init__(self, observation, sky_stars):
         self.observation = observation
         self.sky_stars = sky_stars
+
+    def recalc(self):
+        pass
 
     def __unicode__(self):
         return u'total of %d stars in the sky' % self.sky_stars
