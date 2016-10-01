@@ -14,7 +14,6 @@ Base = declarative_base()
 Base.query = dbsession.query_property()
 
 def init_db():
-    import jizera.models
     Base.metadata.create_all(bind=engine)
 
 def destroy_db():
