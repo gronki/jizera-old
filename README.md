@@ -34,7 +34,7 @@ Jeżeli wszystko przebiegnie poprawnie, adnotacja o tym, ze jesteśmy w środowi
 ```
 Instalujemy wymagane paczki za pomocą menedżera **pip**.
 ```
-pip install Flask Flask-SQLAlchemy
+pip install Flask SQLAlchemy
 ```
 
 ## Narzędzia programistyczne
