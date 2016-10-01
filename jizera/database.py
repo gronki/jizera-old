@@ -195,7 +195,7 @@ class BortleData(Base):
     # bortle degree of sky darkness
     bortle = Column(Integer)
     # comment from the observer
-    comment = Column(Unicode)
+    comment = deferred(Column(Unicode), group='extras')
     # relations
     observation = relationship('Observation', back_populates='bortle_data')
     # foreign keys
@@ -229,7 +229,7 @@ class DSLRData(Base):
     # result: DSLR magnitude of background glow
     dlsr_mag = Column(Float)
     # comment from the observer
-    comment = Column(Unicode)
+    comment = deferred(Column(Unicode), group='extras')
     # relations
     observation = relationship('Observation', back_populates='dslr_data')
     # foreign keys
@@ -264,7 +264,7 @@ class MeteorData(Base):
     # result: limiting magnitude
     lim_mag = Column(Float)
     # comment from the observer
-    comment = Column(Unicode)
+    comment = deferred(Column(Unicode), group='extras')
     # relations
     observation = relationship('Observation', back_populates='meteor_data')
     # foreign keys
@@ -302,7 +302,7 @@ class SQMData(Base):
     sqm_mag_w = Column(Float)
     sqm_mag_e = Column(Float)
     # comment from the observer
-    comment = Column(Unicode)
+    comment = deferred(Column(Unicode), group='extras')
     # relations
     observation = relationship('Observation', back_populates='sqm_data')
     # foreign keys
@@ -339,7 +339,7 @@ class TubeData(Base):
     # result: stars visible in the sky
     sky_stars = Column(Integer)
     # comment from the observer
-    comment = Column(Unicode)
+    comment = deferred(Column(Unicode), group='extras')
     # relations
     observation = relationship('Observation', back_populates='tube_data')
     # foreign keys
