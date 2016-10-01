@@ -306,7 +306,7 @@ class TubeData(db.Model):
     tube_diam = db.Column(db.Float)
     tube_length = db.Column(db.Float)
     tube_type = db.Column(db.String(6))
-    tube_glasses = db.Column(db.Integer)
+    tube_glasses = db.Column(db.Boolean)
     # results from tube pointings as csv string
     data = db.Column(db.String(500))
     # result: stars visible in the sky
