@@ -1,30 +1,28 @@
 
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Column, DateTime, Integer, String, Unicode, Boolean
 from datetime import datetime,timedelta
-
-from jizera import app, db
+from jizera.database import Base
 
 
 # table for registered observers
-class Observer(db.Model):
+class Observer(Base):
 
     __tablename__ = 'observers'
-    id = db.Column(db.Integer, primary_key=True)
-    created = db.Column(db.DateTime)
-    modified = db.Column(db.DateTime)
+    id = Column(Integer, primary_key=True)
+    created = Column(DateTime)
+    modified = Column(DateTime)
     # observer info
-    name = db.Column(db.Unicode(60))
-    lastname = db.Column(db.Unicode(60))
-    email = db.Column(db.Unicode(255), unique=True)
+    name = Column(Unicode(60))
+    lastname = Column(Unicode(60))
+    email = Column(Unicode(255), unique=True)
     # OpenID
-    openid_openid = db.Column(db.String(255), unique=True)
-    openid_identity = db.Column(db.String(255))
-    openid_server = db.Column(db.String(255))
+    openid_openid = Column(String(255), unique=True)
+    openid_identity = Column(String(255))
+    openid_server = Column(String(255))
 
     # relationships
-    observations = db.relationship('Observation', back_populates='observer')
-    reviews = db.relationship('Review', back_populates='observer')
+    observations = relationship('Observation', back_populates='observer')
+    reviews = relationship('Review', back_populates='observer')
 
     def __init__(self,name,lastname,email):
         self.created = datetime.now()
@@ -42,25 +40,25 @@ class Observer(db.Model):
 
 
 # location
-class Location(db.Model):
+class Location(Base):
 
     __tablename__ = 'locations'
 
-    id = db.Column(db.Integer, primary_key=True)
-    created = db.Column(db.DateTime)
-    modified = db.Column(db.DateTime)
+    id = Column(Integer, primary_key=True)
+    created = Column(DateTime)
+    modified = Column(DateTime)
     # name of the observing spot -- entered by the user or
     # taken from google geolocalization
-    name = db.Column(db.Unicode(200))
+    name = Column(Unicode(200))
     # location and altitude
-    latitude = db.Column(db.Float)
-    longitude = db.Column(db.Float)
-    altitude = db.Column(db.Float)
+    latitude = Column(Float)
+    longitude = Column(Float)
+    altitude = Column(Float)
     # optional place for code used for google synchronization -- not neccesary?
-    googlecode = db.Column(db.String(45))
+    googlecode = Column(String(45))
     # relationships
-    reviews = db.relationship('Review', back_populates='location')
-    observations = db.relationship('Observation', back_populates='location')
+    reviews = relationship('Review', back_populates='location')
+    observations = relationship('Observation', back_populates='location')
 
     def __init__(self, latitude, longitude, name=None):
         self.latitude = latitude
@@ -83,25 +81,25 @@ class Location(db.Model):
 
 
 # optional review that can be written for given location
-class Review(db.Model):
+class Review(Base):
 
     __tablename__ = 'reviews'
 
-    id = db.Column(db.Integer, primary_key=True)
-    created = db.Column(db.DateTime)
-    modified = db.Column(db.DateTime)
+    id = Column(Integer, primary_key=True)
+    created = Column(DateTime)
+    modified = Column(DateTime)
     # survey about the observation spot
-    has_current = db.Column(db.Boolean)
-    has_sleeping = db.Column(db.Boolean)
-    has_horizon = db.Column(db.Boolean)
+    has_current = Column(Boolean)
+    has_sleeping = Column(Boolean)
+    has_horizon = Column(Boolean)
     # comment where user can put additional notes
-    comment = db.Column(db.Unicode)
+    comment = Column(Unicode)
     # relations
-    location = db.relationship('Location', back_populates='reviews')
-    observer = db.relationship('Observer', back_populates='reviews')
+    location = relationship('Location', back_populates='reviews')
+    observer = relationship('Observer', back_populates='reviews')
     # foreign keys
-    location_id = db.Column(db.Integer, db.ForeignKey('locations.id'))
-    observer_id = db.Column(db.Integer, db.ForeignKey('observers.id'))
+    location_id = Column(Integer, ForeignKey('locations.id'))
+    observer_id = Column(Integer, ForeignKey('observers.id'))
 
 
     def __init__(self, location, observer, comment):
@@ -117,31 +115,31 @@ class Review(db.Model):
 
 
 # class for observations (1 filled form = 1 observation)
-class Observation(db.Model):
+class Observation(Base):
 
     __tablename__ = 'observations'
-    id = db.Column(db.Integer, primary_key=True)
-    created = db.Column(db.DateTime)
-    modified = db.Column(db.DateTime)
+    id = Column(Integer, primary_key=True)
+    created = Column(DateTime)
+    modified = Column(DateTime)
     # date of begin and end
-    date_start = db.Column(db.DateTime)
-    date_end = db.Column(db.DateTime)
+    date_start = Column(DateTime)
+    date_end = Column(DateTime)
     # conditions: clouds, moon and milky way
-    cond_clouds = db.Column(db.Boolean)
-    cond_moon = db.Column(db.Boolean)
-    cond_milkyway = db.Column(db.Boolean)
+    cond_clouds = Column(Boolean)
+    cond_moon = Column(Boolean)
+    cond_milkyway = Column(Boolean)
     # relations
-    location = db.relationship('Location', back_populates='observations')
-    observer = db.relationship('Observer', back_populates='observations')
+    location = relationship('Location', back_populates='observations')
+    observer = relationship('Observer', back_populates='observations')
     # typy pomiarow
-    bortle_data = db.relationship('BortleData', back_populates='observation')
-    dslr_data = db.relationship('DSLRData', back_populates='observation')
-    sqm_data = db.relationship('SQMData', back_populates='observation')
-    meteor_data = db.relationship('MeteorData', back_populates='observation')
-    tube_data = db.relationship('TubeData', back_populates='observation')
+    bortle_data = relationship('BortleData', back_populates='observation')
+    dslr_data = relationship('DSLRData', back_populates='observation')
+    sqm_data = relationship('SQMData', back_populates='observation')
+    meteor_data = relationship('MeteorData', back_populates='observation')
+    tube_data = relationship('TubeData', back_populates='observation')
     # foreign keys
-    location_id = db.Column(db.Integer, db.ForeignKey('locations.id'))
-    observer_id = db.Column(db.Integer, db.ForeignKey('observers.id'))
+    location_id = Column(Integer, ForeignKey('locations.id'))
+    observer_id = Column(Integer, ForeignKey('observers.id'))
 
     def __init__(self, location, observer, date_start=None, date_end=None):
 
@@ -174,17 +172,17 @@ class Observation(db.Model):
 # Following entries are various kinds of measurments
 
 # entries for bortle method
-class BortleData(db.Model):
+class BortleData(Base):
     __tablename__ = 'bortle_data'
-    id = db.Column(db.Integer, primary_key=True)
+    id = Column(Integer, primary_key=True)
     # bortle degree of sky darkness
-    bortle = db.Column(db.Integer)
+    bortle = Column(Integer)
     # comment from the observer
-    comment = db.Column(db.Unicode)
+    comment = Column(Unicode)
     # relations
-    observation = db.relationship('Observation', back_populates='bortle_data')
+    observation = relationship('Observation', back_populates='bortle_data')
     # foreign keys
-    observation_id = db.Column(db.Integer, db.ForeignKey('observations.id'))
+    observation_id = Column(Integer, ForeignKey('observations.id'))
 
     def __init__(self, observation, bortle):
         self.observation = observation
@@ -201,24 +199,24 @@ class BortleData(db.Model):
 
 
 # entries for dslr measurments
-class DSLRData(db.Model):
+class DSLRData(Base):
     __tablename__ = 'dslr_data'
-    id = db.Column(db.Integer, primary_key=True)
+    id = Column(Integer, primary_key=True)
     # info about camera
-    info_camera = db.Column(db.Unicode(200))
-    info_lens = db.Column(db.Unicode(200))
+    info_camera = Column(Unicode(200))
+    info_lens = Column(Unicode(200))
     # field number
-    field_nr = db.Column(db.Integer)
+    field_nr = Column(Integer)
     # data as copied from the spreadsheet
-    data = db.Column(db.String(400))
+    data = Column(String(400))
     # result: DSLR magnitude of background glow
-    dlsr_mag = db.Column(db.Float)
+    dlsr_mag = Column(Float)
     # comment from the observer
-    comment = db.Column(db.Unicode)
+    comment = Column(Unicode)
     # relations
-    observation = db.relationship('Observation', back_populates='dslr_data')
+    observation = relationship('Observation', back_populates='dslr_data')
     # foreign keys
-    observation_id = db.Column(db.Integer, db.ForeignKey('observations.id'))
+    observation_id = Column(Integer, ForeignKey('observations.id'))
 
     def __init__(self, observation, field_nr, dslr_mag):
         self.observation = observation
@@ -239,21 +237,21 @@ def yfun(x1,y1,x2,y2,x):
     return float(x - x1) * (y2-y1)/float(x2-x1) + y1
 
 # entries for meteor (limiting magniude) method
-class MeteorData(db.Model):
+class MeteorData(Base):
     __tablename__ = 'meteor_data'
-    id = db.Column(db.Integer, primary_key=True)
+    id = Column(Integer, primary_key=True)
     # number of field
-    field_nr = db.Column(db.Integer)
+    field_nr = Column(Integer)
     # user measurement
-    stars = db.Column(db.Integer)
+    stars = Column(Integer)
     # result: limiting magnitude
-    lim_mag = db.Column(db.Float)
+    lim_mag = Column(Float)
     # comment from the observer
-    comment = db.Column(db.Unicode)
+    comment = Column(Unicode)
     # relations
-    observation = db.relationship('Observation', back_populates='meteor_data')
+    observation = relationship('Observation', back_populates='meteor_data')
     # foreign keys
-    observation_id = db.Column(db.Integer, db.ForeignKey('observations.id'))
+    observation_id = Column(Integer, ForeignKey('observations.id'))
 
     def __init__(self, observation, field_nr, stars):
         self.observation = observation
@@ -273,25 +271,25 @@ class MeteorData(db.Model):
 
 
 # SQM measurments
-class SQMData(db.Model):
+class SQMData(Base):
     __tablename__ = 'sqm_data'
-    id = db.Column(db.Integer, primary_key=True)
-    sqm_model = db.Column(db.String(45))
-    sqm_serial = db.Column(db.String(45))
+    id = Column(Integer, primary_key=True)
+    sqm_model = Column(String(45))
+    sqm_serial = Column(String(45))
     # all values entered by the user in json/csv format
-    data = db.Column(db.String(500))
+    data = Column(String(500))
     # results obtained for zenith and all directions
-    sqm_mag = db.Column(db.Float)
-    sqm_mag_n = db.Column(db.Float)
-    sqm_mag_s = db.Column(db.Float)
-    sqm_mag_w = db.Column(db.Float)
-    sqm_mag_e = db.Column(db.Float)
+    sqm_mag = Column(Float)
+    sqm_mag_n = Column(Float)
+    sqm_mag_s = Column(Float)
+    sqm_mag_w = Column(Float)
+    sqm_mag_e = Column(Float)
     # comment from the observer
-    comment = db.Column(db.Unicode)
+    comment = Column(Unicode)
     # relations
-    observation = db.relationship('Observation', back_populates='sqm_data')
+    observation = relationship('Observation', back_populates='sqm_data')
     # foreign keys
-    observation_id = db.Column(db.Integer, db.ForeignKey('observations.id'))
+    observation_id = Column(Integer, ForeignKey('observations.id'))
 
     def __init__(self, observation, sqm_mag_tuple):
         ( self.sqm_mag, self.sqm_mag_n, self.sqm_mag_e, self.sqm_mag_s, \
@@ -311,24 +309,24 @@ class SQMData(db.Model):
 
 
 # Tube measurments
-class TubeData(db.Model):
+class TubeData(Base):
     __tablename__ = 'tube_data'
-    id = db.Column(db.Integer, primary_key=True)
+    id = Column(Integer, primary_key=True)
     # additional parameters of the tube
-    tube_diam = db.Column(db.Float)
-    tube_length = db.Column(db.Float)
-    tube_type = db.Column(db.String(6))
-    tube_glasses = db.Column(db.Boolean)
+    tube_diam = Column(Float)
+    tube_length = Column(Float)
+    tube_type = Column(String(6))
+    tube_glasses = Column(Boolean)
     # results from tube pointings as csv string
-    data = db.Column(db.String(500))
+    data = Column(String(500))
     # result: stars visible in the sky
-    sky_stars = db.Column(db.Integer)
+    sky_stars = Column(Integer)
     # comment from the observer
-    comment = db.Column(db.Unicode)
+    comment = Column(Unicode)
     # relations
-    observation = db.relationship('Observation', back_populates='tube_data')
+    observation = relationship('Observation', back_populates='tube_data')
     # foreign keys
-    observation_id = db.Column(db.Integer, db.ForeignKey('observations.id'))
+    observation_id = Column(Integer, ForeignKey('observations.id'))
 
     def __init__(self, observation, sky_stars):
         self.observation = observation
