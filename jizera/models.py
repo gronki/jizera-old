@@ -95,7 +95,7 @@ class Review(db.Model):
     has_sleeping = db.Column(db.Boolean)
     has_horizon = db.Column(db.Boolean)
     # comment where user can put additional notes
-    comment = db.Column(db.Unicode(400))
+    comment = db.Column(db.Unicode)
     # relations
     location = db.relationship('Location', back_populates='reviews')
     observer = db.relationship('Observer', back_populates='reviews')
@@ -180,7 +180,7 @@ class BortleData(db.Model):
     # bortle degree of sky darkness
     bortle = db.Column(db.Integer)
     # comment from the observer
-    comment = db.Column(db.Unicode(400))
+    comment = db.Column(db.Unicode)
     # relations
     observation = db.relationship('Observation', back_populates='bortle_data')
     # foreign keys
@@ -211,7 +211,7 @@ class DSLRData(db.Model):
     # result: DSLR magnitude of background glow
     dlsr_mag = db.Column(db.Float)
     # comment from the observer
-    comment = db.Column(db.Unicode(400))
+    comment = db.Column(db.Unicode)
     # relations
     observation = db.relationship('Observation', back_populates='dslr_data')
     # foreign keys
@@ -243,7 +243,7 @@ class MeteorData(db.Model):
     # result: limiting magnitude
     lim_mag = db.Column(db.Float)
     # comment from the observer
-    comment = db.Column(db.Unicode(400))
+    comment = db.Column(db.Unicode)
     # relations
     observation = db.relationship('Observation', back_populates='meteor_data')
     # foreign keys
@@ -278,7 +278,7 @@ class SQMData(db.Model):
     sqm_mag_w = db.Column(db.Float)
     sqm_mag_e = db.Column(db.Float)
     # comment from the observer
-    comment = db.Column(db.Unicode(400))
+    comment = db.Column(db.Unicode)
     # relations
     observation = db.relationship('Observation', back_populates='sqm_data')
     # foreign keys
@@ -312,7 +312,7 @@ class TubeData(db.Model):
     # result: stars visible in the sky
     sky_stars = db.Column(db.Integer)
     # comment from the observer
-    comment = db.Column(db.Unicode(400))
+    comment = db.Column(db.Unicode)
     # relations
     observation = db.relationship('Observation', back_populates='tube_data')
     # foreign keys
