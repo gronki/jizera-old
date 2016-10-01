@@ -19,7 +19,7 @@ if path.isfile(testdb_location):
 seed()
 
 # tworzymy silnik i sesje
-db.create_all()
+init_db()
 
 # tworzymy obserwatorow
 print hh1('OBSERWATORZY')
@@ -30,8 +30,8 @@ observers = [   Observer(u'Łukasz',u'Kowalski',u'lukaszek@abc.com'), \
                 Observer(u'Linus',u'Torvalds',u'linus@kernel.org') ]
 for t in observers:
     print t
-db.session.add_all(observers)
-db.session.commit()
+dbsession.add_all(observers)
+dbsession.commit()
 
 # tworzymy miejsca
 print hh1(u'LOKALIZACJE')
@@ -43,27 +43,27 @@ loc_names_a = [ u'Przyłęcze', u'Zadupie', u'Ostrowo', u'Konolipie', u'Nietopie
 loc_names_b = [ u'Dolnośląskie', u'Łódzkie', u'Górne', u'Dolne', u'Wielkie', u'Małe', \
                 u'Wielkopolskie', u'Mazowieckie', u'Wiślańskie', u'Rządowe',    \
                 u'Pierwsze', u'Drugie' ]
-for i in range(50):
+for i in range(25):
     name = u'%s %s' % (  loc_names_a[randrange(len(loc_names_a))],    \
                         loc_names_b[randrange(len(loc_names_b))])
     l = Location(uniform(49.5,54.5), uniform(14.7,23.7), name)
     locations.append(l)
     print l
-db.session.add_all(locations)
-db.session.commit()
+dbsession.add_all(locations)
+dbsession.commit()
 
 # dodajemy jakies recenzje
 print hh1('RECENZJE')
 
-for i in range(100):
+for i in range(200):
     print hh3('Recenzja %d' % (i+1))
     rev = Review(   locations[randrange(len(locations))], \
                     observers[randrange(len(observers))], \
                     (u' '.join(get_sentences(randrange(1,9)))) )
     print rev
-    db.session.add(rev)
+    dbsession.add(rev)
 
-db.session.commit()
+dbsession.commit()
 
 # obserwacje
 print hh1('OBSERWACJE')
@@ -84,8 +84,8 @@ for i in range(250):
                         datetime.fromtimestamp(time) )
     print obs
 
-    db.session.add(obs)
-    db.session.commit()
+    dbsession.add(obs)
+    dbsession.commit()
 
     ss = (1 + cos(obs.location.latitude * 2 * m_pi / 2)) \
         + (1 + cos(obs.location.longitude * 2 * m_pi / 1))
@@ -97,31 +97,31 @@ for i in range(250):
     if uniform(0,1) < 0.5:
         dat = DSLRData(obs, randint(1,10), data_base + gauss(0,0.1))
         print dat
-        db.session.add(dat)
+        dbsession.add(dat)
     if uniform(0,1) < 0.95:
         dat = BortleData(obs, round(yfun(16,7,23.5,1,data_base)))
         print dat
-        db.session.add(dat)
+        dbsession.add(dat)
     if uniform(0,1) < 0.3:
         dat = TubeData(obs, round(yfun(16,300,22.5,2800,data_base + gauss(0,1.0))))
         print dat
-        db.session.add(dat)
+        dbsession.add(dat)
     if uniform(0,1) < 0.4:
         dat = MeteorData(obs, randint(1,10), \
             round(yfun(16,10,22.5,60,data_base + gauss(0,0.4))))
         print dat
-        db.session.add(dat)
+        dbsession.add(dat)
     if uniform(0,1) < 0.7:
         dat = SQMData(obs, (data_base + gauss(0,0.1),    \
             data_base + gauss(-0.8,0.3), data_base + gauss(-0.8,0.3),   \
             data_base + gauss(-0.8,0.3), data_base + gauss(-0.8,0.3)) )
         print dat
-        db.session.add(dat)
+        dbsession.add(dat)
 
 
-    db.session.commit()
+    dbsession.commit()
 
 
 print hh1('KONIEC')
 
-db.session.close_all()
+destroy_db()

@@ -1,7 +1,25 @@
 
-from sqlalchemy import Column, DateTime, Integer, String, Unicode, Boolean
+from sqlalchemy import create_engine, Column, DateTime, Integer, String, \
+    Unicode, Boolean, deferred, relationship
+from sqlalchemy.orm import scoped_session, sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime,timedelta
-from jizera.database import Base
+
+db_location = '/tmp/jizera-testing.db'
+
+engine = create_engine('sqlite:///' + db_location, convert_unicode=True, echo=True)
+dbsession = scoped_session(sessionmaker(autocommit=False))
+
+Base = declarative_base()
+Base.query = dbsession.query_property()
+
+def init_db():
+    import jizera.models
+    Base.metadata.create_all(bind=engine)
+
+def destroy_db():
+    dbsession.remove()
+
 
 
 # table for registered observers
