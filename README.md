@@ -37,16 +37,20 @@ Instalujemy wymagane paczki za pomocą menedżera **pip**.
 pip install Flask SQLAlchemy
 ```
 ## Uruchomienie
+Ustawiamy najpierw zmienne środowiskowe:
+```
+export FLASK_APP=jizera
+export FLASK_DEBUG=True
+```
 Uruchamiamy serwer testowy bazy poleceniem:
 ```
-FLASK_APP=jizera python -m flask run
+python -m flask run
 ```
 Powinniśmy w rezultacie dostać komunikat zawierający adres w przeglądarce pod który należy wejść by przeglądać bazę (w tym przypadku ``http://127.0.0.1:5000/``).
 ```
 * Serving Flask app "jizera"
 * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
-
 
 ## Narzędzia programistyczne
 
