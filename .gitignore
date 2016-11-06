@@ -1,4 +1,4 @@
-venv/*
-scratch/*
+/venv/*
+/scratch/*
 *.pyc
-test/.ipynb*
+/test/.ipynb*
