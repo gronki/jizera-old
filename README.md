@@ -5,7 +5,7 @@ od obserwatorów w całej Polsce.
 
 ## Wymagania
 
-Aplikacja jest napisana we frameworku **Flask**, z użyciem **SQLAlchemy** oraz **SQLite** do obsługi bazy danych (w wersji testowej). Front-end jest oparty na frameworku **Foundation**, zaś arkusze stylów są generowane ze skryptów **scss**.
+Aplikacja jest napisana we frameworku **Flask**, oraz **SQLite** do obsługi bazy danych (w wersji testowej). Front-end jest oparty na frameworku **Foundation**, zaś arkusze stylów są generowane ze skryptów **scss**.
 
 W systemie operacyjnym
 musi być zainstalowany **Python 2.7** i **virtualenv**. W systemie Fedora/CentOS/RHEL zależności te zainstalujemy poleceniem:
@@ -34,14 +34,30 @@ Jeżeli wszystko przebiegnie poprawnie, adnotacja o tym, ze jesteśmy w środowi
 ```
 Instalujemy wymagane paczki za pomocą menedżera **pip**.
 ```
-pip install Flask SQLAlchemy
+pip install Flask sqlite3
 ```
 ## Uruchomienie
 Ustawiamy najpierw zmienne środowiskowe:
 ```
 export FLASK_APP=jizera
-export FLASK_DEBUG=True
+export FLASK_DEBUG=1
 ```
+
+### Inicjalizacja pustej bazy i usunięcie bazy
+Przed pierwszym uruchomieniem należy utworzyć strukturę tabel bazy danych. W tym celu używamy polecenia
+```
+python -m flask init
+```
+Po eksperymentach możemy wyczyścić z powrotem bazę poleceniem
+```
+python -m flask drop
+```
+Ponieważ testowanie pustej bazy jest nudne, jest możliwość wygenerowania losowych danych za pomocą polecenia
+```
+python -m flask init_dummy
+```
+
+### Uruchomienie serwera
 Uruchamiamy serwer testowy bazy poleceniem:
 ```
 python -m flask run
@@ -51,6 +67,7 @@ Powinniśmy w rezultacie dostać komunikat zawierający adres w przeglądarce po
 * Serving Flask app "jizera"
 * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
+Na ekranie mogą się ukazywać różne komunikaty. Zostają one równocześnie zapisane w pliku ``data/journal.txt``.
 
 ## Narzędzia programistyczne
 
@@ -66,17 +83,6 @@ Następnie w katalogu **jizera-ui** kompilujemy szablon poleceniem
 ```
 foundation build
 ```
-
-###  Baza testowa
-
-Jest możliwość wygenerowania testowej bazy z fikcyjnymi wpisami. Wystarczy uruchomić
-skrypt ``test_create.py``. Należy pamiętać, że spowoduje to całkowite wykasowanie bazy!
-Wcześniej konieczne jest zainicjowanie środowiska wirtualnego (``venv``).
-```
-cd test
-python test_create.py
-```
-Modyfikując parametry skryptu, można zmienić ilość wygenerowanych wpisów.
 
 ### Przeglądanie bazy SQLite
 

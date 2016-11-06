@@ -1,20 +1,30 @@
-from flask import Flask, render_template
+# -*- coding: utf-8 -*-
+
+import os
+from flask import Flask, render_template, request, session, g, \
+    redirect, url_for, abort, flash
+from datetime import datetime
 
 # tworzymy instancje flaska
 app = Flask('Jizera')
 
-from jizera.database import *
-from jizera.models import *
+def journal(s):
+    ds0 = datetime.utcnow().strftime('%y-%m-%d %H:%M:%S')
+    ds = ''
+    if not hasattr(g,'journal_last_datetime') or g.journal_last_datetime != ds0:
+        ds = ds0
+        g.journal_last_datetime = ds0
+
+    buf = u'%18s -- %s' % (ds,s)
+    print(buf)
+    with open(os.path.join(app.root_path, 'data','journal.txt'), 'a') as f:
+        f.write(buf.encode('utf-8') + '\n')
+
+from jizera.db import *
 
 @app.route('/')
 def index():
-    init_db()
-    data = dbsession.query(Observation.date_start,Observer.name,Observer.lastname,
-        Location.name, Location.latitude, Location.longitude, MeteorData.magnitude,
-        DSLRData.magnitude, SQMData.magnitude_z) \
-        .join(Observer,Location,MeteorData,DSLRData,SQMData).all()
-    destroy_db()
-    return render_template('index.html', data=data)
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run()
