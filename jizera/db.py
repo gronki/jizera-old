@@ -17,7 +17,7 @@ def get_db():
     return g.db
 
 @app.cli.command('drop')
-def drop_db():
+def cli_drop_db():
     db = get_db()
     fn = get_db_filename()
     if os.path.exists(fn):
@@ -32,7 +32,7 @@ def drop_db():
     db.commit()
 
 @app.cli.command('init')
-def init_db():
+def cli_init_db():
     db = get_db()
     with app.open_resource('sql/schema.sql', mode='r') as f:
         db.cursor().executescript(f.read())

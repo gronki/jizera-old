@@ -21,6 +21,11 @@ def journal(s):
         f.write(buf.encode('utf-8') + '\n')
 
 from jizera.db import *
+from jizera.dummy_init import cli_dummy_init
+
+@app.cli.command('is-debug')
+def cli_is_debug():
+    journal(u'Debug mode: %s' % ('ON' if app.debug else 'OFF'))
 
 @app.route('/')
 def index():

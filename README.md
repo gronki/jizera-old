@@ -54,7 +54,7 @@ python -m flask drop
 ```
 Ponieważ testowanie pustej bazy jest nudne, jest możliwość wygenerowania losowych danych za pomocą polecenia
 ```
-python -m flask init_dummy
+python -m flask dummy-init
 ```
 
 ### Uruchomienie serwera
