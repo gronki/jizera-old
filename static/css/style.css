@@ -1,36 +1,20 @@
 body {
-  color: #eee;
-  background: linear-gradient(45deg, #139347 0%, #139347 6%, #261393 6%, #261393 18%, #139387 18%, #139387 31%, #134093 31%, #134093 43%, #136093 43%, #136093 56%, #138093 56%, #138093 68%, #132093 68%, #132093 81%, #139367 81%, #139367 93%, #471393 93%, #471393 100%);
-  background-size: 100% 100vh;
-  background-repeat: no-repeat; }
+    margin: 0px auto;
+    max-width: 900px;
+}
 
-body, div {
-  box-sizing: border-box;
-  margin: 0px;
-  padding: 0px; }
+body > p,
+body > div,
+body > h1,
+body > h2 {
+    margin: 20px;
+}
 
-@font-face {
-  font-family: 'Coiny';
-  font-style: normal;
-  font-weight: 400;
-  src: local("Coiny"), local("Coiny-Regular"), url("../fonts/coiny-v1-latin-ext_latin-regular.woff2") format("woff2"), url("../fonts/coiny-v1-latin-ext_latin-regular.woff") format("woff"); }
-div.d1 {
-  top: 50%;
-  margin: 0px;
-  padding: 30px;
-  width: 100%;
-  position: absolute;
-  transform: translateY(-50%); }
+body, p, td {
+    font-size: 16px;
+    line-height: 22px;
+}
 
-h1, h2 {
-  font-family: 'Coiny', serif;
-  text-shadow: 0px 0px 12px rgba(0, 0, 0, 0.3);
-  text-align: center; }
-
-h1 {
-  font-size: 74px;
-  color: #b5d9f0; }
-
-h2 {
-  font-size: 44px;
-  color: #60ade0; }
+* {
+    box-sizing: border-box;
+}
