@@ -5,24 +5,25 @@ begin transaction;
 -- Ta tabela będzie zawierała dane o obserwatorach
 create table observers (
 	id integer not null,
-	created datetime,
-	modified datetime,
+	created timestamp,
+	modified timestamp,
 	name varchar(60),
 	lastname varchar(60),
+	nickname varchar(60),
 	email varchar(255),
-	openid_openid varchar(255),
+	openid varchar(255),
 	openid_identity varchar(255),
 	openid_server varchar(255),
 	primary key (id),
 	unique (email),
-	unique (openid_openid)
+	unique (openid)
 );
 
 -- Miejscówki obserwacyjne.
 create table locations (
 	id integer not null,
-	created datetime,
-	modified datetime,
+	created timestamp,
+	modified timestamp,
 	name varchar(200),
 	latitude float,
 	longitude float,
@@ -35,8 +36,8 @@ create table locations (
 -- Recenzje miejscówek.
 create table reviews (
 	id integer not null,
-	created datetime,
-	modified datetime,
+	created timestamp,
+	modified timestamp,
 	has_current varchar(12),
 	has_caraccess varchar(12),
 	has_sleeping varchar(12),
@@ -56,8 +57,8 @@ create table reviews (
 -- Obserwacje.
 create table observations (
 	id integer not null,
-	created datetime,
-	modified datetime,
+	created timestamp,
+	modified timestamp,
 	date_start datetime,
 	date_end datetime,
 	cond_clouds_octants varchar(9),
