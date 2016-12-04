@@ -40,7 +40,7 @@ def cli_dummy_init():
 
     observers = []
 
-    rightnow = datetime.now()
+    rightnow = datetime.now().replace(microsecond=0)
 
     obs_names = [ u'Hieronim', u'Władimir', u'Aleksandr', u'Siergiej',
         u'Dobromir', u'Miłosław', u'Światowid', u'Brajan', u'Adam', u'Antoni',
@@ -133,11 +133,14 @@ def cli_dummy_init():
         date_start = datetime.fromtimestamp(time) \
               .replace(hour=22,minute=0,second=0,microsecond=0)
         loc_id = pickrandom(locations.keys())
+        created = date_start + timedelta(days=randint(0,7), seconds=int(3600*gauss(12,2)))
+        if created > rightnow:
+            created = rightnow - timedelta(seconds=int(3600*uniform(0,6)))
 
         cur.execute('insert into observations ' +
             '(created, modified, date_start, date_end, location_id, observer_id) ' +
             'values (?,?,?,?,?,?)',
-            (rightnow, rightnow, date_start, date_start + timedelta(hours=1),
+            (created, created, date_start, date_start + timedelta(hours=1),
             loc_id, pickrandom(observers)))
         obs_id = cur.lastrowid
 
