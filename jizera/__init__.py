@@ -36,11 +36,11 @@ def index():
         observations.created AS created,
         observations.date_start AS date_start,
         observers.id AS observer_id,
-        observers.name AS observer_name,
-        observers.lastname AS observer_lastname,
+        (observers.name || " " || observers.lastname) AS observer_name,
         locations.name AS location_name,
         locations.latitude AS latitude,
-        locations.longitude AS longitude
+        locations.longitude AS longitude,
+        printf("@%.5f,%.5f", locations.latitude, locations.longitude) as latlng
         FROM observations
         JOIN observers ON (observers.id = observations.observer_id)
         JOIN locations ON (locations.id = observations.location_id)
