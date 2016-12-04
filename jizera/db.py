@@ -12,7 +12,7 @@ def get_db_filename():
 def get_db():
     if not hasattr(g,'db'):
         g.db_filename = get_db_filename()
-        g.db = sqlite3.connect(g.db_filename)
+        g.db = sqlite3.connect(g.db_filename, detect_types=sqlite3.PARSE_DECLTYPES)
         g.db.row_factory = sqlite3.Row
     return g.db
 
