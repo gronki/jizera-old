@@ -11,8 +11,8 @@
             {% for t in recent %}
                 <p>
 
-                    <span class="observer-name">{{ t.observer_name }} {{ t.observer_lastname }}</span> dodał(a) {{ t.created | sql_datetime | timeago }} pomiar w lokalizacji 
-                    {{ t.location_name }} (<span class="latlng">{{ (t.latitude,t.longitude) | latlng }}</span>)
+                    <span class="observer-name">{{ t.observer_name }} {{ t.observer_lastname }}</span> dodał(a) {{ t.created | timeago }} pomiar w lokalizacji
+                    {{ t.location_name }} (<span class="latlng">{{ t.latlng  }}</span>) 
                 </p>
             {% endfor %}
         </div>
