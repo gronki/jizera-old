@@ -22,6 +22,7 @@ def journal(s):
 
 from jizera.db import *
 from jizera.dummy_init import cli_dummy_init
+from jizera.filters import *
 
 @app.cli.command('is-debug')
 def cli_is_debug():
@@ -29,7 +30,25 @@ def cli_is_debug():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    cur = get_db().cursor()
+    cur.execute("""SELECT
+        observations.id AS observation_id,
+        observations.created AS created,
+        observations.date_start AS date_start,
+        observers.id AS observer_id,
+        observers.name AS observer_name,
+        observers.lastname AS observer_lastname,
+        locations.name AS location_name,
+        locations.latitude AS latitude,
+        locations.longitude AS longitude
+        FROM observations
+        JOIN observers ON (observers.id = observations.observer_id)
+        JOIN locations ON (locations.id = observations.location_id)
+        ORDER BY observations.created DESC
+        LIMIT 5;
+        """)
+    recent = cur.fetchall()
+    return render_template('index.html', recent=recent)
 
 if __name__ == '__main__':
     app.run()
