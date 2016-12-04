@@ -13,7 +13,15 @@ def parse_sql_timestamp(s):
 @app.template_filter('timeago')
 def filter_timeago(d):
     td = datetime.now() - d
-    return u"%d dni i %d godzin(y) temu" % (td.days,td.seconds/3600)
+    if td.days == 0:
+        return u"%d godzin(y) temu" % (td.seconds/3600)
+    elif td.days == 1:
+        return u"wczoraj"
+    elif td.days == 2:
+        return u"przedwczoraj"
+    else:
+        return u"%d dni temu" % td.days
+
 
 @app.template_filter('onlydate')
 def filter_onlydate(d):
