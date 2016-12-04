@@ -9,9 +9,16 @@ from datetime import datetime
 def get_db_filename():
     return os.path.join(app.root_path, 'data','jizera.db')
 
+def adapt_datetime(ts):
+    return ts.strftime(r'%Y-%m-%d %H:%M:%S')
+def convert_datetime(s):
+    return datetime.strptime(s,r'%Y-%m-%d %H:%M:%S')
+
 def get_db():
     if not hasattr(g,'db'):
         g.db_filename = get_db_filename()
+        sqlite3.register_adapter(datetime, adapt_datetime)
+        sqlite3.register_converter("datetime", convert_datetime)
         g.db = sqlite3.connect(g.db_filename, detect_types=sqlite3.PARSE_DECLTYPES)
         g.db.row_factory = sqlite3.Row
     return g.db
