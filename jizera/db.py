@@ -23,6 +23,9 @@ def get_db():
         g.db.row_factory = sqlite3.Row
     return g.db
 
+def get_db_cursor():
+    return get_db().cursor()
+
 @app.cli.command('drop')
 def cli_drop_db():
     db = get_db()
