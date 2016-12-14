@@ -1,10 +1,10 @@
 deps = $(wildcard jizera/*.scss)
 
-jsdir = ../static/js
-cssdir = ../static/css
+jsdir 	= ../static/js
+cssdir 	= ../static/css
 
-alljs = jizera
-allcss = jizera jizera.front
+alljs 	= jizera jizera.front
+allcss 	= jizera jizera.front
 
 SASSFLAGS ?= -C --sourcemap=none
 
@@ -18,7 +18,7 @@ $(cssdir)/%.min.css: %.scss $(deps)
 	sass $(SASSFLAGS) --style compressed $<:$@
 
 $(jsdir)/%.js: %.coffee
-	coffee -cp $(COFFEEFLAGS) $< > $@
+	coffee -cbp $(COFFEEFLAGS) $< > $@
 
 clean:
 	rm -rf *.map .sass-cache
