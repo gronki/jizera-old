@@ -37,11 +37,3 @@ body#frontpage {
     }
 
 }
-
-div.recent {
-    p.subcaption { display: none; }
-    @include row($medium, (1,3) );
-    @include breakpoint($medium) {
-        p.subcaption { color: '#ACACAC'; display: auto; }
-    }
-}

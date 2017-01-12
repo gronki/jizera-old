@@ -1,0 +1,110 @@
+
+$sizes:      sm,      md,       lg,      xl;
+$brkpnt: 0px,   638px,   838px,   1078px,  infinity;
+
+$gutter:    4%;
+$grid-base: 12;
+
+div.container, div.row, div.col {
+    box-sizing: border-box !important;
+    margin: 0px;
+    border: none;
+}
+
+@mixin respond ($size: sm) {
+    @for $i from 1 through length($sizes) {
+        $sz: nth($sizes,$i);
+        @if $size == $sz {
+            $b-lo: nth($brkpnt,$i);
+            $b-hi: nth($brkpnt,$i+1);
+            @if $b-lo == 0px {
+                @media  (max-width: $b-hi - 1px) { @content; }
+            } @elseif $b-hi == infinity {
+                @media  (min-width: $b-lo) { @content; }
+            } @else {
+                @media  (min-width: $b-lo)
+                and (max-width: $b-hi - 1px) { @content; }
+            }
+        }
+    }
+}
+
+@mixin breakpoint($size: sm) {
+    @for $i from 1 through length($sizes) {
+        $sz: nth($sizes,$i);
+        @if $size == $sz {
+            $b-lo: nth($brkpnt,$i);
+            @if $b-lo == 0px {
+                @content;
+            } @else {
+                @media  (min-width: $b-lo) { @content; }
+            }
+        }
+    }
+}
+
+div.container {
+    display: block;
+    margin: 0px $gutter/2;
+    @include breakpoint(md) {
+        margin: 0px auto;
+    }
+    @for $i from 2 through length($sizes) {
+        $sz: nth($sizes,$i);
+        $bp: nth($brkpnt,$i);
+        @include breakpoint($sz) {
+            max-width: $bp * 0.97;
+        }
+    }
+    padding: 0px;
+    div.row {
+        display: block;
+        margin-top: $gutter / 2;
+        margin-bottom: $gutter / 2;
+        margin-left: -$gutter/2 !important;
+        margin-right: -$gutter/2  !important;
+        div.col {
+            display: block;
+            float: left;
+            margin: 0px $gutter / 2;
+        }
+        &::after {
+            content: "";
+            display: table;
+            border: none;
+            height: 0px;
+            width: 0px;
+            margin: 0px;
+            padding: 0px;
+            clear: both;
+        }
+    }
+}
+div.col {
+    width: 100% - $gutter;
+}
+
+@mixin column-base($g) {
+    @if $g > $grid-base {
+        $g: $grid-base;
+    }
+    width: percentage($g / $grid-base) - $gutter;
+}
+
+@mixin column($bp,$g) {
+    display: block;
+    float: left;
+    width: 100% - $gutter;
+    margin: 0px $gutter / 2;
+    @if $bp == all {
+        @include column-base($g);
+    } @else {
+        @include breakpoint($bp) {
+            @include column-base($g);
+        }
+    }
+}
+
+.clearfix {
+    clear: both;
+}

@@ -1,0 +1,30 @@
+@import "grid_core";
+
+
+@for $i from 1 through $grid-base {
+    div.col.all-#{$i} {
+        @include column-base($i);
+    }
+}
+
+@for $j from 1 through length($sizes) {
+    @for $i from 1 through $grid-base {
+        $bp: nth($sizes,$j);
+        @include breakpoint($bp) {
+            div.col.#{$bp}-#{$i} {
+                @include column-base($i);
+            }
+        }
+    }
+}
+
+@for $j from 1 through length($sizes) {
+    @for $i from 1 through $grid-base {
+        $bp: nth($sizes,$j);
+        @include respond($bp) {
+            div.col.only-#{$bp}-#{$i} {
+                @include column-base($i);
+            }
+        }
+    }
+}
