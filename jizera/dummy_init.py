@@ -4,12 +4,34 @@ from jizera import app, journal
 from jizera.db import get_db
 
 from random import seed, gauss, uniform, randrange, randint
-from jizera.mbox import *
 from os import remove, path
 from loremipsum import get_sentences
 from datetime import datetime,timedelta
 from time import time as timestamp
 from math import cos
+
+
+hh_width = 80
+
+def hh1(s):
+    cor = ' '.join(list(s))
+    mar = int((hh_width - 3 - len(cor)) * 0.5)
+    bar = '+' + '-' * ( len(cor)+2*mar ) + '+'
+    pad = ' ' * mar
+    return '\n %s\n |%s%s%s|\n %s\n' % (bar,pad,cor,pad,bar)
+
+def hh2(s):
+    cor = ' '.join(list(s))
+    mar = int((hh_width - 3 - len(cor)) * 0.5)
+    bar = '=' * mar
+    return '\n %s %s %s' % (bar,cor,bar)
+
+def hh3(s):
+    cor = ' '.join(list(s))
+    mar = int((hh_width - 1 - 2*7 - len(cor)) * 0.5)
+    bar = ' ' * mar
+    return '\n %s- - -  %s  - - -%s' % (bar,cor,bar)
+
 
 @app.cli.command('dummy-init')
 def cli_dummy_init():
