@@ -13,6 +13,11 @@ str2latlngs = (s) -> -1
 
 dummy_handler = () -> 0
 
+$(document).ready ->
+    $('.js-off').hide()
+    $('.js-on').show()
+    return
+
 run_geolocation = (handler = dummy_handler, handler_error = dummy_handler) ->
     if navigator.geolocation
         position_success = (position) ->

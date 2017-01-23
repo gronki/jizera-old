@@ -123,3 +123,5 @@ div.col.sm-12 { width: 97%; }
 body { font-size: 16px; font-family: 'Helvetica', 'Arial', sans-serif; }
 
 p { line-height: 22px; }
+
+.js-on { display: none; }

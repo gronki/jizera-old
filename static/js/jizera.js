@@ -23,6 +23,11 @@ dummy_handler = function() {
   return 0;
 };
 
+$(document).ready(function() {
+  $('.js-off').hide();
+  $('.js-on').show();
+});
+
 run_geolocation = function(handler, handler_error) {
   var position_failure, position_success;
   if (handler == null) {
