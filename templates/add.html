@@ -159,8 +159,8 @@
 
        </div>
 
-       <script src="js/jquery.min.js"></script>
-       <script src="js/jizera.js"></script>
+       <script src="../static/js/jquery.js"></script>
+       <script src="../static/js/jizera.js"></script>
 
        <script>
             var pin;
@@ -169,27 +169,30 @@
 
 
            function initMap3(elem_id, latlng_init) {
-               if (!latlng_init) latlng_init = {lat: 51.109373, lng: 17.085701};
+               if (!latlng_init) latlng_init = {lat:52.099405, lng:19.358006};
 
                var map = new google.maps.Map(document.getElementById(elem_id), {
                   zoom: 7,
-                  center: latlng_init,
-                  mapTypeId: google.maps.MapTypeId.TERRAIN,
+                  center: {lat:52.189689, lng:19.577733},
+                  mapTypeId: google.maps.MapTypeId.HYBRID,
                   streetViewControl: false,
-                  mapTypeControl: true,
-                   mapTypeControlOptions: {
-                     style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR ,
-                     mapTypeIds: [
-                       google.maps.MapTypeId.TERRAIN,
-                       google.maps.MapTypeId.HYBRID
-                     ]
-                   }
+                  mapTypeControl: false
+                //    mapTypeControlOptions: {
+                //      style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR ,
+                //      mapTypeIds: [
+                //         google.maps.MapTypeId.HYBRID,
+                //         google.maps.MapTypeId.TERRAIN
+                //      ]
+                //    }
                });
 
                var infowindow = new google.maps.InfoWindow({content:'', maxWidth:400});
 
                map.addListener('click', function(e){
-                   latlng = e.latLng;
+                   latlng = {
+                       lat: e.latLng.lat(),
+                       lng: e.latLng.lng()
+                   };
 
                    if (!pin || pin.map == null) {
 
@@ -225,22 +228,22 @@
                    clickable:true,
                    map: map,
                    icon: {
-                     path: google.maps.SymbolPath.CIRCLE,
-                     fillOpacity: 1,
-                       fillColor: '#3333aa',
-                       strokeOpacity: 0.2,
-                       strokeColor: '#000000',
-                       strokeWeight: 2.0,
-                       scale: 6 //pixels
+                       path: google.maps.SymbolPath.CIRCLE,
+                       fillOpacity: 1,
+                       fillColor: '#FF6400',
+                       strokeColor: 'white',
+                       strokeOpacity: 1,
+                       strokeWeight: 0.6,
+                       scale: 3
                    }
                });
 
 
                pin2.addListener('click', function(e){
-                   map.panTo(p1ll);
+                //    map.panTo(p1ll);
                    if (pin) pin.setMap(null);
-                   $('#pos').val(latlngs2str(p1ll));
-                   var s1 = latlngs2strgmap(p1ll);
+                   $('#pos').val(latlng2str(p1ll));
+                   var s1 = latlng2str(p1ll);
                    infowindow.setContent('<div style="width:320px"><div style="width:190px;box-sizing:border-box;display:inline-block;padding-left:10px;"><h4>Chata u Jerzego</h4><p>Pomiarów: <b>5</b><br/>'
                     +'Jakość nieba: <b>3.4</b></p><p style="text-align:right;margin-bottom:0px;"><a href="#">Szczegóły (nowe okno)</a></p></div><div style="padding-top:5px;width: 125px;display:inline-block;float:left"><img src="https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyBdhoSL2YRJZTYdaPKfSTrTkiDsgAiHbts&center='+s1
                         +'&markers=color:red%7C'+s1+'&zoom=17&size=110x110&maptype=satellite" alt="Mapa" /></div></div>');
@@ -261,9 +264,7 @@
        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdhoSL2YRJZTYdaPKfSTrTkiDsgAiHbts&signed_in=false&callback=initMap"
            async defer></script>
 
-       <script src="bower_components/jquery/dist/jquery.js"></script>
-       <script src="bower_components/what-input/what-input.js"></script>
-       <script src="bower_components/foundation-sites/dist/foundation.js"></script>
-       <script src="js/app.js"></script>
+       <script src="../static/js/jquery.js"></script>
+       <script src="../static/js/jizera.js"></script>
     </body>
 </html>

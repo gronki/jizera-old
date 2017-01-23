@@ -1,12 +1,7 @@
 
 latlng2str = (latlng) ->
-    latstr = parseFloat(latlng.lat()).toFixed(6)
-    lngstr = parseFloat(latlng.lng()).toFixed(6)
-    "#{latstr}, #{lngstr}"
-
-latlng2strgmap = (latlng) ->
-    latstr = parseFloat(latlng.lat).toFixed(6)
-    lngstr = parseFloat(latlng.lng).toFixed(6)
+    latstr = parseFloat(latlng.lat.toFixed(6))
+    lngstr = parseFloat(latlng.lng.toFixed(6))
     "#{latstr}, #{lngstr}"
 
 str2latlngs = (s) -> -1
