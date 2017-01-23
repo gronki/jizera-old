@@ -1,24 +1,19 @@
-deps = $(wildcard jizera/*.scss)
-
 jsdir 	= ../static/js
 cssdir 	= ../static/css
+stylecss = compact
 
-alljs 	= jizera jizera.front
-allcss 	= jizera jizera.front
+all: 	$(patsubst %,$(jsdir)/%.js,jizera landing) \
+		$(patsubst %,$(cssdir)/%.css,style placelist landing grid)
 
-SASSFLAGS ?= -C --sourcemap=none
+VPATH = scss:coffee
 
-all: 	$(patsubst %,$(jsdir)/%.js,$(alljs)) \
-		$(patsubst %,$(cssdir)/%.css,$(allcss))
+grid.scss: _grid_core.scss
 
-$(cssdir)/%.css: %.scss $(deps)
-	sass $(SASSFLAGS) --style compact $<:$@
-
-$(cssdir)/%.min.css: %.scss $(deps)
-	sass $(SASSFLAGS) --style compressed $<:$@
+$(cssdir)/%.css: %.scss
+	sass -C --sourcemap=none --style $(stylecss) $<:$@
 
 $(jsdir)/%.js: %.coffee
-	coffee -cbp $(COFFEEFLAGS) $< > $@
+	coffee -cbp $< > $@
 
 clean:
 	rm -rf *.map .sass-cache

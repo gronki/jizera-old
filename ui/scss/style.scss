@@ -1,11 +1,8 @@
-@import "normalize.css";
-@import "grid_classes";
+@import "grid";
 
 body {
     font-size: 16px;
     font-family: 'Helvetica', 'Arial', sans-serif;
-    max-width: 1100px;
-    margin: auto;
 }
 p {
     line-height: 22px;

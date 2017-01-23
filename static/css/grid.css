@@ -1,0 +1,122 @@
+div.container, div.row, div.col { box-sizing: border-box !important; margin: 0px; border: none; }
+
+div.container { display: block; margin: 0px 1.5%; padding: 0px; }
+@media (min-width: 640px) { div.container { margin: 0px auto; } }
+@media (min-width: 640px) { div.container { max-width: 620.8px; } }
+@media (min-width: 960px) { div.container { max-width: 931.2px; } }
+div.container div.row { display: block; margin-top: 1.5%; margin-bottom: 1.5%; margin-left: -1.5% !important; margin-right: -1.5% !important; }
+div.container div.row div.col { display: block; float: left; margin: 0px 1.5%; }
+div.container div.row::after { content: ""; display: table; border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; clear: both; }
+
+div.col { width: 97%; }
+
+.clearfix { clear: both; }
+
+div.col.all-1 { width: 5.33333%; }
+
+div.col.all-2 { width: 13.66667%; }
+
+div.col.all-3 { width: 22%; }
+
+div.col.all-4 { width: 30.33333%; }
+
+div.col.all-5 { width: 38.66667%; }
+
+div.col.all-6 { width: 47%; }
+
+div.col.all-7 { width: 55.33333%; }
+
+div.col.all-8 { width: 63.66667%; }
+
+div.col.all-9 { width: 72%; }
+
+div.col.all-10 { width: 80.33333%; }
+
+div.col.all-11 { width: 88.66667%; }
+
+div.col.all-12 { width: 97%; }
+
+div.col.sm-1 { width: 5.33333%; }
+
+div.col.sm-2 { width: 13.66667%; }
+
+div.col.sm-3 { width: 22%; }
+
+div.col.sm-4 { width: 30.33333%; }
+
+div.col.sm-5 { width: 38.66667%; }
+
+div.col.sm-6 { width: 47%; }
+
+div.col.sm-7 { width: 55.33333%; }
+
+div.col.sm-8 { width: 63.66667%; }
+
+div.col.sm-9 { width: 72%; }
+
+div.col.sm-10 { width: 80.33333%; }
+
+div.col.sm-11 { width: 88.66667%; }
+
+div.col.sm-12 { width: 97%; }
+
+@media (min-width: 640px) { div.col.md-1 { width: 5.33333%; }
+  div.col.md-2 { width: 13.66667%; }
+  div.col.md-3 { width: 22%; }
+  div.col.md-4 { width: 30.33333%; }
+  div.col.md-5 { width: 38.66667%; }
+  div.col.md-6 { width: 47%; }
+  div.col.md-7 { width: 55.33333%; }
+  div.col.md-8 { width: 63.66667%; }
+  div.col.md-9 { width: 72%; }
+  div.col.md-10 { width: 80.33333%; }
+  div.col.md-11 { width: 88.66667%; }
+  div.col.md-12 { width: 97%; } }
+@media (min-width: 960px) { div.col.lg-1 { width: 5.33333%; }
+  div.col.lg-2 { width: 13.66667%; }
+  div.col.lg-3 { width: 22%; }
+  div.col.lg-4 { width: 30.33333%; }
+  div.col.lg-5 { width: 38.66667%; }
+  div.col.lg-6 { width: 47%; }
+  div.col.lg-7 { width: 55.33333%; }
+  div.col.lg-8 { width: 63.66667%; }
+  div.col.lg-9 { width: 72%; }
+  div.col.lg-10 { width: 80.33333%; }
+  div.col.lg-11 { width: 88.66667%; }
+  div.col.lg-12 { width: 97%; } }
+@media (max-width: 639px) { div.col.only-sm-1 { width: 5.33333%; }
+  div.col.only-sm-2 { width: 13.66667%; }
+  div.col.only-sm-3 { width: 22%; }
+  div.col.only-sm-4 { width: 30.33333%; }
+  div.col.only-sm-5 { width: 38.66667%; }
+  div.col.only-sm-6 { width: 47%; }
+  div.col.only-sm-7 { width: 55.33333%; }
+  div.col.only-sm-8 { width: 63.66667%; }
+  div.col.only-sm-9 { width: 72%; }
+  div.col.only-sm-10 { width: 80.33333%; }
+  div.col.only-sm-11 { width: 88.66667%; }
+  div.col.only-sm-12 { width: 97%; } }
+@media (min-width: 640px) and (max-width: 959px) { div.col.only-md-1 { width: 5.33333%; }
+  div.col.only-md-2 { width: 13.66667%; }
+  div.col.only-md-3 { width: 22%; }
+  div.col.only-md-4 { width: 30.33333%; }
+  div.col.only-md-5 { width: 38.66667%; }
+  div.col.only-md-6 { width: 47%; }
+  div.col.only-md-7 { width: 55.33333%; }
+  div.col.only-md-8 { width: 63.66667%; }
+  div.col.only-md-9 { width: 72%; }
+  div.col.only-md-10 { width: 80.33333%; }
+  div.col.only-md-11 { width: 88.66667%; }
+  div.col.only-md-12 { width: 97%; } }
+@media (min-width: 960px) { div.col.only-lg-1 { width: 5.33333%; }
+  div.col.only-lg-2 { width: 13.66667%; }
+  div.col.only-lg-3 { width: 22%; }
+  div.col.only-lg-4 { width: 30.33333%; }
+  div.col.only-lg-5 { width: 38.66667%; }
+  div.col.only-lg-6 { width: 47%; }
+  div.col.only-lg-7 { width: 55.33333%; }
+  div.col.only-lg-8 { width: 63.66667%; }
+  div.col.only-lg-9 { width: 72%; }
+  div.col.only-lg-10 { width: 80.33333%; }
+  div.col.only-lg-11 { width: 88.66667%; }
+  div.col.only-lg-12 { width: 97%; } }
