@@ -11,15 +11,19 @@ latlng2strgmap = (latlng) ->
 
 str2latlngs = (s) -> -1
 
-run_geolocation = (handler,handler_error) ->
-    loc_timeout = 10
-    geolatlng = null
+dummy_handler = () -> 0
+
+run_geolocation = (handler = dummy_handler, handler_error = dummy_handler) ->
     if navigator.geolocation
-        navigator.geolocation.getCurrentPosition (position) ->
-            geolatlng = { lat:position.coords.latitude, lng:position.coords.longitude}
+        position_success = (position) ->
+            geolatlng =
+                lat: position.coords.latitude
+                lng: position.coords.longitude
             handler geolatlng
-        , (e) ->
-            if typeof handler_error is "function" then handler_error
-        , {timeout:loc_timeout*1000,enableHighAccuracy:true,maximumAge:120*1000}
+        position_failure = (e) -> handler_error()
+        navigator.geolocation.getCurrentPosition position_success, position_failure,
+            timeout: 12 * 1000
+            enableHighAccuracy: true
+            maximumAge: 120 * 1000
     else
-        if typeof handler_error is "function" then handler_error
+        handler_error()
