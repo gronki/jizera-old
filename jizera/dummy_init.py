@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from jizera import app, journal
+from jizera import app
 from jizera.db import get_db
 
 from random import seed, gauss, uniform, randrange, randint

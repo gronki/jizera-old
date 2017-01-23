@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from jizera import app
 from datetime import datetime
