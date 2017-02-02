@@ -2,14 +2,15 @@ jsdir 	= ../static/js
 cssdir 	= ../static/css
 stylecss = compact
 
-all: 	$(patsubst %,$(jsdir)/%.js,jizera landing) \
-		$(patsubst %,$(cssdir)/%.css,style placelist landing grid)
+all: 	$(jsdir)/jizera.js $(jsdir)/landing.js \
+		$(cssdir)/dark.css \
+		$(cssdir)/light.css \
+		$(cssdir)/night.css \
+		$(cssdir)/grid.css
 
 VPATH = scss:coffee
 
-grid.scss: _grid_core.scss
-
-$(cssdir)/%.css: %.scss
+$(cssdir)/%.css: scss/%.scss $(wildcard scss/_*.scss)
 	sass -C --sourcemap=none --style $(stylecss) $<:$@
 
 $(jsdir)/%.js: %.coffee

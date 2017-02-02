@@ -1,0 +1,68 @@
+
+@mixin placeholder-color($color) {
+    &::-webkit-input-placeholder {
+       color: $color;
+    }
+
+    &:-moz-placeholder { /* Firefox 18- */
+       color: $color;
+    }
+
+    &::-moz-placeholder {  /* Firefox 19+ */
+       color: $color;
+    }
+
+    &:-ms-input-placeholder {
+       color: $color;
+    }
+}
+
+input, select, textarea {
+    font-family: inherit;
+    font-size: 18px;
+    display: block;
+    padding: 8px;
+    border: none;
+    background-color: mix($clrhi,$clrbk,5%);
+}
+
+input[type="date"],
+input[type="time"] {
+    &::-webkit-datetime-edit-text {
+        color: mix($clrtext,$clrbk,50%);
+    }
+    &::-webkit-datetime-edit,
+    &::-webkit-datetime-edit-month-field,
+    &::-webkit-datetime-edit-day-field,
+    &::-webkit-datetime-edit-hour-field,
+    &::-webkit-datetime-edit-minute-field,
+    &::-webkit-datetime-edit-year-field {
+        color: $clrtext;
+        background-color: inherit;
+        &:focus {
+            background-color: $clrbase;
+            color: $clrlo;
+        }
+    }
+    &::-webkit-clear-button {
+        background-color: $clrhi;
+    }
+    &::-webkit-inner-spin-button {
+        background-color: red;
+        height: 30px;
+        // color: $foreground-color;
+    }
+    &::-webkit-calendar-picker-indicator {
+        background-color: inherit;
+        // color: $t-color;
+
+    }
+}
+
+input {
+    @include placeholder-color(mix($clrhi,$clrbk,25%));
+
+    &:focus {
+        border: 3px;
+    }
+}

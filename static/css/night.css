@@ -1,0 +1,95 @@
+@import url(grid.css);
+@import url(normalize.css);
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,700&subset=latin-ext");
+div.container, div.row, div.col { box-sizing: border-box !important; margin: 0px; border: none; }
+
+div.container { display: block; margin: 0px 1.5%; padding: 0px; }
+@media (min-width: 640px) { div.container { margin: 0px auto; } }
+@media (min-width: 640px) { div.container { max-width: 620.8px; } }
+@media (min-width: 960px) { div.container { max-width: 931.2px; } }
+div.container div.row { display: block; margin-top: 1.5%; margin-bottom: 1.5%; margin-left: -1.5% !important; margin-right: -1.5% !important; }
+div.container div.row div.col { display: block; float: left; margin: 0px 1.5%; }
+div.container div.row::after { content: ""; display: table; border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; clear: both; }
+
+div.col { width: 97%; }
+
+.clearfix { clear: both; }
+
+body { background-color: #241A18; color: #E60000; font-size: 17px; font-family: 'Fira Sans', 'Roboto', 'Open Sans', 'Arial', sans-serif; font-weight: 400; }
+
+h1, h2, h3, h4, h5 { font-family: 'Fira Sans', 'Roboto', 'Open Sans', 'Arial', sans-serif; font-weight: 300; color: #ae2525; }
+
+p { line-height: 25px; }
+
+.js-on { display: none; }
+
+input, select, textarea { font-family: inherit; font-size: 18px; display: block; padding: 8px; border: none; background-color: #2f201f; }
+
+input[type="date"]::-webkit-datetime-edit-text, input[type="time"]::-webkit-datetime-edit-text { color: #850d0c; }
+input[type="date"]::-webkit-datetime-edit, input[type="date"]::-webkit-datetime-edit-month-field, input[type="date"]::-webkit-datetime-edit-day-field, input[type="date"]::-webkit-datetime-edit-hour-field, input[type="date"]::-webkit-datetime-edit-minute-field, input[type="date"]::-webkit-datetime-edit-year-field, input[type="time"]::-webkit-datetime-edit, input[type="time"]::-webkit-datetime-edit-month-field, input[type="time"]::-webkit-datetime-edit-day-field, input[type="time"]::-webkit-datetime-edit-hour-field, input[type="time"]::-webkit-datetime-edit-minute-field, input[type="time"]::-webkit-datetime-edit-year-field { color: #E60000; background-color: inherit; }
+input[type="date"]::-webkit-datetime-edit:focus, input[type="date"]::-webkit-datetime-edit-month-field:focus, input[type="date"]::-webkit-datetime-edit-day-field:focus, input[type="date"]::-webkit-datetime-edit-hour-field:focus, input[type="date"]::-webkit-datetime-edit-minute-field:focus, input[type="date"]::-webkit-datetime-edit-year-field:focus, input[type="time"]::-webkit-datetime-edit:focus, input[type="time"]::-webkit-datetime-edit-month-field:focus, input[type="time"]::-webkit-datetime-edit-day-field:focus, input[type="time"]::-webkit-datetime-edit-hour-field:focus, input[type="time"]::-webkit-datetime-edit-minute-field:focus, input[type="time"]::-webkit-datetime-edit-year-field:focus { background-color: #9A0808; color: black; }
+input[type="date"]::-webkit-clear-button, input[type="time"]::-webkit-clear-button { background-color: #FE9A9A; }
+input[type="date"]::-webkit-inner-spin-button, input[type="time"]::-webkit-inner-spin-button { background-color: red; height: 30px; }
+input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator { background-color: inherit; }
+
+input::-webkit-input-placeholder { color: #5b3a39; }
+input:-moz-placeholder { /* Firefox 18- */ color: #5b3a39; }
+input::-moz-placeholder { /* Firefox 19+ */ color: #5b3a39; }
+input:-ms-input-placeholder { color: #5b3a39; }
+input:focus { border: 3px; }
+
+div.container, div.row, div.col { box-sizing: border-box !important; margin: 0px; border: none; }
+
+div.container { display: block; margin: 0px 1.5%; padding: 0px; }
+@media (min-width: 640px) { div.container { margin: 0px auto; } }
+@media (min-width: 640px) { div.container { max-width: 620.8px; } }
+@media (min-width: 960px) { div.container { max-width: 931.2px; } }
+div.container div.row { display: block; margin-top: 1.5%; margin-bottom: 1.5%; margin-left: -1.5% !important; margin-right: -1.5% !important; }
+div.container div.row div.col { display: block; float: left; margin: 0px 1.5%; }
+div.container div.row::after { content: ""; display: table; border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; clear: both; }
+
+div.col { width: 97%; }
+
+.clearfix { clear: both; }
+
+body#frontpage h1, body#frontpage h2, body#frontpage h3, body#frontpage p, body#frontpage td, body#frontpage div { color: #ddd; }
+body#frontpage h1 { width: 100%; border-bottom: none; padding-bottom: 0px; margin-bottom: 15px; }
+body#frontpage .frontpage-hide { display: none; }
+body#frontpage #pane1 { text-align: center; padding: 65px 15px; position: relative; }
+body#frontpage #pane1 .input-group { background-color: '#EBEBEB'; border: none; padding: 0; }
+body#frontpage #pane1 input[type="search"] { box-shadow: none !important; border: none; }
+
+div.container, div.row, div.col { box-sizing: border-box !important; margin: 0px; border: none; }
+
+div.container { display: block; margin: 0px 1.5%; padding: 0px; }
+@media (min-width: 640px) { div.container { margin: 0px auto; } }
+@media (min-width: 640px) { div.container { max-width: 620.8px; } }
+@media (min-width: 960px) { div.container { max-width: 931.2px; } }
+div.container div.row { display: block; margin-top: 1.5%; margin-bottom: 1.5%; margin-left: -1.5% !important; margin-right: -1.5% !important; }
+div.container div.row div.col { display: block; float: left; margin: 0px 1.5%; }
+div.container div.row::after { content: ""; display: table; border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; clear: both; }
+
+div.col { width: 97%; }
+
+.clearfix { clear: both; }
+
+table#placelist tr.clickableitem { cursor: pointer; }
+table#placelist tr.clickableitem:hover { background-color: #eee; }
+table#placelist tr.clickableitem.sel { background-color: #444; color: #ddd; border: solid 1px #222; }
+
+tr#PlaceDetailsPopupWrapper { position: relative; box-sizing: border-box; padding: 0px; }
+tr#PlaceDetailsPopupWrapper td { position: relative; padding: 0px; }
+
+div#PlaceDetailsPopup { z-index: 300; border: solid 1px #ccc; padding: 15px; }
+@media (min-width: 768px) { div#PlaceDetailsPopup { width: 98%; position: absolute; background-color: white; box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.1); margin-top: 14px; }
+  div#PlaceDetailsPopup img.staticmap { margin: auto inherit; }
+  div#PlaceDetailsPopup img.tip { top: -12px; left: 100px; } }
+@media (max-width: 768px) { div#PlaceDetailsPopup { background-color: #f0f0f0; margin-bottom: 10px; }
+  div#PlaceDetailsPopup img.tip { display: none; } }
+div#PlaceDetailsPopup img.tip { position: absolute; }
+div#PlaceDetailsPopup a.closelink { position: absolute; top: 10px; right: 10px; }
+div#PlaceDetailsPopup h1, div#PlaceDetailsPopup h2, div#PlaceDetailsPopup h3 { margin-top: 4px; margin-top: 4px; }
+
+div.redgreenbar { display: block; height: 26px; padding: 0px; font-size: 12px; }
+div.redgreenbar div { display: inline-block; margin: 0; padding: 0; height: 24px; min-width: 20px; color: white; }
+div.redgreenbar div p { text-align: center; margin-top: 3px; }
