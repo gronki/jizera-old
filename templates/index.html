@@ -1,30 +1,23 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Baza ciemnego nieba.</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/light.css') }}">
-    </head>
-    <body>
-        <div class="container">
-            <h1>Najnowsze obserwacje</h1>
-            <div class="recent">
-                <div class="caption">
-                    <h2>Co nowego?</h2>
-                    <p class="subcaption">
-                        Zobacz, co nasi obserwatorzy wysłali!
-                    </p>
-                </div>
-                <div class="list">
-                    {% for t in recent %}
-                    <p>
+{% extends "layout.html" %}
+{% block title %}Najnowsze obserwacje{% endblock %}
+{% block body %}
+<h1>Najnowsze obserwacje</h1>
+<div class="recent">
+    <div class="caption">
+        <h2>Co nowego?</h2>
+        <p class="subcaption">
+            Zobacz, co nasi obserwatorzy wysłali!
+        </p>
+    </div>
+    <div class="list">
+        {% for t in recent %}
+        <p>
 
-                        <span class="observer-name">{{ t.observer_name }} {{ t.observer_lastname }}</span> dodał(a) {{ t.created | timeago }} pomiar w lokalizacji
-                        {{ t.location_name }} (<span class="latlng">{{ t.latlng  }}</span>)
-                    </p>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+            <span class="observer-name">{{ t.observer_name }} {{ t.observer_lastname }}</span> dodał(a) {{ t.created | timeago }} pomiar w lokalizacji
+            {{ t.location_name }} (<span class="latlng">{{ t.latlng  }}</span>)
+            [<a href="{{ url_for('show_observation', eid=t.observation_id) }}">ZOBACZ</a>]
+        </p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
