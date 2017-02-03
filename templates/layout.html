@@ -11,20 +11,15 @@
         <link rel="icon" href="{{ url_for('static', filename='img/kolko-192.png') }}" sizes="192x192" type="image/png">
     </head>
     <body>
-        <nav>
+        <nav class="top">
             <div class="container">
-                <div class="row">
-                    <div class="col all-5">
-                        <img src="{{ url_for('static', filename='img/kolko-128.png') }}" alt="Baza WYGASZ" width="48px" height="48px" />
-                    </div>
-                    <div class="col all-7">
-                        <ul class="menu">
-                            <li><a id="menu-new" class="button menu-icon-new" href="{{ url_for('new_observation') }}">Dodaj obserwację</a></li>
-                            <li><a id="menu-browse" class="button menu-icon-browse" href="{{ url_for('browser') }}">Przeglądaj bazę</a></li>
-                            <li><a id="menu-bug" class="button menu-icon-bug" href="https://github.com/gronki/jizera/issues/new" target="_blank">Zgłoś błąd</a></li>
-                        </ul>
-                    </div>
-                </div>
+                <img src="{{ url_for('static', filename='img/kolko-128.png') }}" alt="Baza WYGASZ" class="logo" />
+                <ul class="menu">
+                    <li><a id="menu-new" class="button menu-icon-new" href="{{ url_for('new_observation') }}">Dodaj obserwację</a></li>
+                    <li><a id="menu-browse" class="button menu-icon-browse" href="{{ url_for('browser') }}">Przeglądaj bazę</a></li>
+                    <li><a id="menu-bug" class="button menu-icon-bug" href="https://github.com/gronki/jizera/issues/new" target="_blank">Zgłoś błąd</a></li>
+                </ul>
+                <div class="clearfix"></div>
             </div>
         </nav>
         <div class="container">

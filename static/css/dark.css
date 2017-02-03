@@ -15,13 +15,25 @@ div.col { width: 97%; }
 
 .clearfix { clear: both; }
 
-body { background-color: #182024; color: #ABBAC1; font-size: 17px; font-family: 'Fira Sans', 'Roboto', 'Open Sans', 'Arial', sans-serif; font-weight: 400; }
+body { background-color: #182024; color: #ABBAC1; font-size: 16px; font-family: 'Fira Sans', 'Roboto', 'Open Sans', 'Arial', sans-serif; font-weight: 400; }
 
 h1, h2, h3, h4, h5 { font-family: 'Fira Sans', 'Roboto', 'Open Sans', 'Arial', sans-serif; font-weight: 300; color: #42aadd; }
 
 p { line-height: 25px; }
 
 .js-on { display: none; }
+
+nav.top { background-color: #21282b; color: #eee; }
+nav.top .clearfix { clear: both; }
+nav.top img.logo { width: 42px; height: 42px; margin: 2px; }
+nav.top ul.menu { float: right; list-style: none; margin: 0px; padding: 0px; text-transform: uppercase; }
+nav.top ul.menu li { display: inline-block; float: left; margin: 0px; }
+nav.top ul.menu li a { font-weight: 400; font-size: 0px; box-sizing: border-box; display: block; height: 46px; width: 43.5px; padding: 15px; }
+@media (min-width: 640px) { nav.top ul.menu li a { font-size: 16px; color: #888; text-decoration: none; width: auto; } }
+nav.top ul.menu li a.menu-icon, nav.top ul.menu li a.menu-icon-new, nav.top ul.menu li a.menu-icon-bug, nav.top ul.menu li a.menu-icon-browse { background-size: 26px 26px; background-position: 10px 10px; background-repeat: no-repeat; }
+@media (min-width: 640px) { nav.top ul.menu li a.menu-icon, nav.top ul.menu li a.menu-icon-new, nav.top ul.menu li a.menu-icon-bug, nav.top ul.menu li a.menu-icon-browse { padding-left: 43.5px; } }
+nav.top ul.menu li a.menu-icon-new, nav.top ul.menu li a.menu-icon-bug, nav.top ul.menu li a.menu-icon-browse { background-image: url(../img/kolko-192.png); }
+nav.top ul.menu li a:hover { background-color: #20333d; color: #aaa; }
 
 input, select, textarea { font-family: inherit; font-size: 18px; display: block; padding: 8px; border: none; background-color: #242b2f; }
 
