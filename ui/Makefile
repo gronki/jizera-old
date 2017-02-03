@@ -10,6 +10,9 @@ all: 	$(jsdir)/jizera.js $(jsdir)/landing.js \
 
 VPATH = scss:coffee
 
+$(cssdir)/grid.css: scss/grid.scss scss/_grid_core.scss
+	sass -C --sourcemap=none --style $(stylecss) $<:$@
+
 $(cssdir)/%.css: scss/%.scss $(wildcard scss/_*.scss)
 	sass -C --sourcemap=none --style $(stylecss) $<:$@
 
