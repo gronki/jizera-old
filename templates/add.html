@@ -6,11 +6,35 @@
 
 <form>
 
-       <label for="obs_name" class="col-sm-3  control-label">Imię i nazwisko
-       <p class="form-descr">
-       Podawanie imienia i nazwiska nie jest obowiązkowe.
-       </p></label>
-           <input type="text" class="form-control" id="obs_name" placeholder="Jan Kowalski" />
+    <div class="form-row error row">
+        <div class="label col-md-4 col-lg-3">
+            <label class="required">Imię i nazwisko</label>
+            <p class="error">Nascetur dui gravida congue, vel vestibulum parturient. Magnis sit adipiscing dignissim.</p>
+        </div>
+
+        <div class="field col-md-8 col-lg-9">
+            <input name="observer_name" placeholder="Imię i nazwisko"  class="error" />
+            <p class="description">
+                Ante ante erat nascetur felis et at ve elementum porta, facilisis eleifend et quis luctus. Aptent nisi donec nunc tincidunt habitant. Litora. Interdum sapien, platea pulvinar proin ipsum magnis parturient consectetuer sodales, morbi massa a, cubilia eu.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="row form-row">
+        <div class="label col-md-4 col-lg-3">
+            <label class="required">Imię i nazwisko</label>
+            <!-- <p class="error">Nascetur dui gravida congue, vel vestibulum parturient. Magnis sit adipiscing dignissim.</p> -->
+        </div>
+
+        <div class="field col-md-8 col-lg-9">
+            <input name="observer_name" placeholder="Imię i nazwisko"  class="" />
+            <p class="description">
+                Ante ante erat nascetur felis et at ve elementum porta, facilisis eleifend et quis luctus. Aptent nisi donec nunc tincidunt habitant. Litora. Interdum sapien, platea pulvinar proin ipsum magnis parturient consectetuer sodales, morbi massa a, cubilia eu.
+            </p>
+        </div>
+
+    </div>
 
 
            <label for="pos">Położenie
