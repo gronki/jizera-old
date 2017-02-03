@@ -25,7 +25,7 @@ def index():
     recent = cur.fetchall()
     return render_template('index.html', recent=recent)
 
-@app.route('/observations/<eid>')
+@app.route('/observation/<eid>')
 def show_observation(eid):
     observation_id = int(eid)
     cur = get_db_cursor()
@@ -55,3 +55,15 @@ def show_observation(eid):
         obs_extras[dt] = cur.fetchall()
 
     return render_template('observation_show.html', data=obs_info, extras=obs_extras)
+
+@app.route('/new')
+def new_observation():
+    return "This is not yet implemented."
+
+@app.route('/browse')
+def browser():
+    return "This is not yet implemented."
+
+@app.route('/articles/<name>')
+def show_article(name):
+    return "This is not yet implemented."
