@@ -23,6 +23,135 @@ p {
   display: none;
 }
 
+a.button {
+  display: inline-block;
+}
+
+.button {
+  box-sizing: border-box;
+  line-height: 1.25;
+  text-decoration: none;
+  color: inherit;
+  padding: 11px 13px;
+  font-size: 16px;
+  border-width: 0px;
+}
+.button.primary {
+  background-color: #9A0808;
+  border-color: #9A0808;
+  color: black;
+}
+.button.secondary {
+  background-color: #3a2725;
+  border-color: #3a2725;
+  color: #E60000;
+}
+.button.hi {
+  background-color: #FE9A9A;
+  border-color: #FE9A9A;
+  color: black;
+}
+.button.lo {
+  background-color: black;
+  border-color: black;
+  color: #FE9A9A;
+}
+.button.red {
+  background-color: #D52317;
+  border-color: #D52317;
+  color: white;
+}
+.button.green {
+  background-color: #31831C;
+  border-color: #31831C;
+  color: white;
+}
+.button.icon {
+  position: relative;
+  padding-left: 38.75px;
+}
+.button.icon img:first-of-type {
+  position: absolute;
+  left: 13px;
+  top: 13px;
+  width: 16px;
+  height: 16px;
+}
+.button.icon-only {
+  position: relative;
+  font-size: 0px;
+  width: 42px;
+  height: 42px;
+  padding: 0px;
+}
+.button.icon-only img:first-of-type {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  width: 32px;
+  height: 32px;
+}
+.button.small {
+  padding: 4.5px 6.2px;
+  font-size: 12.8px;
+  border-width: 0px;
+}
+.button.small.icon {
+  position: relative;
+  padding-left: 23.45px;
+}
+.button.small.icon img:first-of-type {
+  position: absolute;
+  left: 7px;
+  top: 7px;
+  width: 11.2px;
+  height: 11.2px;
+}
+.button.small.icon-only {
+  position: relative;
+  font-size: 0px;
+  width: 25.2px;
+  height: 25.2px;
+  padding: 0px;
+}
+.button.small.icon-only img:first-of-type {
+  position: absolute;
+  left: 3.1px;
+  top: 3.1px;
+  width: 19px;
+  height: 19px;
+}
+.button.large {
+  padding: 16.5px 19px;
+  font-size: 20.8px;
+  border-width: 0px;
+}
+.button.large.icon {
+  position: relative;
+  padding-left: 54.05px;
+}
+.button.large.icon img:first-of-type {
+  position: absolute;
+  left: 19px;
+  top: 19px;
+  width: 20.8px;
+  height: 20.8px;
+}
+.button.large.icon-only {
+  position: relative;
+  font-size: 0px;
+  width: 58.8px;
+  height: 58.8px;
+  padding: 0px;
+}
+.button.large.icon-only img:first-of-type {
+  position: absolute;
+  left: 7.4px;
+  top: 7.4px;
+  width: 44px;
+  height: 44px;
+}
+
 nav.top {
   background-color: #282121;
   color: #eee;
@@ -95,11 +224,9 @@ input::-webkit-input-placeholder, select::-webkit-input-placeholder, textarea::-
   color: #5b3a39;
 }
 input:-moz-placeholder, select:-moz-placeholder, textarea:-moz-placeholder {
-  /* Firefox 18- */
   color: #5b3a39;
 }
 input::-moz-placeholder, select::-moz-placeholder, textarea::-moz-placeholder {
-  /* Firefox 19+ */
   color: #5b3a39;
 }
 input:-ms-input-placeholder, select:-ms-input-placeholder, textarea:-ms-input-placeholder {
@@ -113,11 +240,9 @@ input.error::-webkit-input-placeholder, select.error::-webkit-input-placeholder,
   color: #501c18;
 }
 input.error:-moz-placeholder, select.error:-moz-placeholder, textarea.error:-moz-placeholder {
-  /* Firefox 18- */
   color: #501c18;
 }
 input.error::-moz-placeholder, select.error::-moz-placeholder, textarea.error::-moz-placeholder {
-  /* Firefox 19+ */
   color: #501c18;
 }
 input.error:-ms-input-placeholder, select.error:-ms-input-placeholder, textarea.error:-ms-input-placeholder {
