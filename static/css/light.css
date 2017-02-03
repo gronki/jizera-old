@@ -1,5 +1,5 @@
-@import url(grid.css);
 @import url(normalize.css);
+@import url(grid.css);
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,700&subset=latin-ext");
 body {
   background-color: #F6F6F6;
@@ -21,6 +21,135 @@ p {
 
 .js-on {
   display: none;
+}
+
+a.button {
+  display: inline-block;
+}
+
+.button {
+  box-sizing: border-box;
+  line-height: 1.25;
+  text-decoration: none;
+  color: inherit;
+  padding: 11px 13px;
+  font-size: 16px;
+  border-width: 0px;
+}
+.button.primary {
+  background-color: #1395D4;
+  border-color: #1395D4;
+  color: white;
+}
+.button.secondary {
+  background-color: #dddddd;
+  border-color: #dddddd;
+  color: #2F2F2F;
+}
+.button.hi {
+  background-color: black;
+  border-color: black;
+  color: white;
+}
+.button.lo {
+  background-color: white;
+  border-color: white;
+  color: black;
+}
+.button.red {
+  background-color: #D52317;
+  border-color: #D52317;
+  color: white;
+}
+.button.green {
+  background-color: #31831C;
+  border-color: #31831C;
+  color: white;
+}
+.button.icon {
+  position: relative;
+  padding-left: 38.75px;
+}
+.button.icon img:first-of-type {
+  position: absolute;
+  left: 13px;
+  top: 13px;
+  width: 16px;
+  height: 16px;
+}
+.button.icon-only {
+  position: relative;
+  font-size: 0px;
+  width: 42px;
+  height: 42px;
+  padding: 0px;
+}
+.button.icon-only img:first-of-type {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  width: 32px;
+  height: 32px;
+}
+.button.small {
+  padding: 4.5px 6.2px;
+  font-size: 12.8px;
+  border-width: 0px;
+}
+.button.small.icon {
+  position: relative;
+  padding-left: 23.45px;
+}
+.button.small.icon img:first-of-type {
+  position: absolute;
+  left: 7px;
+  top: 7px;
+  width: 11.2px;
+  height: 11.2px;
+}
+.button.small.icon-only {
+  position: relative;
+  font-size: 0px;
+  width: 25.2px;
+  height: 25.2px;
+  padding: 0px;
+}
+.button.small.icon-only img:first-of-type {
+  position: absolute;
+  left: 3.1px;
+  top: 3.1px;
+  width: 19px;
+  height: 19px;
+}
+.button.large {
+  padding: 16.5px 19px;
+  font-size: 20.8px;
+  border-width: 0px;
+}
+.button.large.icon {
+  position: relative;
+  padding-left: 54.05px;
+}
+.button.large.icon img:first-of-type {
+  position: absolute;
+  left: 19px;
+  top: 19px;
+  width: 20.8px;
+  height: 20.8px;
+}
+.button.large.icon-only {
+  position: relative;
+  font-size: 0px;
+  width: 58.8px;
+  height: 58.8px;
+  padding: 0px;
+}
+.button.large.icon-only img:first-of-type {
+  position: absolute;
+  left: 7.4px;
+  top: 7.4px;
+  width: 44px;
+  height: 44px;
 }
 
 nav.top {
@@ -85,10 +214,70 @@ nav.top ul.menu li a:hover {
 input, select, textarea {
   font-family: inherit;
   font-size: 18px;
-  display: block;
+  width: 100%;
+  box-sizing: border-box;
   padding: 8px;
   border: none;
   background-color: #eaeaea;
+}
+input::-webkit-input-placeholder, select::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #b9b9b9;
+}
+input:-moz-placeholder, select:-moz-placeholder, textarea:-moz-placeholder {
+  color: #b9b9b9;
+}
+input::-moz-placeholder, select::-moz-placeholder, textarea::-moz-placeholder {
+  color: #b9b9b9;
+}
+input:-ms-input-placeholder, select:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color: #b9b9b9;
+}
+input.error, select.error, textarea.error {
+  border: solid 1px #D52317;
+  background-color: #f4ebeb;
+}
+input.error::-webkit-input-placeholder, select.error::-webkit-input-placeholder, textarea.error::-webkit-input-placeholder {
+  color: #eec1be;
+}
+input.error:-moz-placeholder, select.error:-moz-placeholder, textarea.error:-moz-placeholder {
+  color: #eec1be;
+}
+input.error::-moz-placeholder, select.error::-moz-placeholder, textarea.error::-moz-placeholder {
+  color: #eec1be;
+}
+input.error:-ms-input-placeholder, select.error:-ms-input-placeholder, textarea.error:-ms-input-placeholder {
+  color: #eec1be;
+}
+
+form div.form-row {
+  margin-top: 18px !important;
+  margin-bottom: 18px !important;
+}
+form div.form-row p.description {
+  color: #939393;
+  font-size: 80%;
+  font-style: italic;
+  line-height: normal;
+  margin: 2px 0px;
+}
+form div.form-row p.error {
+  color: #D52317;
+  line-height: normal;
+  font-size: 80%;
+  font-weight: bold;
+  margin: 3px 0px;
+}
+form div.form-row .required::after {
+  content: " *";
+  color: #D52317;
+}
+form div.form-row label {
+  margin: 8px 0px;
+}
+@media (min-width: 640px) {
+  form div.form-row div.label {
+    text-align: right;
+  }
 }
 
 input[type="date"]::-webkit-datetime-edit-text,
@@ -127,24 +316,6 @@ input[type="time"]::-webkit-inner-spin-button {
 input[type="date"]::-webkit-calendar-picker-indicator,
 input[type="time"]::-webkit-calendar-picker-indicator {
   background-color: inherit;
-}
-
-input::-webkit-input-placeholder {
-  color: #b9b9b9;
-}
-input:-moz-placeholder {
-  /* Firefox 18- */
-  color: #b9b9b9;
-}
-input::-moz-placeholder {
-  /* Firefox 19+ */
-  color: #b9b9b9;
-}
-input:-ms-input-placeholder {
-  color: #b9b9b9;
-}
-input:focus {
-  border: 3px;
 }
 
 body#frontpage h1, body#frontpage h2, body#frontpage h3, body#frontpage p, body#frontpage td, body#frontpage div {

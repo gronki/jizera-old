@@ -1,0 +1,91 @@
+
+$btn-size: 42px;
+$btn-font-size: 16px;
+$btn-icon-size: 16px;
+
+@mixin button-helper($size, $font-size, $icon-size, $border) {
+    $padding-vertical: round($size - $font-size*1.25) / 2 - $border;
+    $padding-horizontal: ($size - $font-size) / 2 - $border;
+
+    padding: $padding-vertical $padding-horizontal;
+    font-size: $font-size;
+    border-width: $border;
+
+    $icon-padding: ($size - $icon-size) / 2 - $border;
+    &.icon {
+        position: relative;
+        padding-left: $icon-padding * 1.75 + $icon-size;
+        img:first-of-type {
+            position: absolute;
+            left: $icon-padding - $border;
+            top: $icon-padding;
+            width: $icon-size;
+            height: $icon-size;
+        }
+    }
+    $icon-size-iconly: round($size * 0.75);
+    $icon-padding-iconly: ($size - $icon-size-iconly) / 2 - $border;
+    &.icon-only {
+        position: relative;
+        font-size: 0px;
+        width: $size;
+        height: $size;
+        padding: 0px;
+        img:first-of-type {
+            position: absolute;
+            left: $icon-padding-iconly - $border;
+            top: $icon-padding-iconly - $border;
+            width: $icon-size-iconly;
+            height: $icon-size-iconly;
+        }
+    }
+}
+
+a.button { display: inline-block; }
+
+.button {
+    box-sizing: border-box;
+    line-height: 1.25;
+    text-decoration: none;
+
+    color: inherit;
+
+    &.primary {
+        background-color: $clrbase;
+        border-color: $clrbase;
+        color: $clrlo;
+    }
+    &.secondary {
+        background-color: mix($clrhi,$clrbk,10%);
+        border-color: mix($clrhi,$clrbk,10%);
+        color: $clrtext;
+    }
+    &.hi {
+        background-color: $clrhi;
+        border-color: $clrhi;
+        color: $clrlo;
+    }
+    &.lo {
+        background-color: $clrlo;
+        border-color: $clrlo;
+        color: $clrhi;
+    }
+    &.red {
+        background-color: #D52317;
+        border-color: #D52317;
+        color: white;
+    }
+    &.green {
+        background-color: #31831C;
+        border-color: #31831C;
+        color: white;
+    }
+
+    @include button-helper($btn-size, $btn-font-size, $btn-icon-size, 0px);
+    &.small {
+        @include button-helper($btn-size * 0.6, $btn-font-size * 0.8, $btn-icon-size * 0.7, 0px);
+    }
+    &.large {
+        @include button-helper($btn-size * 1.4, $btn-font-size * 1.3, $btn-icon-size * 1.3, 0px);
+    }
+}

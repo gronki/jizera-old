@@ -1,29 +1,62 @@
 
 @mixin placeholder-color($color) {
-    &::-webkit-input-placeholder {
-       color: $color;
-    }
-
-    &:-moz-placeholder { /* Firefox 18- */
-       color: $color;
-    }
-
-    &::-moz-placeholder {  /* Firefox 19+ */
-       color: $color;
-    }
-
-    &:-ms-input-placeholder {
-       color: $color;
-    }
+    &::-webkit-input-placeholder { color: $color; }
+    &:-moz-placeholder { color: $color; }
+    &::-moz-placeholder { color: $color; }
+    &:-ms-input-placeholder { color: $color; }
 }
 
 input, select, textarea {
     font-family: inherit;
     font-size: 18px;
-    display: block;
+    width: 100%;
+    box-sizing: border-box;
     padding: 8px;
     border: none;
     background-color: mix($clrhi,$clrbk,5%);
+    @include placeholder-color(mix($clrhi,$clrbk,25%));
+    &.error {
+        border: solid 1px #D52317;
+        background-color: mix(#D52317,$clrbk,5%);
+        @include placeholder-color(mix(#D52317,$clrbk,25%));
+    }
+}
+
+form div.form-row {
+
+    margin-top: 18px !important;
+    margin-bottom: 18px !important;
+
+    p.description {
+        color: mix($clrtext, $clrbk, 50%);
+        font-size: 80%;
+        font-style: italic;
+        line-height: normal;
+        margin: 2px 0px;
+    }
+
+    p.error {
+        color: #D52317;
+        line-height: normal;
+        font-size: 80%;
+        font-weight: bold;
+        margin: 3px 0px;
+    }
+
+    .required::after {
+        content: " *";
+        color: #D52317;
+    }
+
+    label {
+        margin: 8px 0px;
+    }
+
+    @include breakpoint(md) {
+        div.label {
+            text-align: right;
+        }
+    }
 }
 
 input[type="date"],
@@ -56,13 +89,5 @@ input[type="time"] {
         background-color: inherit;
         // color: $t-color;
 
-    }
-}
-
-input {
-    @include placeholder-color(mix($clrhi,$clrbk,25%));
-
-    &:focus {
-        border: 3px;
     }
 }
