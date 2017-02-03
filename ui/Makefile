@@ -1,6 +1,6 @@
 jsdir 	= ../static/js
 cssdir 	= ../static/css
-stylecss = compact
+stylecss = expanded
 
 all: 	$(jsdir)/jizera.js $(jsdir)/landing.js \
 		$(cssdir)/dark.css \
