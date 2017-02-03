@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<h1>Dodaj wpis do bazy</h1>
+
+
+<form>
+
+       <label for="obs_name" class="col-sm-3  control-label">Imię i nazwisko
+       <p class="form-descr">
+       Podawanie imienia i nazwiska nie jest obowiązkowe.
+       </p></label>
+           <input type="text" class="form-control" id="obs_name" placeholder="Jan Kowalski" />
+
+
+           <label for="pos">Położenie
+                <p class="form-descr">
+                Za pomocą pinezki zaznacz położenie wykonywanych obserwacji. Możesz też wybrać
+                jedną z innych lokalizacji już występujących w bazie lub po prostu wkleić współrzędne
+                punktu obserwacyjnego w formacie dziesiętnym.
+                </p></label>
+
+
+
+
+           <div id="map" style="height:380px;"></div>
+
+
+           <div class="row">
+               <div class="col-sm-6">
+                   <input type="text" id="pos" class="form-control" placeholder="51.109371, 17.085699" />
+                   <input type="hidden" id="inp_use_saved_location" name="use_saved_location" value="0" />
+               </div>
+               <div class="col-sm-6">
+                   <p style="text-align:right"><a class="btn">
+                       <span class="glyphicon glyphicon-star"></span>
+                       Zrecenzuj miejsce obserwacji</a></p>
+               </div>
+           </div>
+
+
+       <label for="obs_name" class="col-sm-3  control-label">Data obserwacji
+       <p class="form-descr">
+       W przypadku obserwacji całonocnych, jest to data wieczoru przed nocą obserwacyjną.
+       </p></label>
+           <input type="date" class="form-control"  />
+
+       <label for="obs_name" class="col-sm-3  control-label">Godziny obserwacji</label>
+       <input type="time" class="form-control"  />
+       <input type="time" class="form-control"  />
+
+       <label class="col-sm-3  control-label">Warunki obserwacji
+       <p class="form-descr">
+       W przypadku obserwacji całonocnych, jest to data wieczoru przed nocą obserwacyjną.
+       </p></label>
+                   <select class="form-control">
+                       <option value="0">zachmurzone 0/8</option>
+                       <option value="2">zachmurzone 2/8</option>
+                       <option value="4">zachmurzone 4/8</option>
+                       <option value="6">zachmurzone 6/8</option>
+                   </select>
+                   <select class="form-control">
+                       <option value="yes">Droga mleczna widoczna</option>
+                       <option value="no">Droga mleczna niewidoczna</option>
+                       <option value="unknown">Nie wiem</option>
+                   </select>
+
+
+
+</form>
+
+
+{% endblock %}

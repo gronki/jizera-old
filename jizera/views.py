@@ -58,7 +58,7 @@ def show_observation(eid):
 
 @app.route('/new')
 def new_observation():
-    return "This is not yet implemented."
+    return render_template("add.html")
 
 @app.route('/browse')
 def browser():
