@@ -4,90 +4,116 @@
 <h1>Dodaj wpis do bazy</h1>
 
 
-<form>
+<form method="POST">
 
-    <div class="form-row error row">
-        <div class="label col-md-4 col-lg-3">
-            <label class="required">Imię i nazwisko</label>
-            <p class="error">Nascetur dui gravida congue, vel vestibulum parturient. Magnis sit adipiscing dignissim.</p>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-7">
+                <label>Imię i nazwisko</label>
+                <input type="text" name="observer_name" placeholder="Imię i nazwisko" />
+                <p class="description">
+                    Podanie imienia i nazwiska nie jest obowiązkowe,
+                    lecz oznacza zgodę na przetwarzanie danych
+                    osobowych w ramach działania bazy.
+                </p>
+            </div>
+            <div class="col-md-5">
+                <label class="required">Adres e-mail</label>
+                <input type="email" name="email" value="">
+            </div>
         </div>
-
-        <div class="field col-md-8 col-lg-9">
-            <input name="observer_name" placeholder="Imię i nazwisko"  class="error" />
-            <p class="description">
-                Ante ante erat nascetur felis et at ve elementum porta, facilisis eleifend et quis luctus. Aptent nisi donec nunc tincidunt habitant. Litora. Interdum sapien, platea pulvinar proin ipsum magnis parturient consectetuer sodales, morbi massa a, cubilia eu.
-            </p>
-        </div>
-
     </div>
 
-    <div class="row form-row">
-        <div class="label col-md-4 col-lg-3">
-            <label class="required">Imię i nazwisko</label>
-            <!-- <p class="error">Nascetur dui gravida congue, vel vestibulum parturient. Magnis sit adipiscing dignissim.</p> -->
+    <div class="form-group">
+        <h3>Miejsce obserwacji</h3>
+        <div class="row">
+            <div class="col-sm-6">
+                <label class="required">Szerokość geograficzna</label>
+                <input type="text" name="latitude" value="51.109371">
+            </div>
+            <div class="col-sm-6">
+                <label class="required">Długość geograficzna</label>
+                <input type="text" name="longitude" value="17.085699">
+            </div>
         </div>
 
-        <div class="field col-md-8 col-lg-9">
-            <input name="observer_name" placeholder="Imię i nazwisko"  class="" />
-            <p class="description">
-                Ante ante erat nascetur felis et at ve elementum porta, facilisis eleifend et quis luctus. Aptent nisi donec nunc tincidunt habitant. Litora. Interdum sapien, platea pulvinar proin ipsum magnis parturient consectetuer sodales, morbi massa a, cubilia eu.
-            </p>
-        </div>
-
+        <label class="optional">Nazwa</label>
+        <input type="text" name="location_name" value="">
     </div>
 
 
-           <label for="pos">Położenie
-                <p class="form-descr">
-                Za pomocą pinezki zaznacz położenie wykonywanych obserwacji. Możesz też wybrać
+
+
+                <!-- Za pomocą pinezki zaznacz położenie wykonywanych obserwacji. Możesz też wybrać
                 jedną z innych lokalizacji już występujących w bazie lub po prostu wkleić współrzędne
-                punktu obserwacyjnego w formacie dziesiętnym.
-                </p></label>
+                punktu obserwacyjnego w formacie dziesiętnym. -->
 
 
+           <!-- <div id="map" style="height:380px;"></div> -->
 
 
-           <div id="map" style="height:380px;"></div>
+       <input type="hidden" id="inp_use_saved_location" name="use_saved_location" value="0" />
+
+       <div  class="form-group" style="text-align:center">
+           <a href="#"  class="button primary">Zrecenzuj miejsce obserwacji</a>
+       </div>
 
 
-           <div class="row">
-               <div class="col-sm-6">
-                   <input type="text" id="pos" class="form-control" placeholder="51.109371, 17.085699" />
-                   <input type="hidden" id="inp_use_saved_location" name="use_saved_location" value="0" />
-               </div>
-               <div class="col-sm-6">
-                   <p style="text-align:right"><a class="btn">
-                       <span class="glyphicon glyphicon-star"></span>
-                       Zrecenzuj miejsce obserwacji</a></p>
+       <div class="row">
+           <div class="col-lg-4">
+
+               <label class="required">Data</label>
+               <input type="date"   />
+           </div>
+           <div class="col-lg-8">
+
+               <div class="row">
+                   <div class="col-6">
+                       <label class="required">Początek obserwacji</label>
+                       <input type="time"   />
+                   </div>
+                   <div class="col-6">
+                       <label class="required">Koniec obserwacji</label>
+                       <input type="time"   />
+                   </div>
                </div>
            </div>
+       </div>
 
 
-       <label for="obs_name" class="col-sm-3  control-label">Data obserwacji
-       <p class="form-descr">
-       W przypadku obserwacji całonocnych, jest to data wieczoru przed nocą obserwacyjną.
-       </p></label>
-           <input type="date" class="form-control"  />
 
-       <label for="obs_name" class="col-sm-3  control-label">Godziny obserwacji</label>
-       <input type="time" class="form-control"  />
-       <input type="time" class="form-control"  />
+       <select>
+           <option value="-1">nie pamiętam</option>
+           <option value="0">zachmurzone 0/8</option>
+           <option value="2">zachmurzone 2/8</option>
+           <option value="4">zachmurzone 4/8</option>
+           <option value="6">zachmurzone 6/8</option>
+       </select>
 
-       <label class="col-sm-3  control-label">Warunki obserwacji
-       <p class="form-descr">
-       W przypadku obserwacji całonocnych, jest to data wieczoru przed nocą obserwacyjną.
-       </p></label>
-                   <select class="form-control">
-                       <option value="0">zachmurzone 0/8</option>
-                       <option value="2">zachmurzone 2/8</option>
-                       <option value="4">zachmurzone 4/8</option>
-                       <option value="6">zachmurzone 6/8</option>
-                   </select>
-                   <select class="form-control">
-                       <option value="yes">Droga mleczna widoczna</option>
-                       <option value="no">Droga mleczna niewidoczna</option>
-                       <option value="unknown">Nie wiem</option>
-                   </select>
+       <select>
+           <option value="yes">Droga mleczna widoczna</option>
+           <option value="no">Droga mleczna niewidoczna</option>
+           <option value="unknown">Nie wiem</option>
+       </select>
+
+       <div class="form-group">
+           <div class="checkbox">
+               <input type="checkbox" name="" value="" id="wanna-subscribe">
+               <label for="wanna-subscribe">Chcę subskrybować newsletter</label>
+           </div>
+           <div class="checkbox error">
+               <input type="checkbox" name="" value="" id="agree-terms">
+               <label for="agree-terms" class="required">Zgadzam się z warunkami przechowywania moich danych osobowych.</label>
+               <p class="error-message">
+                   Wyrażenie zgody jest konieczne.
+               </p>
+           </div>
+
+       </div>
+
+       <div class="form-group">
+           <input type="submit" class="expand" value="Wyślij" />
+       </div>
 
 
 
