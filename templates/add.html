@@ -7,8 +7,8 @@
     {% if name in validation %}
         {% set class = class + ' error' %}
     {% endif %}
-    <label for="input_{{ name }}" class="{{ class }}">{{ label }}</label>
-    <input id="input_{{ name }}" type="{{ input }}" name="{{ name }}" placeholder="{{ placeholder }}" value="{{ request.form[name] }}" class="{{ class }}"/>
+    <label for="input_field_{{ name }}" class="{{ class }}">{{ label }}</label>
+    <input id="input_field_{{ name }}" type="{{ input }}" name="{{ name }}" placeholder="{{ placeholder }}" value="{{ request.form[name] }}" class="{{ class }}"/>
     {% if name in validation %}
         <p class="error"> {{ validation[name] }} </p>
     {% endif %}
@@ -19,8 +19,7 @@
     <div class="form-group">
         <div class="row">
             <div class="col-md-7">
-                <label for="input-observer-name">Imię i nazwisko</label>
-                <input id="input-observer-name" type="text" name="observer_name" placeholder="Imię i nazwisko" />
+                {{ render_field('text','fullname','Imię i nazwisko',placeholder='Jan Kowalski',class='optional') }}
                 <p class="description">
                     Podanie imienia i nazwiska nie jest obowiązkowe,
                     lecz oznacza zgodę na przetwarzanie danych
@@ -28,8 +27,7 @@
                 </p>
             </div>
             <div class="col-md-5">
-                <label for="input-email" class="required">Adres e-mail</label>
-                <input id="input-email" type="email" name="email" value="">
+                {{ render_field('email','email','Adres e-mail','jan@kowalski.pl','required') }}
             </div>
         </div>
     </div>
@@ -38,17 +36,14 @@
         <h3>Miejsce obserwacji</h3>
         <div class="row">
             <div class="col-sm-6">
-                <label for="input-latitude" class="required">Szerokość geograficzna</label>
-                <input id="input-latitude" type="text" name="latitude" value="51.109371">
+                {{ render_field('text','latitude','Szerokość geograficzna',placeholder='51.109371',class='required') }}
             </div>
             <div class="col-sm-6">
-                <label for="input-longitude" class="required">Długość geograficzna</label>
-                <input id="input-longitude" type="text" name="longitude" value="17.085699">
+                {{ render_field('text','longitude','Długość geograficzna',placeholder='17.085699',class='required') }}
             </div>
         </div>
 
-        <label for="input-location-name" class="optional">Nazwa</label>
-        <input id="input-location-name" type="text" name="location_name" value="">
+        {{ render_field('text','location_name','Nazwa tej lokalizacji',placeholder='np. Polana przy Instytucie Astronomicznym lub nazwa miejscowości',class='optional') }}
     </div>
 
 
@@ -65,7 +60,7 @@
        <input type="hidden" id="inp_use_saved_location" name="use_saved_location" value="0" />
 
        <div  class="form-group" style="text-align:center">
-           <a href="#"  class="button primary">Zrecenzuj miejsce obserwacji</a>
+           <a href="#" id="btn-review-this-location" class="button primary">Zrecenzuj miejsce obserwacji</a>
        </div>
 
 
@@ -73,19 +68,17 @@
            <div class="row">
                <div class="col-lg-4">
 
-                   <label for="input-date-obs" class="required">Data</label>
-                   <input type="date" id="input-date-obs"  />
+                   {{ render_field('date','date','Data obserwacji',class='required') }}
+
                </div>
                <div class="col-lg-8">
 
                    <div class="row">
                        <div class="col-6">
-                           <label for="input-time-start" class="required">Początek obserwacji</label>
-                           <input id="input-time-start" type="time"   />
+                           {{ render_field('time','time_start','Godzina rozpoczęcia','23:00','required') }}
                        </div>
                        <div class="col-6">
-                           <label for="input-time-end" class="required">Koniec obserwacji</label>
-                           <input id="input-time-end" type="time"   />
+                           {{ render_field('time','time_end','Godzina zakończenia','01:00','required') }}
                        </div>
                    </div>
                </div>
