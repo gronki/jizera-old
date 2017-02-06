@@ -55,24 +55,24 @@ a.button { display: inline-block; }
     }
 
     &.primary {
-        background-color: $clrbase;
-        border-color: $clrbase;
-        color: $clrlo;
+        background-color: $clr-primary;
+        border-color: $clr-primary;
+        color: $clr-bkg;
     }
     &.secondary {
-        background-color: mix($clrhi,$clrbk,10%);
-        border-color: mix($clrhi,$clrbk,10%);
-        color: $clrtext;
+        background-color: mix($clr-text,$clr-bkg,10%);
+        border-color: mix($clr-text,$clr-bkg,10%);
+        color: $clr-text;
     }
     &.hi {
-        background-color: $clrhi;
-        border-color: $clrhi;
-        color: $clrlo;
+        background-color: $clr-text;
+        border-color: $clr-text;
+        color: $clr-bkg;
     }
     &.lo {
-        background-color: $clrlo;
-        border-color: $clrlo;
-        color: $clrhi;
+        background-color: $clr-bkg;
+        border-color: $clr-bkg;
+        color: $clr-text;
     }
     &.red {
         background-color: #D52317;
