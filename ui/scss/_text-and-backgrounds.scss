@@ -1,0 +1,42 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: $clr-bkg;
+    color: $clr-text;
+    font-family: sans-serif;
+    font-weight: 400;
+}
+
+h1,h2,h3,h4,h5 {
+    font-family: sans-serif;
+    color: $clr-header;
+}
+
+@mixin pick-text-color($bkg) {
+    background-color: $bkg;
+    $clr: $clr-text;
+    $clrhd: $clr-header;
+    @if lightness($bkg) < 50% {
+        $clr: $clr-inv-text;
+        $clrhd: $clr-inv-text;
+    }
+    color: $clr;
+    .light{ color:mix($clr,$bkg,67%); }
+    .lighter{ color:mix($clr,$bkg,36%); }
+
+    h1,h2,h3,h4,h5 {
+        color: $clrhd;
+        margin-top: 0px;
+    }
+}
+
+.light{ color:mix($clr-text,$clr-bkg,67%); }
+.lighter{ color:mix($clr-text,$clr-bkg,36%); }
+
+.bkg-primary { @include pick-text-color($clr-primary); }
+.bkg-secondary { @include pick-text-color($clr-secondary); }
+.bkg-tertiary { @include pick-text-color($clr-tertiary); }
+.bkg-success { @include pick-text-color($clr-success); }
+.bkg-error { @include pick-text-color($clr-error); }

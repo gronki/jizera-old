@@ -1,21 +1,17 @@
 @import "respond";
 @import "normalize.css";
 @import "grid.css";
+@import "text-and-backgrounds";
 
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,700&subset=latin-ext');
 
 body {
-    background-color: $clrbk;
-    color: $clrtext;
-    font-size: 16px;
     font-family: 'Fira Sans', 'Roboto', 'Open Sans', 'Arial', sans-serif;
-    font-weight: 400;
 }
 
 h1,h2,h3,h4,h5 {
     font-family: 'Fira Sans', 'Roboto', 'Open Sans', 'Arial', sans-serif;
     font-weight: 300;
-    color: mix($clrhi,$clrbase,20%);
 }
 
 p {

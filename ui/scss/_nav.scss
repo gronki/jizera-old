@@ -5,7 +5,7 @@ $nav-height: $nav-textsize + 2*$nav-margin;
 $nav-icon-size: $nav-height - 2 * $nav-icon-margin;
 
 nav.top {
-    background-color: mix($clrbase,#222222,5%);
+    background-color: mix($clr-primary,#222222,5%);
     color: #eee;
     .clearfix {
         clear: both;
@@ -52,7 +52,7 @@ nav.top {
                     background-image: url(../img/kolko-192.png);
                 }
                 &:hover {
-                    background-color: mix($clrbase,#222222,15%);
+                    background-color: mix($clr-primary,#222222,15%);
                     color: #aaa;
                 }
             }

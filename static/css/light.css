@@ -1,18 +1,112 @@
 @import url(normalize.css);
 @import url(grid.css);
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,700&subset=latin-ext");
-body {
-  background-color: #F6F6F6;
-  color: #2F2F2F;
+html {
   font-size: 16px;
-  font-family: 'Fira Sans', 'Roboto', 'Open Sans', 'Arial', sans-serif;
+}
+
+body {
+  background-color: #eeecec;
+  color: #2F2F2F;
+  font-family: sans-serif;
   font-weight: 400;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: sans-serif;
+  color: #1981b3;
+}
+
+.light {
+  color: #6e6d6d;
+}
+
+.lighter {
+  color: #a9a8a8;
+}
+
+.bkg-primary {
+  background-color: #1395D4;
+  color: #FAFAFA;
+}
+.bkg-primary .light {
+  color: #aed9ed;
+}
+.bkg-primary .lighter {
+  color: #66b9e2;
+}
+.bkg-primary h1, .bkg-primary h2, .bkg-primary h3, .bkg-primary h4, .bkg-primary h5 {
+  color: #FAFAFA;
+  margin-top: 0px;
+}
+
+.bkg-secondary {
+  background-color: #ce5419;
+  color: #FAFAFA;
+}
+.bkg-secondary .light {
+  color: #ebc3b0;
+}
+.bkg-secondary .lighter {
+  color: #de906a;
+}
+.bkg-secondary h1, .bkg-secondary h2, .bkg-secondary h3, .bkg-secondary h4, .bkg-secondary h5 {
+  color: #FAFAFA;
+  margin-top: 0px;
+}
+
+.bkg-tertiary {
+  background-color: #d7d5d5;
+  color: #2F2F2F;
+}
+.bkg-tertiary .light {
+  color: #666666;
+}
+.bkg-tertiary .lighter {
+  color: #9b9999;
+}
+.bkg-tertiary h1, .bkg-tertiary h2, .bkg-tertiary h3, .bkg-tertiary h4, .bkg-tertiary h5 {
+  color: #1981b3;
+  margin-top: 0px;
+}
+
+.bkg-success {
+  background-color: #76B14C;
+  color: #FAFAFA;
+}
+.bkg-success .light {
+  color: #cee2c1;
+}
+.bkg-success .lighter {
+  color: #a6cb8b;
+}
+.bkg-success h1, .bkg-success h2, .bkg-success h3, .bkg-success h4, .bkg-success h5 {
+  color: #FAFAFA;
+  margin-top: 0px;
+}
+
+.bkg-error {
+  background-color: #CB271C;
+  color: #FAFAFA;
+}
+.bkg-error .light {
+  color: #eab4b1;
+}
+.bkg-error .lighter {
+  color: #dc736c;
+}
+.bkg-error h1, .bkg-error h2, .bkg-error h3, .bkg-error h4, .bkg-error h5 {
+  color: #FAFAFA;
+  margin-top: 0px;
+}
+
+body {
+  font-family: 'Fira Sans', 'Roboto', 'Open Sans', 'Arial', sans-serif;
 }
 
 h1, h2, h3, h4, h5 {
   font-family: 'Fira Sans', 'Roboto', 'Open Sans', 'Arial', sans-serif;
   font-weight: 300;
-  color: #0f77aa;
 }
 
 p {
@@ -42,22 +136,22 @@ a.button {
 .button.primary, input[type="submit"], input.primary[type="button"] {
   background-color: #1395D4;
   border-color: #1395D4;
-  color: white;
+  color: #eeecec;
 }
 .button.secondary, input.secondary[type="submit"], input[type="button"] {
-  background-color: #dddddd;
-  border-color: #dddddd;
+  background-color: #dbd9d9;
+  border-color: #dbd9d9;
   color: #2F2F2F;
 }
 .button.hi, input.hi[type="submit"], input.hi[type="button"] {
-  background-color: black;
-  border-color: black;
-  color: white;
+  background-color: #2F2F2F;
+  border-color: #2F2F2F;
+  color: #eeecec;
 }
 .button.lo, input.lo[type="submit"], input.lo[type="button"] {
-  background-color: white;
-  border-color: white;
-  color: black;
+  background-color: #eeecec;
+  border-color: #eeecec;
+  color: #2F2F2F;
 }
 .button.red, input.red[type="submit"], input.red[type="button"] {
   background-color: #D52317;
@@ -226,7 +320,7 @@ select, textarea {
   box-sizing: border-box;
   padding: 8px;
   border: none;
-  background-color: #eaeaea;
+  background-color: #e4e3e3;
 }
 input[type="text"]::-webkit-input-placeholder,
 input[type="date"]::-webkit-input-placeholder,
@@ -234,7 +328,7 @@ input[type="time"]::-webkit-input-placeholder,
 input[type="email"]::-webkit-input-placeholder,
 input[type="number"]::-webkit-input-placeholder,
 select::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-  color: #b9b9b9;
+  color: #bebdbd;
 }
 input[type="text"]:-moz-placeholder,
 input[type="date"]:-moz-placeholder,
@@ -242,7 +336,7 @@ input[type="time"]:-moz-placeholder,
 input[type="email"]:-moz-placeholder,
 input[type="number"]:-moz-placeholder,
 select:-moz-placeholder, textarea:-moz-placeholder {
-  color: #b9b9b9;
+  color: #bebdbd;
 }
 input[type="text"]::-moz-placeholder,
 input[type="date"]::-moz-placeholder,
@@ -250,7 +344,7 @@ input[type="time"]::-moz-placeholder,
 input[type="email"]::-moz-placeholder,
 input[type="number"]::-moz-placeholder,
 select::-moz-placeholder, textarea::-moz-placeholder {
-  color: #b9b9b9;
+  color: #bebdbd;
 }
 input[type="text"]:-ms-input-placeholder,
 input[type="date"]:-ms-input-placeholder,
@@ -258,7 +352,7 @@ input[type="time"]:-ms-input-placeholder,
 input[type="email"]:-ms-input-placeholder,
 input[type="number"]:-ms-input-placeholder,
 select:-ms-input-placeholder, textarea:-ms-input-placeholder {
-  color: #b9b9b9;
+  color: #bebdbd;
 }
 input[type="text"].error,
 input[type="date"].error,
@@ -267,7 +361,7 @@ input[type="email"].error,
 input[type="number"].error,
 select.error, textarea.error {
   border: solid 1px #D52317;
-  background-color: #f4ebeb;
+  background-color: #ede2e1;
 }
 input[type="text"].error::-webkit-input-placeholder,
 input[type="date"].error::-webkit-input-placeholder,
@@ -275,7 +369,7 @@ input[type="time"].error::-webkit-input-placeholder,
 input[type="email"].error::-webkit-input-placeholder,
 input[type="number"].error::-webkit-input-placeholder,
 select.error::-webkit-input-placeholder, textarea.error::-webkit-input-placeholder {
-  color: #eec1be;
+  color: #e8bab7;
 }
 input[type="text"].error:-moz-placeholder,
 input[type="date"].error:-moz-placeholder,
@@ -283,7 +377,7 @@ input[type="time"].error:-moz-placeholder,
 input[type="email"].error:-moz-placeholder,
 input[type="number"].error:-moz-placeholder,
 select.error:-moz-placeholder, textarea.error:-moz-placeholder {
-  color: #eec1be;
+  color: #e8bab7;
 }
 input[type="text"].error::-moz-placeholder,
 input[type="date"].error::-moz-placeholder,
@@ -291,7 +385,7 @@ input[type="time"].error::-moz-placeholder,
 input[type="email"].error::-moz-placeholder,
 input[type="number"].error::-moz-placeholder,
 select.error::-moz-placeholder, textarea.error::-moz-placeholder {
-  color: #eec1be;
+  color: #e8bab7;
 }
 input[type="text"].error:-ms-input-placeholder,
 input[type="date"].error:-ms-input-placeholder,
@@ -299,7 +393,7 @@ input[type="time"].error:-ms-input-placeholder,
 input[type="email"].error:-ms-input-placeholder,
 input[type="number"].error:-ms-input-placeholder,
 select.error:-ms-input-placeholder, textarea.error:-ms-input-placeholder {
-  color: #eec1be;
+  color: #e8bab7;
 }
 
 form input, form label, form select, form textarea {
@@ -323,7 +417,7 @@ form .form-group.error {
   background-color: rgba(255, 0, 0, 0.08);
 }
 form p.description {
-  color: #7f7f7f;
+  color: #7b7b7b;
   font-size: 80%;
   font-style: italic;
   line-height: normal;
@@ -342,7 +436,7 @@ form .required::after {
 }
 form .optional::after {
   content: " (opcjonalne)";
-  color: #bababa;
+  color: #b5b3b3;
   font-style: italic;
 }
 
@@ -367,7 +461,7 @@ div.checkbox.error {
 
 input[type="date"]::-webkit-datetime-edit-text,
 input[type="time"]::-webkit-datetime-edit-text {
-  color: #939393;
+  color: #8f8e8e;
 }
 input[type="date"]::-webkit-datetime-edit, input[type="date"]::-webkit-datetime-edit-month-field, input[type="date"]::-webkit-datetime-edit-day-field, input[type="date"]::-webkit-datetime-edit-hour-field, input[type="date"]::-webkit-datetime-edit-minute-field, input[type="date"]::-webkit-datetime-edit-year-field,
 input[type="time"]::-webkit-datetime-edit,
@@ -387,11 +481,11 @@ input[type="time"]::-webkit-datetime-edit-hour-field:focus,
 input[type="time"]::-webkit-datetime-edit-minute-field:focus,
 input[type="time"]::-webkit-datetime-edit-year-field:focus {
   background-color: #1395D4;
-  color: white;
+  color: #eeecec;
 }
 input[type="date"]::-webkit-clear-button,
 input[type="time"]::-webkit-clear-button {
-  background-color: black;
+  background-color: #2F2F2F;
 }
 input[type="date"]::-webkit-inner-spin-button,
 input[type="time"]::-webkit-inner-spin-button {

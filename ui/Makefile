@@ -3,9 +3,7 @@ cssdir 	= ../static/css
 stylecss = expanded
 
 all: 	$(jsdir)/jizera.js $(jsdir)/landing.js \
-		$(cssdir)/dark.css \
 		$(cssdir)/light.css \
-		$(cssdir)/night.css \
 		$(cssdir)/grid.css
 
 VPATH = scss:coffee
