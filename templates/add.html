@@ -3,6 +3,16 @@
 
 <h1>Dodaj wpis do bazy</h1>
 
+{% macro render_field(input, name, label="", placeholder="", class="") %}
+    {% if name in validation %}
+        {% set class = class + ' error' %}
+    {% endif %}
+    <label for="input_{{ name }}" class="{{ class }}">{{ label }}</label>
+    <input id="input_{{ name }}" type="{{ input }}" name="{{ name }}" placeholder="{{ placeholder }}" value="{{ request.form[name] }}" class="{{ class }}"/>
+    {% if name in validation %}
+        <p class="error"> {{ validation[name] }} </p>
+    {% endif %}
+{% endmacro %}
 
 <form method="POST">
 
@@ -108,7 +118,7 @@
        <div class="form-group">
            <div class="checkbox">
                <input type="checkbox" name="agree-subscribe" value="" id="agree-subscribe">
-               <label for="wanna-subscribe">Chcę subskrybować newsletter</label>
+               <label for="agree-subscribe">Chcę subskrybować newsletter obserwatora</label>
            </div>
            <div class="checkbox">
                <input type="checkbox" name="agree-terms" value="" id="agree-terms">
