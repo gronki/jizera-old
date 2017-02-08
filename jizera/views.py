@@ -60,10 +60,13 @@ def show_observation(eid):
 
 @app.route('/new', methods=['POST','GET'])
 def new_observation():
-    from jizera.validators import validate_email
+    from jizera.validators import *
     validation = {}
     if request.method == 'POST':
-        validate_email(validation,'email')
+        validate(validation,['email','required'],'email')
+        validate(validation,'date','date')
+        validate(validation,'time','time_start')
+        validate(validation,'time','time_end')
     return render_template("add.html",validation=validation)
 
 @app.route('/browse')
