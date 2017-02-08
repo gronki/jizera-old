@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from flask import render_template, abort, request
+from flask import render_template, abort, request, g
 from jizera import app, get_db_cursor
 
 @app.route('/')
@@ -56,12 +56,15 @@ def show_observation(eid):
 
     return render_template('observation_show.html', data=obs_info, extras=obs_extras)
 
+
+
 @app.route('/new', methods=['POST','GET'])
 def new_observation():
+    from jizera.validators import validate_email
+    validation = {}
     if request.method == 'POST':
-        if request.form['email'] == '':
-            raise Exception('Email cannot be emtpy')
-    return render_template("add.html")
+        validate_email(validation,'email')
+    return render_template("add.html",validation=validation)
 
 @app.route('/browse')
 def browser():
