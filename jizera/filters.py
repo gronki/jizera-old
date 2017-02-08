@@ -17,4 +17,4 @@ def filter_timeago(d):
 
 @app.template_filter('onlydate')
 def filter_onlydate(d):
-    return d.strftime('%y-%m-%d')
+    return d.strftime('%d.%m.%Y')
