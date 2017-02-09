@@ -7,7 +7,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="{{ url_for('static', filename='css/light.css') }}">
         <link rel="icon" href="{{ url_for('static', filename='img/kolko-32.png') }}" sizes="32x32" type="image/png">
-        <link rel="icon" href="{{ url_for('static', filename='img/kolko-48.png') }}" sizes="48x48" type="image/png">
         <link rel="icon" href="{{ url_for('static', filename='img/kolko-64.png') }}" sizes="64x64" type="image/png">
         <link rel="icon" href="{{ url_for('static', filename='img/kolko-128.png') }}" sizes="128x128" type="image/png">
         <link rel="icon" href="{{ url_for('static', filename='img/kolko-192.png') }}" sizes="192x192" type="image/png">
@@ -17,9 +16,16 @@
             <div class="container">
                 <img src="{{ url_for('static', filename='img/kolko-128.png') }}" alt="Baza WYGASZ" class="logo" />
                 <ul class="menu">
-                    <li><a id="menu-new" class="button menu-icon-new" href="{{ url_for('new_observation') }}">Dodaj obserwację</a></li>
-                    <li><a id="menu-browse" class="button menu-icon-browse" href="{{ url_for('browser') }}">Przeglądaj bazę</a></li>
-                    <li><a id="menu-bug" class="button menu-icon-bug" href="https://github.com/gronki/jizera/issues/new" target="_blank">Zgłoś błąd</a></li>
+                    <li><a id="menu-new" class="button icon-responsive" href="{{ url_for('new_observation') }}" title="Nowa obserwacja">
+                        <img src="{{ url_for('static',filename='img/icons/plus.svg') }}" />
+                        Dodaj obserwację
+                    </a></li>
+                    <li><a id="menu-browse" class="button icon-responsive" href="{{ url_for('browser') }}" title="Przeglądaj bazę">
+                        <img src="{{ url_for('static',filename='img/kolko-64.png') }}" /> Przeglądaj bazę
+                    </a></li>
+                    <li><a id="menu-bug" class="button icon-responsive" href="https://github.com/gronki/jizera/issues/" target="_blank" title="Zgłoś błąd w bazie!">
+                        <img src="{{ url_for('static',filename='img/kolko-64.png') }}" /> Zgłoś błąd
+                    </a></li>
                 </ul>
                 <div class="clearfix"></div>
             </div>
