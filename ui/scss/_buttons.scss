@@ -23,20 +23,44 @@ $btn-icon-size: 16px;
             height: $icon-size;
         }
     }
-    $icon-size-iconly: round($size * 0.75);
+    $icon-size-iconly: round($size * 0.6);
     $icon-padding-iconly: ($size - $icon-size-iconly) / 2 - $border;
     &.icon-only {
         position: relative;
         font-size: 0px;
         width: $size;
         height: $size;
-        padding: 0px;
         img:first-of-type {
             position: absolute;
             left: $icon-padding-iconly - $border;
             top: $icon-padding-iconly - $border;
             width: $icon-size-iconly;
             height: $icon-size-iconly;
+        }
+    }
+    &.icon-responsive {
+        position: relative;
+        font-size: 0px;
+        width: $size;
+        height: $size;
+        img:first-of-type {
+            position: absolute;
+            left: $icon-padding-iconly - $border;
+            top: $icon-padding-iconly - $border;
+            width: $icon-size-iconly;
+            height: $icon-size-iconly;
+        }
+        @include breakpoint(md) {
+            font-size: $font-size;
+            width: auto;
+            height: auto;
+            padding-left: $icon-padding * 1.75 + $icon-size;
+            img:first-of-type {
+                left: $icon-padding - $border;
+                top: $icon-padding;
+                width: $icon-size;
+                height: $icon-size;
+            }
         }
     }
 }
