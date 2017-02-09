@@ -1,8 +1,8 @@
+$nav-height: $btn-size;
 $nav-textsize: 16px;
-$nav-margin: 15px;
-$nav-icon-margin: 10px;
-$nav-height: $nav-textsize + 2*$nav-margin;
-$nav-icon-size: $nav-height - 2 * $nav-icon-margin;
+$nav-margin: ($nav-height - $nav-textsize) * 0.5;
+$nav-icon-size: 16px;
+$nav-icon-margin: ($nav-height - $nav-icon-size)*0.5;
 
 nav.top {
     background-color: mix($clr-primary,#222222,5%);
@@ -22,35 +22,12 @@ nav.top {
         padding: 0px;
         text-transform: uppercase;
         li {
-            display: inline-block;
             float: left;
             margin: 0px;
-            a {
-                font-weight: 400;
-                font-size: 0px;
-                box-sizing: border-box;
+            a.button {
+                // @include button-helper($nav-height, $nav-textsize, $nav-icon-size);
                 display: block;
-                height: $nav-height;
-                width: $nav-icon-margin * 1.75 + $nav-icon-size;
-                padding: $nav-margin;
-                @include breakpoint (md) {
-                    font-size: $nav-textsize;
-                    color: #888;
-                    text-decoration: none;
-                    width: auto;
-                }
-                &.menu-icon {
-                    @include breakpoint(md) {
-                        padding-left: $nav-icon-margin * 1.75 + $nav-icon-size;
-                    }
-                    background-size: $nav-icon-size $nav-icon-size;
-                    background-position: $nav-icon-margin $nav-icon-margin;
-                    background-repeat: no-repeat;
-                }
-                &.menu-icon-new, &.menu-icon-bug, &.menu-icon-browse {
-                    @extend .menu-icon;
-                    background-image: url(../img/kolko-192.png);
-                }
+                color: #999;
                 &:hover {
                     background-color: mix($clr-primary,#222222,15%);
                     color: #aaa;
