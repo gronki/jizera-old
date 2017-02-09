@@ -3,7 +3,7 @@ $btn-size: 42px;
 $btn-font-size: 16px;
 $btn-icon-size: 16px;
 
-@mixin button-helper($size, $font-size, $icon-size, $border) {
+@mixin button-helper($size:44px, $font-size:16px, $icon-size:18px, $border:0px) {
     $padding-vertical: round($size - $font-size*1.25) / 2 - $border;
     $padding-horizontal: ($size - $font-size) / 2 - $border;
 
@@ -41,14 +41,13 @@ $btn-icon-size: 16px;
     }
 }
 
-a.button { display: inline-block; }
-
-.button {
+a.button {
+    display: inline-block;
     box-sizing: border-box;
     line-height: 1.25;
     text-decoration: none;
-
     color: inherit;
+
 
     &.expand {
         width: 100%;
@@ -85,20 +84,20 @@ a.button { display: inline-block; }
         color: white;
     }
 
-    @include button-helper($btn-size, $btn-font-size, $btn-icon-size, 0px);
+    @include button-helper($btn-size, $btn-font-size, $btn-icon-size);
     &.small {
-        @include button-helper($btn-size * 0.6, $btn-font-size * 0.8, $btn-icon-size * 0.7, 0px);
+        @include button-helper($btn-size * 0.6, $btn-font-size * 0.8, $btn-icon-size * 0.7);
     }
     &.large {
-        @include button-helper($btn-size * 1.4, $btn-font-size * 1.3, $btn-icon-size * 1.3, 0px);
+        @include button-helper($btn-size * 1.4, $btn-font-size * 1.3, $btn-icon-size * 1.3);
     }
 }
 
 input[type="submit"] {
-    @extend .button;
-    @extend .button.primary;
+    @extend a.button;
+    @extend a.button.primary;
 }
 input[type="button"] {
-    @extend .button;
-    @extend .button.secondary;
+    @extend a.button;
+    @extend a.button.secondary;
 }
