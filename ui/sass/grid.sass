@@ -1,0 +1,116 @@
+/****************************************************
+ ****************** WARSAW GRID *********************
+ ****************************************************
+ *   Yet another (probably useless) grid system     *
+ *                written in SASS.                  *
+ *      (If you don't like it, don't use it.)       *
+ ****************************************************
+ *     Copyright (c) 2017 Dominik Gronkiewicz       *
+ *              All rights reserved.                *
+ * Distributed under MIT license (see LICENSE file) *
+ *      http://github.com/gronki/warsaw-grid        *
+ ****************************************************
+ ****************************************************
+ */
+
+@import "respond"
+
+// this can be changed to any values that suit you
+$gutter:    3%
+$grid-base: 12
+
+// this should never be used! internal helper
+=column-width($g)
+    @if $g > $grid-base
+        width: 100% - $gutter
+    @else
+        width: percentage($g / $grid-base) - $gutter
+
+
+.container
+    /* the container class wraps all the content, centers it and gives it size */
+    display: block
+    box-sizing: border-box
+    border: none
+    /* the margins can be safely overwritten */
+    margin: 0px $gutter/2
+    padding: 0px
+
+    +breakpoint($size-uncollapse)
+        /* starting from medium size, auto-center */
+        margin: 0px auto
+
+    @for $i from 2 through length($sizes)
+        $sz: nth($sizes,$i)
+        $bp: nth($brkpnt,$i)
+        +breakpoint($sz)
+            max-width: floor($bp * 0.97)
+
+
+.row
+    /* rows need not be divs */
+    box-sizing: border-box
+    display: block
+    border: none
+    /* by default, we assume no margins between rows */
+    margin-top:     0
+    margin-bottom:  0
+    &.padded
+        /* one can set class padded if needed */
+        margin-top:     $gutter / 2
+        margin-bottom:  $gutter / 2
+    /* negative margins allow us to keep margins consistent in nested columns
+       and also with content not wrapped in rows/columns */
+    margin-left:    -$gutter/2 !important
+    margin-right:   -$gutter/2  !important
+    .col
+        /* this is obvious for divs, but .col can be anything */
+        display: block
+        box-sizing: border-box
+        border: none
+        /* left-to-right layout only (so far) */
+        float: left
+        /* this can be overwritten */
+        margin-top:     0
+        margin-bottom:  0
+        /* margins need to be fixed for layout to work */
+        margin-right:   $gutter / 2 !important
+        margin-left:    $gutter / 2 !important
+        /* by default, the column has 100% width (minus gutter) */
+        width: 100% - $gutter
+
+    @for $j from 1 through length($sizes)
+        $bp: nth($sizes,$j)
+        @for $i from 1 through $grid-base
+            .col-#{$bp}-#{$i}
+                @extend .col
+        +breakpoint($bp)
+            @for $i from 1 through $grid-base
+                .col-#{$bp}-#{$i}
+                    +column-width($i)
+
+    // generate the "default" col-N classes
+    @for $i from 1 through $grid-base
+        .col-#{$i}
+            @extend .col-#{$size-uncollapse}-#{$i}
+
+    &::after
+        /* "the clear fix" */
+        content: ""
+        display: table
+        border: none
+        height: 0px
+        width: 0px
+        margin: 0px
+        padding: 0px
+        clear: both
+
+// this causes the given div to behave like a column of width $g
+// starting from size $bp
+=column($g, $bp: $size-uncollapse)
+    @if $g > $grid-base
+        /* Warning: #{$g} exceeds #{$grid-base}. */
+        /* Column width trimmed to #{$grid-base}. */
+        @extend .col-#{$bp}-#{$grid-base}
+    @else
+        @extend .col-#{$bp}-#{$g}
