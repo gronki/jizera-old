@@ -1,16 +1,16 @@
-
 // light scheme
-$clr-primary: #1395D4;
-$clr-text: #2F2F2F;
-$clr-inv-text: #FCFCFC;
-$clr-error: #CB271C;
-$clr-success: #76B14C;
-$clr-black: #222;
-$clr-white: #FCFCFC;
 
-$clr-secondary: desaturate(complement($clr-primary),5%);
-$clr-bkg: $clr-white;
-$clr-tertiary: mix($clr-text,$clr-bkg,12%);
+$clr-text: #2F2F2F;
+$clr-bkg: #FAFAFA;
+$clr-inv-text: #FCFCFC;
+
+$clr-primary: #1395D4;
+$clr-secondary: mix($clr-text,$clr-bkg,12%);
+$clr-complementary: mix(complement($clr-primary),$clr-bkg,95%);
+
 $clr-header: mix($clr-primary,$clr-text,80%);
+
+$clr-success: #76B14C;
+$clr-danger: #CB271C;
 
 @import "style_core";
