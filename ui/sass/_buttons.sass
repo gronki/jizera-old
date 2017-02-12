@@ -1,0 +1,116 @@
+
+$btn-size: 42px
+$btn-font-size: 16px
+$btn-icon-size: 16px
+
+=button-helper($size:44px, $font-size:16px, $icon-size:18px, $border:0px)
+    $padding-vertical: round($size - $font-size*1.25) / 2 - $border
+    $padding-horizontal: ($size - $font-size) / 2 - $border
+
+    padding: $padding-vertical $padding-horizontal
+    font-size: $font-size
+    border-width: $border
+
+    $icon-padding: ($size - $icon-size) / 2 - $border
+    &.icon
+        position: relative
+        padding-left: $icon-padding * 1.75 + $icon-size
+        img:first-of-type
+            position: absolute
+            left: $icon-padding - $border
+            top: $icon-padding
+            width: $icon-size
+            height: $icon-size
+
+    $icon-size-iconly: round($size * 0.6)
+    $icon-padding-iconly: ($size - $icon-size-iconly) / 2 - $border
+    &.icon-only
+        position: relative
+        font-size: 0px
+        width: $size
+        height: $size
+        img:first-of-type
+            position: absolute
+            left: $icon-padding-iconly - $border
+            top: $icon-padding-iconly - $border
+            width: $icon-size-iconly
+            height: $icon-size-iconly
+
+    &.icon-responsive
+        position: relative
+        font-size: 0px
+        width: $size
+        height: $size
+        img:first-of-type
+            position: absolute
+            left: $icon-padding-iconly - $border
+            top: $icon-padding-iconly - $border
+            width: $icon-size-iconly
+            height: $icon-size-iconly
+
+        +breakpoint(md)
+            font-size: $font-size
+            width: auto
+            height: auto
+            padding-left: $icon-padding * 1.75 + $icon-size
+            img:first-of-type
+                left: $icon-padding - $border
+                top: $icon-padding
+                width: $icon-size
+                height: $icon-size
+
+a.button
+    display: inline-block
+    box-sizing: border-box
+    line-height: 1.25
+    text-decoration: none
+    color: inherit
+
+    &.expand
+        width: 100%
+
+    &.primary
+        background-color: $clr-primary
+        border-color: $clr-primary
+        color: $clr-bkg
+
+    &.secondary
+        background-color: mix($clr-text,$clr-bkg,10%)
+        border-color: mix($clr-text,$clr-bkg,10%)
+        color: $clr-text
+
+    &.hi
+        background-color: $clr-text
+        border-color: $clr-text
+        color: $clr-bkg
+
+    &.lo
+        background-color: $clr-bkg
+        border-color: $clr-bkg
+        color: $clr-text
+
+    &.red
+        background-color: #D52317
+        border-color: #D52317
+        color: white
+
+    &.green
+        background-color: #31831C
+        border-color: #31831C
+        color: white
+
+    +button-helper($btn-size, $btn-font-size, $btn-icon-size)
+    &.small
+        +button-helper($btn-size * 0.6, $btn-font-size * 0.8, $btn-icon-size * 0.7)
+    &.large
+        +button-helper($btn-size * 1.4, $btn-font-size * 1.3, $btn-icon-size * 1.3)
+
+
+
+input[type="submit"]
+    @extend a.button
+    @extend a.button.primary
+
+input[type="button"]
+    @extend a.button
+    @extend a.button.secondary

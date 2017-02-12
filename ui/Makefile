@@ -9,7 +9,7 @@ all: 	$(jsdir)/jizera.js $(jsdir)/landing.js \
 VPATH = sass:coffee
 
 $(cssdir)/grid.css: _respond.sass
-$(cssdir)/light.css: _style_core.scss _buttons.scss _forms.sass _landing.scss _nav.sass _placelist.scss _respond.sass _text-and-backgrounds.sass
+$(cssdir)/light.css: _style_core.scss _buttons.sass _forms.sass _landing.scss _nav.sass _placelist.scss _respond.sass _text-and-backgrounds.sass
 
 $(cssdir)/%.css: sass/%.scss
 	scss --style $(stylecss) $<:$@
