@@ -11,33 +11,25 @@ h1,h2,h3,h4,h5
     font-family: sans-serif
     color: $clr-header
 
-=pick-text-color($bkg)
+@import "brightness"
+
+=colorbox-helper($bkg)
     background-color: $bkg
-
-    $clr: $clr-text
-    $clrhd: $clr-header
-    @if lightness($bkg) < 50%
-        $clr: $clr-inv-text
-        $clrhd: $clr-inv-text
-    color: $clr
-
-    .light
-        color: mix($clr,$bkg,67%)
-    .lighter
-        color: mix($clr,$bkg,36%)
-
+    color: choose-pen-color($bkg,$clr-text,$clr-inv-text)
     h1,h2,h3,h4,h5
-        color: $clrhd
         margin-top: 0px
+        @if saturation($bkg) > 50%
+            color: choose-pen-color($bkg,$clr-text,$clr-inv-text)
+        @else
+            color: choose-pen-color($bkg,$clr-header,$clr-inv-text)
 
-
-.bkg-primary
-    +pick-text-color($clr-primary)
-.bkg-secondary
-    +pick-text-color($clr-secondary)
-.bkg-tertiary
-    +pick-text-color($clr-tertiary)
-.bkg-success
-    +pick-text-color($clr-success)
-.bkg-error
-    +pick-text-color($clr-error)
+.primary
+    +colorbox-helper($clr-primary)
+.secondary
+    +colorbox-helper($clr-secondary)
+.complementary
+    +colorbox-helper($clr-complementary)
+.success
+    +colorbox-helper($clr-success)
+.danger
+    +colorbox-helper($clr-danger)

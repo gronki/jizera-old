@@ -3,7 +3,7 @@ $btn-size: 42px
 $btn-font-size: 16px
 $btn-icon-size: 16px
 
-=button-helper($size:44px, $font-size:16px, $icon-size:18px, $border:0px)
+=button-helper($size:44px, $font-size:16px, $icon-size:18px, $border:1px)
     $padding-vertical: round($size - $font-size*1.25) / 2 - $border
     $padding-horizontal: ($size - $font-size) / 2 - $border
 
@@ -65,47 +65,41 @@ a.button
     line-height: 1.25
     text-decoration: none
     color: inherit
+    border-color: transparent
+    border-style: solid
 
     &.expand
         width: 100%
 
+    &.hollow
+        border-color: inherit
+
+    @import "brightness"
+
+    =button-color-helper($bg,$text)
+        background-color: mix($clr-text,$bg,8%)
+        border-color: mix($clr-text,$bg,12%)
+        color: choose-pen-color($bg,$clr-text,$clr-inv-text)
+        &.hollow
+            background-color: none
+            color: $bg
+
     &.primary
-        background-color: $clr-primary
-        border-color: $clr-primary
-        color: $clr-bkg
-
+        +button-color-helper($clr-primary,$clr-inv-text)
     &.secondary
-        background-color: mix($clr-text,$clr-bkg,10%)
-        border-color: mix($clr-text,$clr-bkg,10%)
-        color: $clr-text
-
-    &.hi
-        background-color: $clr-text
-        border-color: $clr-text
-        color: $clr-bkg
-
-    &.lo
-        background-color: $clr-bkg
-        border-color: $clr-bkg
-        color: $clr-text
-
-    &.red
-        background-color: #D52317
-        border-color: #D52317
-        color: white
-
-    &.green
-        background-color: #31831C
-        border-color: #31831C
-        color: white
+        +button-color-helper($clr-secondary,$clr-text)
+    &.complementary
+        +button-color-helper($clr-complementary,$clr-inv-text)
+    &.success
+        +button-color-helper($clr-success,$clr-inv-text)
+    &.danger
+        +button-color-helper($clr-danger,$clr-inv-text)
 
     +button-helper($btn-size, $btn-font-size, $btn-icon-size)
     &.small
         +button-helper($btn-size * 0.6, $btn-font-size * 0.8, $btn-icon-size * 0.7)
     &.large
         +button-helper($btn-size * 1.4, $btn-font-size * 1.3, $btn-icon-size * 1.3)
-
-
 
 input[type="submit"]
     @extend a.button
