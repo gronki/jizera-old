@@ -3,7 +3,7 @@
 from flask import request, g
 from flask import render_template, abort, redirect, url_for
 from flask import flash
-from jizera import app, get_db_cursor
+from jizera import app, get_db, get_db_cursor
 
 @app.route('/')
 def index():
@@ -70,6 +70,12 @@ def new_observation():
         validate(validation,'time','time_start')
         validate(validation,'time','time_end')
         if len(validation) == 0:
+            db = get_db()
+            cur = db.cursor()
+            cur.execute("""INSERT INTO observers (name,email) VALUES (?,?);""",
+                (request.form['fullname'], request.form['email']))
+            print 'cur.lastrowid = %d' % cur.lastrowid
+            db.commit()
             flash(u'Obserwacja dodana!', 'success')
             return redirect(url_for('index'))
     return render_template("add.html",validation=validation)
