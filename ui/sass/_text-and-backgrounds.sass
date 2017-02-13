@@ -14,12 +14,14 @@ h1,h2,h3,h4,h5
 @import "brightness"
 
 =colorbox-helper($bkg)
+    padding: 15px
     background-color: $bkg
-    color: choose-pen-color($bkg,$clr-text,$clr-inv-text)
+    $pen: choose-pen-color($bkg,$clr-text,$clr-inv-text)
+    color: $pen
     h1,h2,h3,h4,h5
         margin-top: 0px
-        @if saturation($bkg) > 50%
-            color: choose-pen-color($bkg,$clr-text,$clr-inv-text)
+        @if saturation($bkg) > 20%
+            color: $pen
         @else
             color: choose-pen-color($bkg,$clr-header,$clr-inv-text)
 
