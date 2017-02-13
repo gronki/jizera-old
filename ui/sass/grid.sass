@@ -53,12 +53,12 @@ $grid-base: 12
     display: block
     border: none
     /* by default, we assume no margins between rows */
-    margin-top:     0
-    margin-bottom:  0
-    &.padded
-        /* one can set class padded if needed */
-        margin-top:     $gutter
-        margin-bottom:  $gutter 
+    margin-top:     $gutter
+    margin-bottom:  $gutter
+    &.collapsed
+        margin-top:     0
+        margin-bottom:  0
+        /* one can set class collapsed if needed */
     /* negative margins allow us to keep margins consistent in nested columns
        and also with content not wrapped in rows/columns */
     margin-left:    -$gutter/2 !important
