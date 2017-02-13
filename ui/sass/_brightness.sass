@@ -1,0 +1,16 @@
+@function sqrt($x)
+    $s: $x
+    @for $i from 1 through 12
+        $s: ( $s + $x / $s ) / 2
+    @return $s
+
+@function brightness($color)
+    $r: red($color) / 255
+    $g: green($color) / 255
+    $b: blue($color) / 255
+    @return 100% * sqrt(0.18 * $r * $r + 0.74 * $g * $g + 0.08 * $b * $b)
+
+@function choose-pen-color($bkg, $pen1, $pen2)
+    @if abs(brightness($bkg) - brightness($pen1)) > abs(brightness($bkg) - brightness($pen2))
+        @return $pen1
+    @return $pen2
