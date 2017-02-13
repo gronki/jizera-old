@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from flask import render_template, abort, request, g
+from flask import request, g
+from flask import render_template, abort, redirect, url_for
+from flask import flash
 from jizera import app, get_db_cursor
 
 @app.route('/')
@@ -67,6 +69,9 @@ def new_observation():
         validate(validation,'date','date')
         validate(validation,'time','time_start')
         validate(validation,'time','time_end')
+        if len(validation) == 0:
+            flash(u'Obserwacja dodana!', 'success')
+            return redirect(url_for('index'))
     return render_template("add.html",validation=validation)
 
 @app.route('/browse')
