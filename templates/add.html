@@ -7,8 +7,9 @@
     {% if name in validation %}
         {% set class = class + ' error' %}
     {% endif %}
+    {% set required = 'required' in class %}
     <label for="input_field_{{ name }}" class="{{ class }}">{{ label }}</label>
-    <input id="input_field_{{ name }}" type="{{ input }}" name="{{ name }}" placeholder="{{ placeholder }}" value="{{ request.form[name] }}" class="{{ class }}"/>
+    <input id="input_field_{{ name }}" type="{{ input }}" name="{{ name }}" placeholder="{{ placeholder }}" value="{{ request.form[name] }}" class="{{ class }}" {% if required %}required{% endif %} />
     {% if name in validation %}
         <p class="error"> {{ validation[name] }} </p>
     {% endif %}
@@ -17,7 +18,7 @@
 <form method="POST">
 
     <div class="form-group">
-        <div class="row">
+        <div class="padded row">
             <div class="col-md-7">
                 {{ render_field('text','fullname','Imię i nazwisko',placeholder='Jan Kowalski',class='optional') }}
                 <p class="description">
@@ -32,9 +33,9 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group secondary">
         <h3>Miejsce obserwacji</h3>
-        <div class="row">
+        <div class="padded row">
             <div class="col-sm-6">
                 {{ render_field('text','latitude','Szerokość geograficzna',placeholder='51.109371',class='required') }}
             </div>
@@ -59,13 +60,13 @@
 
        <input type="hidden" id="inp_use_saved_location" name="use_saved_location" value="0" />
 
-       <div  class="form-group" style="text-align:center">
-           <a href="#" id="btn-review-this-location" class="button primary">Zrecenzuj miejsce obserwacji</a>
+       <div  class="form-group row" style="text-align:center">
+           <a href="#" id="btn-review-this-location" class="button complementary">Zrecenzuj miejsce obserwacji</a>
        </div>
 
 
        <div class="form-group">
-           <div class="row">
+           <div class="padded row">
                <div class="col-lg-4">
 
                    {{ render_field('date','date','Data obserwacji',class='required') }}
@@ -73,7 +74,7 @@
                </div>
                <div class="col-lg-8">
 
-                   <div class="row">
+                   <div class="collapsed row">
                        <div class="col-6">
                            {{ render_field('time','time_start','Godzina rozpoczęcia','23:00','required') }}
                        </div>
@@ -108,7 +109,7 @@
            </div>
        </div>
 
-       <div class="form-group">
+       <div class="form-group row">
            <div class="checkbox">
                <input type="checkbox" name="agree-subscribe" value="" id="agree-subscribe">
                <label for="agree-subscribe">Chcę subskrybować newsletter obserwatora</label>
@@ -120,7 +121,7 @@
 
        </div>
 
-       <div class="form-group">
+       <div class="form-group row">
            <input type="submit" class="expand" value="Wyślij" />
        </div>
 
