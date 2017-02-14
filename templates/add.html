@@ -3,19 +3,20 @@
 
 <h1>Dodaj wpis do bazy</h1>
 
-{% macro render_field(input, name, label="", placeholder="", class="") %}
+{% macro render_field(input, name, label="", placeholder="", class="", attr="") %}
     {% if name in validation %}
         {% set class = class + ' error' %}
     {% endif %}
-    {% set required = 'required' in class %}
     <label for="input_field_{{ name }}" class="{{ class }}">{{ label }}</label>
-    <input id="input_field_{{ name }}" type="{{ input }}" name="{{ name }}" placeholder="{{ placeholder }}" value="{{ request.form[name] }}" class="{{ class }}" {% if required %}required{% endif %} />
+    <input id="input_field_{{ name }}" type="{{ input }}" name="{{ name }}" placeholder="{{ placeholder }}" value="{{ request.form[name] }}" class="{{ class }}" {{attr}} />
     {% if name in validation %}
         <p class="error"> {{ validation[name] }} </p>
     {% endif %}
 {% endmacro %}
 
 <form method="POST">
+
+    <!-- ******************* DANE OBSERWATORA ******************* -->
 
     <div class="form-group">
         <div class="padded row">
@@ -33,14 +34,16 @@
         </div>
     </div>
 
+    <!-- ******************* MIEJSCE OBSERWACJI ******************* -->
+
     <div class="form-group secondary">
         <h3>Miejsce obserwacji</h3>
         <div class="padded row">
             <div class="col-sm-6">
-                {{ render_field('text','latitude','Szerokość geograficzna',placeholder='51.109371',class='required') }}
+                {{ render_field('text','latitude','Szerokość geograficzna',placeholder='51.109371',class='required',attr='required') }}
             </div>
             <div class="col-sm-6">
-                {{ render_field('text','longitude','Długość geograficzna',placeholder='17.085699',class='required') }}
+                {{ render_field('text','longitude','Długość geograficzna',placeholder='17.085699',class='required',attr='required') }}
             </div>
         </div>
 
@@ -50,83 +53,157 @@
 
 
 
-                <!-- Za pomocą pinezki zaznacz położenie wykonywanych obserwacji. Możesz też wybrać
-                jedną z innych lokalizacji już występujących w bazie lub po prostu wkleić współrzędne
-                punktu obserwacyjnego w formacie dziesiętnym. -->
+            <!-- Za pomocą pinezki zaznacz położenie wykonywanych obserwacji. Możesz też wybrać
+            jedną z innych lokalizacji już występujących w bazie lub po prostu wkleić współrzędne
+            punktu obserwacyjnego w formacie dziesiętnym. -->
 
 
-           <!-- <div id="map" style="height:380px;"></div> -->
+       <!-- <div id="map" style="height:380px;"></div> -->
 
 
-       <input type="hidden" id="inp_use_saved_location" name="use_saved_location" value="0" />
+   <input type="hidden" id="inp_use_saved_location" name="use_saved_location" value="0" />
 
-       <div  class="form-group row" style="text-align:center">
-           <a href="#" id="btn-review-this-location" class="button complementary">Zrecenzuj miejsce obserwacji</a>
-       </div>
+   <!-- <div  class="form-group row" style="text-align:center">
+       <a href="#" id="btn-review-this-location" class="button complementary">Zrecenzuj miejsce obserwacji</a>
+   </div> -->
 
+   <!-- ******************* WARUNKI OBSERWACJI ******************* -->
 
-       <div class="form-group">
-           <div class="padded row">
-               <div class="col-lg-4">
+   <div class="form-group">
+       <h3>Warunki obserwacyjne</h3>
+       <div class="padded row">
+           <div class="col-lg-4">
 
-                   {{ render_field('date','date','Data obserwacji',class='required') }}
+               {{ render_field('date','date','Data obserwacji',class='required',attr='required') }}
 
-               </div>
-               <div class="col-lg-8">
+           </div>
+           <div class="col-lg-8">
 
-                   <div class="collapsed row">
-                       <div class="col-6">
-                           {{ render_field('time','time_start','Godzina rozpoczęcia','23:00','required') }}
-                       </div>
-                       <div class="col-6">
-                           {{ render_field('time','time_end','Godzina zakończenia','01:00','required') }}
-                       </div>
+               <div class="collapsed row">
+                   <div class="col-6">
+                       {{ render_field('time','time_start','Godzina rozpoczęcia','23:00','required',attr='required') }}
+                   </div>
+                   <div class="col-6">
+                       {{ render_field('time','time_end','Godzina zakończenia','01:00','required',attr='required') }}
                    </div>
                </div>
            </div>
        </div>
 
-       <div class="form-group">
-           <div class="row">
-               <div class="col-md-6">
-                   <label for="select-cloudcover">Zachmurzenie (w oktantach)</label>
-                   <select id="select-cloudcover">
-                       <option value="-1">nie pamiętam</option>
-                       <option value="0">zachmurzone 0/8</option>
-                       <option value="2">zachmurzone 2/8</option>
-                       <option value="4">zachmurzone 4/8</option>
-                       <option value="6">zachmurzone 6/8</option>
-                   </select>
+       <div class="row">
+           <div class="col-md-6">
+               <label for="select-cloudcover">Zachmurzenie (w oktantach)</label>
+               <select id="select-cloudcover">
+                   <option value="-1">nie pamiętam</option>
+                   <option value="0">zachmurzone 0/8</option>
+                   <option value="2">zachmurzone 2/8</option>
+                   <option value="4">zachmurzone 4/8</option>
+                   <option value="6">zachmurzone 6/8</option>
+               </select>
+           </div>
+           <div class="col-md-6">
+               <label for="select-milkyway">Widoczność drogi mlecznej</label>
+               <select id="select-milkyway">
+                   <option value="yes">Droga mleczna widoczna</option>
+                   <option value="no">Droga mleczna niewidoczna</option>
+                   <option value="unknown">Nie wiem</option>
+               </select>
+           </div>
+       </div>
+   </div>
+
+
+   <!-- ******************* SKALA BORTLE'a ******************* -->
+
+   <div class="form-group">
+       <h3>Ocena w skali Bortle'a</h3>
+       <div class="row" style="margin-top:0">
+
+           <div class="col-8" style="float:right">
+                   <p>
+                       Skala Bortle’a – skala używana do szacunkowej oceny jakości nocnego nieba podczas obserwacji astronomicznych. Po raz pierwszy opisana przez Johna E. Bortle’a w lutym 2001, w czasopiśmie Sky &amp; Telescope.
+                   </p>
+                   <p>
+                       <a href="{{ "https://pl.wikipedia.org/wiki/Skala_Bortle’a" | escape }}" target="_blank" class="button small primary">Przejdź do Wikipedii</a>
+                   </p>
+           </div>
+
+           <div class="col-4">
+                   {{ render_field('number','bortle', 'Stopni w skali Bortle\'a',
+                   attr='min=1 max=7', placeholder="(brak)") }}
+           </div>
+
+       </div>
+   </div>
+
+   <!-- ******************* ZLICZENIA GWIAZD ******************* -->
+
+   <div class="form-group">
+
+       <h3>Zliczenia gwiazd przez tubę</h3>
+
+       <div class="checkbox">
+           <input id="check-tube-data"
+                type="checkbox"
+                name="check_tube_data"
+                class="toggle"
+                data-toggle="form-tube-data" />
+           <label for="check-tube-data">Wykonano obserwację</label>
+       </div>
+
+       <div id="form-tube-data" class="row"
+            style="display:none">
+           <div class="col-8">
+               <div class="row">
+                   <div class="col-lg-6">
+                       {{ render_field('text','tube_length','Długość tuby', placeholder='cm',  class='required') }}
+                   </div>
+                   <div class="col-lg-6">
+                       {{ render_field('text','tube_diam','Średnica tuby', placeholder='cm', class='required') }}
+                   </div>
                </div>
-               <div class="col-md-6">
-                   <label for="select-milkyway">Widoczność drogi mlecznej</label>
-                   <select id="select-milkyway">
-                       <option value="yes">Droga mleczna widoczna</option>
-                       <option value="no">Droga mleczna niewidoczna</option>
-                       <option value="unknown">Nie wiem</option>
-                   </select>
+           </div>
+           <div class="col-4">
+               <label for="select-tubetype">Rodzaj tuby</label>
+               <select id="select-tubetype" name="tube_type">
+                   <option value="single">Pojedyncza</option>
+                   <option value="double">Podwójna (&bdquo;lornetka&rdquo;)</option>
+               </select>
+
+               <div class="checkbox">
+                   <input id="check-glasses" type="checkbox" name="tube_glasses" />
+                   <label for="check-glasses">Czy obserwator nosił okulary w czasie obserwacji?</label>
                </div>
            </div>
-       </div>
-
-       <div class="form-group row">
-           <div class="checkbox">
-               <input type="checkbox" name="agree-subscribe" value="" id="agree-subscribe">
-               <label for="agree-subscribe">Chcę subskrybować newsletter obserwatora</label>
+           <div class="col-12">
+               {{ render_field('text','tube_data','Zliczenia gwiazd w tubie (oddzielone spacjami)', class='required') }}
            </div>
-           <div class="checkbox">
-               <input type="checkbox" name="agree-terms" value="" id="agree-terms">
-               <label for="agree-terms" class="required">Zgadzam się z warunkami przechowywania moich danych osobowych.</label>
-           </div>
+       </div>
+   </div>
 
+   <!-- ******************* WYSYŁANIE ******************* -->
+
+   <div class="form-group">
+       <div class="checkbox">
+           <input type="checkbox" name="agree-subscribe" value="" id="agree-subscribe">
+           <label for="agree-subscribe">Chcę subskrybować newsletter obserwatora</label>
+       </div>
+       <div class="checkbox">
+           <input type="checkbox" name="agree-terms" value="" id="agree-terms">
+           <label for="agree-terms" class="required">Zgadzam się z warunkami przechowywania moich danych osobowych.</label>
        </div>
 
-       <div class="form-group row">
-           <input type="submit" class="expand" value="Wyślij" />
-       </div>
+   </div>
+
+   <div class="form-group">
+       <input type="submit" class="expand" value="Wyślij" />
+   </div>
 
 
 </form>
 
+<script type="text/javascript" src="{{
+        url_for('static',filename='js/report.js') 
+}}"></script>
 
 {% endblock %}
