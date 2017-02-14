@@ -90,9 +90,7 @@
                </div>
            </div>
        </div>
-   </div>
 
-   <div class="form-group">
        <div class="row">
            <div class="col-md-6">
                <label for="select-cloudcover">Zachmurzenie (w oktantach)</label>
@@ -139,6 +137,36 @@
        </div>
    </div>
 
+   <!-- ******************* ZLICZENIA GWIAZD ******************* -->
+
+   <div class="form-group">
+       <h3>Zliczenia gwiazd przez tubę</h3>
+       <div class="row">
+           <div class="col-8">
+               <div class="row">
+                   <div class="col-lg-6">
+                       {{ render_field('text','tube_length','Długość tuby', placeholder='cm') }}
+                   </div>
+                   <div class="col-lg-6">
+                       {{ render_field('text','tube_diam','Średnica tuby', placeholder='cm') }}
+                   </div>
+               </div>
+           </div>
+           <div class="col-4">
+               <label for="select-tubetype">Rodzaj tuby</label>
+               <select id="select-tubetype" name="tube_type">
+                   <option value="single">Pojedyncza</option>
+                   <option value="double">Podwójna (&bdquo;lornetka&rdquo;)</option>
+               </select>
+
+               <div class="checkbox">
+                   <input id="check-glasses" type="checkbox" name="tube_glasses" />
+                   <label for="check-glasses">Czy obserwator nosił okulary w czasie obserwacji?</label>
+               </div>
+           </div>
+       </div>
+       {{ render_field('text','tube_data','Zliczenia gwiazd w tubie (oddzielone spacjami)') }}
+   </div>
 
    <!-- ******************* WYSYŁANIE ******************* -->
 
