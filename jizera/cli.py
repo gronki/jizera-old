@@ -4,6 +4,8 @@ from jizera import app, get_db
 from jizera.db import get_db_filename
 from jizera.dummy_init import cli_dummy_init
 from shutil import copy2
+import os
+from datetime import datetime
 
 @app.cli.command('drop')
 def cli_drop_db():
