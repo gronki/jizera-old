@@ -25,7 +25,16 @@ def index():
         LIMIT 5;
         """)
     recent = cur.fetchall()
-    return render_template('index.html', recent=recent)
+
+    cur.execute("""SELECT observers.id AS id,
+        (observers.name || " " || observers.lastname) AS name,
+        observers.created as joined
+        FROM observers ORDER BY observers.created DESC LIMIT 5;""")
+    new_observers = cur.fetchall()
+
+    return render_template('index.html',
+        recent=recent,
+        new_observers = new_observers)
 
 @app.route('/observation/<eid>')
 def show_observation(eid):
@@ -72,8 +81,11 @@ def new_observation():
         if len(validation) == 0:
             db = get_db()
             cur = db.cursor()
-            cur.execute("""INSERT INTO observers (name,email) VALUES (?,?);""",
-                (request.form['fullname'], request.form['email']))
+            now = datetime.now()
+            cur.execute("""INSERT INTO observers (name,email,created,modified) VALUES (?,?,?,?);""",
+                (request.form['fullname'],
+                request.form['email'],
+                now, now))
             print 'cur.lastrowid = %d' % cur.lastrowid
             db.commit()
             flash(u'Obserwacja dodana!', 'success')
