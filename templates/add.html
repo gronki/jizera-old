@@ -54,84 +54,84 @@
 
 
 
-                <!-- Za pomocą pinezki zaznacz położenie wykonywanych obserwacji. Możesz też wybrać
-                jedną z innych lokalizacji już występujących w bazie lub po prostu wkleić współrzędne
-                punktu obserwacyjnego w formacie dziesiętnym. -->
+            <!-- Za pomocą pinezki zaznacz położenie wykonywanych obserwacji. Możesz też wybrać
+            jedną z innych lokalizacji już występujących w bazie lub po prostu wkleić współrzędne
+            punktu obserwacyjnego w formacie dziesiętnym. -->
 
 
-           <!-- <div id="map" style="height:380px;"></div> -->
+       <!-- <div id="map" style="height:380px;"></div> -->
 
 
-       <input type="hidden" id="inp_use_saved_location" name="use_saved_location" value="0" />
+   <input type="hidden" id="inp_use_saved_location" name="use_saved_location" value="0" />
 
-       <!-- <div  class="form-group row" style="text-align:center">
-           <a href="#" id="btn-review-this-location" class="button complementary">Zrecenzuj miejsce obserwacji</a>
-       </div> -->
+   <!-- <div  class="form-group row" style="text-align:center">
+       <a href="#" id="btn-review-this-location" class="button complementary">Zrecenzuj miejsce obserwacji</a>
+   </div> -->
 
-       <!-- ******************* WARUNKI OBSERWACJI ******************* -->
+   <!-- ******************* WARUNKI OBSERWACJI ******************* -->
 
-       <div class="form-group">
-           <h3>Warunki obserwacyjne</h3>
-           <div class="padded row">
-               <div class="col-lg-4">
+   <div class="form-group">
+       <h3>Warunki obserwacyjne</h3>
+       <div class="padded row">
+           <div class="col-lg-4">
 
-                   {{ render_field('date','date','Data obserwacji',class='required') }}
+               {{ render_field('date','date','Data obserwacji',class='required') }}
 
-               </div>
-               <div class="col-lg-8">
+           </div>
+           <div class="col-lg-8">
 
-                   <div class="collapsed row">
-                       <div class="col-6">
-                           {{ render_field('time','time_start','Godzina rozpoczęcia','23:00','required') }}
-                       </div>
-                       <div class="col-6">
-                           {{ render_field('time','time_end','Godzina zakończenia','01:00','required') }}
-                       </div>
+               <div class="collapsed row">
+                   <div class="col-6">
+                       {{ render_field('time','time_start','Godzina rozpoczęcia','23:00','required') }}
+                   </div>
+                   <div class="col-6">
+                       {{ render_field('time','time_end','Godzina zakończenia','01:00','required') }}
                    </div>
                </div>
            </div>
        </div>
+   </div>
 
-       <div class="form-group">
-           <div class="row">
-               <div class="col-md-6">
-                   <label for="select-cloudcover">Zachmurzenie (w oktantach)</label>
-                   <select id="select-cloudcover">
-                       <option value="-1">nie pamiętam</option>
-                       <option value="0">zachmurzone 0/8</option>
-                       <option value="2">zachmurzone 2/8</option>
-                       <option value="4">zachmurzone 4/8</option>
-                       <option value="6">zachmurzone 6/8</option>
-                   </select>
-               </div>
-               <div class="col-md-6">
-                   <label for="select-milkyway">Widoczność drogi mlecznej</label>
-                   <select id="select-milkyway">
-                       <option value="yes">Droga mleczna widoczna</option>
-                       <option value="no">Droga mleczna niewidoczna</option>
-                       <option value="unknown">Nie wiem</option>
-                   </select>
-               </div>
+   <div class="form-group">
+       <div class="row">
+           <div class="col-md-6">
+               <label for="select-cloudcover">Zachmurzenie (w oktantach)</label>
+               <select id="select-cloudcover">
+                   <option value="-1">nie pamiętam</option>
+                   <option value="0">zachmurzone 0/8</option>
+                   <option value="2">zachmurzone 2/8</option>
+                   <option value="4">zachmurzone 4/8</option>
+                   <option value="6">zachmurzone 6/8</option>
+               </select>
+           </div>
+           <div class="col-md-6">
+               <label for="select-milkyway">Widoczność drogi mlecznej</label>
+               <select id="select-milkyway">
+                   <option value="yes">Droga mleczna widoczna</option>
+                   <option value="no">Droga mleczna niewidoczna</option>
+                   <option value="unknown">Nie wiem</option>
+               </select>
            </div>
        </div>
+   </div>
 
-       <!-- ******************* WYSYŁANIE ******************* -->
+   <!-- ******************* WYSYŁANIE ******************* -->
 
-       <div class="form-group row">
-           <div class="checkbox">
-               <input type="checkbox" name="agree-subscribe" value="" id="agree-subscribe">
-               <label for="agree-subscribe">Chcę subskrybować newsletter obserwatora</label>
-           </div>
-           <div class="checkbox">
-               <input type="checkbox" name="agree-terms" value="" id="agree-terms">
-               <label for="agree-terms" class="required">Zgadzam się z warunkami przechowywania moich danych osobowych.</label>
-           </div>
-
+   <div class="form-group row">
+       <div class="checkbox">
+           <input type="checkbox" name="agree-subscribe" value="" id="agree-subscribe">
+           <label for="agree-subscribe">Chcę subskrybować newsletter obserwatora</label>
+       </div>
+       <div class="checkbox">
+           <input type="checkbox" name="agree-terms" value="" id="agree-terms">
+           <label for="agree-terms" class="required">Zgadzam się z warunkami przechowywania moich danych osobowych.</label>
        </div>
 
-       <div class="form-group row">
-           <input type="submit" class="expand" value="Wyślij" />
-       </div>
+   </div>
+
+   <div class="form-group row">
+       <input type="submit" class="expand" value="Wyślij" />
+   </div>
 
 
 </form>
