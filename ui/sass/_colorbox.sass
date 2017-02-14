@@ -1,20 +1,6 @@
-html
-    font-size: 16px
-
-body
-    background-color: $clr-bkg
-    color: $clr-text
-    font-family: sans-serif
-    font-weight: 400
-
-h1,h2,h3,h4,h5
-    font-family: sans-serif
-    color: $clr-header
-
 @import "brightness"
 
 =colorbox-helper($bkg)
-    padding: 15px
     background-color: $bkg
     $pen: choose-pen-color($bkg,$clr-text,$clr-inv-text)
     color: $pen
@@ -25,13 +11,13 @@ h1,h2,h3,h4,h5
         @else
             color: choose-pen-color($bkg,$clr-header,$clr-inv-text)
 
-.primary
+.colorbox-primary
     +colorbox-helper($clr-primary)
-.secondary
+.colorbox-secondary
     +colorbox-helper($clr-secondary)
-.complementary
+.colorbox-complementary
     +colorbox-helper($clr-complementary)
-.success
+.colorbox-success
     +colorbox-helper($clr-success)
-.danger
+.colorbox-danger
     +colorbox-helper($clr-danger)
