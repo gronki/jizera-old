@@ -3,13 +3,13 @@
 
 <h1>Dodaj wpis do bazy</h1>
 
-{% macro render_field(input, name, label="", placeholder="", class="") %}
+{% macro render_field(input, name, label="", placeholder="", class="", attr="") %}
     {% if name in validation %}
         {% set class = class + ' error' %}
     {% endif %}
     {% set required = 'required' in class %}
     <label for="input_field_{{ name }}" class="{{ class }}">{{ label }}</label>
-    <input id="input_field_{{ name }}" type="{{ input }}" name="{{ name }}" placeholder="{{ placeholder }}" value="{{ request.form[name] }}" class="{{ class }}" {% if required %}required{% endif %} />
+    <input id="input_field_{{ name }}" type="{{ input }}" name="{{ name }}" placeholder="{{ placeholder }}" value="{{ request.form[name] }}" class="{{ class }}" {% if required %}required{% endif %} {{attr}} />
     {% if name in validation %}
         <p class="error"> {{ validation[name] }} </p>
     {% endif %}
@@ -115,9 +115,34 @@
        </div>
    </div>
 
+
+   <!-- ******************* SKALA BORTLE'a ******************* -->
+
+   <div class="form-group">
+       <h3>Ocena w skali Bortle'a</h3>
+       <div class="row" style="margin-top:0">
+
+           <div class="col-8" style="float:right">
+                   <p>
+                       Skala Bortle’a – skala używana do szacunkowej oceny jakości nocnego nieba podczas obserwacji astronomicznych. Po raz pierwszy opisana przez Johna E. Bortle’a w lutym 2001, w czasopiśmie Sky &amp; Telescope.
+                   </p>
+                   <p>
+                       <a href="{{ "https://pl.wikipedia.org/wiki/Skala_Bortle’a" | escape }}" target="_blank" class="button small primary">Przejdź do Wikipedii</a>
+                   </p>
+           </div>
+
+           <div class="col-4">
+                   {{ render_field('number','bortle', 'Stopni w skali Bortle\'a',
+                   attr='min=1 max=7', placeholder="(brak)") }}
+           </div>
+
+       </div>
+   </div>
+
+
    <!-- ******************* WYSYŁANIE ******************* -->
 
-   <div class="form-group row">
+   <div class="form-group">
        <div class="checkbox">
            <input type="checkbox" name="agree-subscribe" value="" id="agree-subscribe">
            <label for="agree-subscribe">Chcę subskrybować newsletter obserwatora</label>
@@ -129,7 +154,7 @@
 
    </div>
 
-   <div class="form-group row">
+   <div class="form-group">
        <input type="submit" class="expand" value="Wyślij" />
    </div>
 
