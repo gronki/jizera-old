@@ -19,75 +19,62 @@
 $gutter:    3%
 $grid-base: 12
 
-// this should never be used! internal helper
-=column-width($g)
-    @if $g > $grid-base
-        width: 100% - $gutter
-    @else
-        width: percentage($g / $grid-base) - $gutter
-
+=reset
+    /* this fixes elements that are not divs */
+    box-sizing: border-box
+    display: block
+    border: none
 
 .container
-    /* the container class wraps all the content, centers it and gives it size */
-    display: block
-    box-sizing: border-box
-    border: none
-    /* the margins can be safely overwritten */
-    margin: 0px $gutter/2
-    padding: 0px
+    +reset
 
-    +breakpoint($size-uncollapse)
+    /* in collapsed state, we want some margins near the edge of the viewport */
+    margin:     0 $gutter
+    padding:    0
+
+    +breakpoint
         /* starting from medium size, auto-center */
-        margin: 0px auto
+        margin: 0 auto
 
+    /* set width for containers at different screen sizes */
     @for $i from 2 through length($sizes)
         $sz: nth($sizes,$i)
         $bp: nth($brkpnt,$i)
         +breakpoint($sz)
+            // the number 0.97 is arbitrary and can be changed
             max-width: floor($bp * 0.97)
 
 
 .row
-    /* rows need not be divs */
-    box-sizing: border-box
-    display: block
-    border: none
-    /* by default, we assume no margins between rows */
-    margin-top:     0
-    margin-bottom:  0
-    &.padded
-        /* one can set class padded if needed */
-        margin-top:     $gutter
-        margin-bottom:  $gutter 
-    /* negative margins allow us to keep margins consistent in nested columns
-       and also with content not wrapped in rows/columns */
-    margin-left:    -$gutter/2 !important
-    margin-right:   -$gutter/2  !important
+    +reset
+    /* negative margins allow us to keep margins consistent in nested columns */
+    /* and also with content not wrapped in rows/columns */
+    margin: $gutter (- $gutter / 2)
+
     .col
-        /* this is obvious for divs, but .col can be anything */
-        display: block
-        box-sizing: border-box
-        border: none
-        /* left-to-right layout only (so far) */
+        +reset
         float: left
-        /* this can be overwritten */
-        margin-top:     0
-        margin-bottom:  0
-        /* margins need to be fixed for layout to work */
-        margin-right:   $gutter / 2 !important
-        margin-left:    $gutter / 2 !important
+        /* no vertical padding and half gutter on each side */
+        margin: 0px ($gutter / 2)
         /* by default, the column has 100% width (minus gutter) */
         width: 100% - $gutter
+        .row
+            /* this is to handle rows nested in grid */
+            margin: 0px (- $gutter / 2)
 
+    // iterate through all screen sizes
     @for $j from 1 through length($sizes)
         $bp: nth($sizes,$j)
+        // first, extend the .col class so we get the basic properties
         @for $i from 1 through $grid-base
             .col-#{$bp}-#{$i}
                 @extend .col
+        // second, for a given screen size...
         +breakpoint($bp)
+            // ..set column widths
             @for $i from 1 through $grid-base
                 .col-#{$bp}-#{$i}
-                    +column-width($i)
+                    width: percentage($i / $grid-base) - $gutter
 
     // generate the "default" col-N classes
     @for $i from 1 through $grid-base

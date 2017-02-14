@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from flask import render_template, abort, request, g
-from jizera import app, get_db_cursor
+from flask import request, g
+from flask import render_template, abort, redirect, url_for
+from flask import flash
+from jizera import app, get_db, get_db_cursor
 
 @app.route('/')
 def index():
@@ -23,7 +25,16 @@ def index():
         LIMIT 5;
         """)
     recent = cur.fetchall()
-    return render_template('index.html', recent=recent)
+
+    cur.execute("""SELECT observers.id AS id,
+        (observers.name || " " || observers.lastname) AS name,
+        observers.created as joined
+        FROM observers ORDER BY observers.created DESC LIMIT 5;""")
+    new_observers = cur.fetchall()
+
+    return render_template('index.html',
+        recent=recent,
+        new_observers = new_observers)
 
 @app.route('/observation/<eid>')
 def show_observation(eid):
@@ -67,6 +78,18 @@ def new_observation():
         validate(validation,'date','date')
         validate(validation,'time','time_start')
         validate(validation,'time','time_end')
+        if len(validation) == 0:
+            db = get_db()
+            cur = db.cursor()
+            now = datetime.now()
+            cur.execute("""INSERT INTO observers (name,email,created,modified) VALUES (?,?,?,?);""",
+                (request.form['fullname'],
+                request.form['email'],
+                now, now))
+            print 'cur.lastrowid = %d' % cur.lastrowid
+            db.commit()
+            flash(u'Obserwacja dodana!', 'success')
+            return redirect(url_for('index'))
     return render_template("add.html",validation=validation)
 
 @app.route('/browse')

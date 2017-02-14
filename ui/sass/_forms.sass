@@ -34,11 +34,11 @@ form
         margin: 5px 0px
 
     .form-group
-        margin: 30px 0px
-        +breakpoint(md)
-            margin: 40px 0px
-        +breakpoint(lg)
-            margin: 55px 0px
+        // margin: 30px 0px
+        // +breakpoint(md)
+        //     margin: 40px 0px
+        // +breakpoint(lg)
+        //     margin: 55px 0px
         &.error
             border: solid 1px red
             background-color: rgba(#FF0000,0.08)
@@ -57,11 +57,11 @@ form
         font-weight: bold
         margin: 3px 0px
 
-    .required::after
+    label.required::after
         content: " *"
         color: #D52317
 
-    .optional::after
+    label.optional::after
         content: " (opcjonalne)"
         color: mix($clr-text, $clr-bkg, 30%)
         font-style: italic

@@ -30,6 +30,21 @@
                 <div class="clearfix"></div>
             </div>
         </nav>
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+        <div class="container flash">
+            <ul class="flash">
+                {% for category,message in messages %}
+                <li class="flash {{category}}">
+                    <span class="icon"></span>
+                    {{ message | safe }}
+                    <a class="button close-button">&times;</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        {% endwith %}
         <div class="container">
             {% block body %}
             Hmmm. I see nothing in here.
