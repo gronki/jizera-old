@@ -19,5 +19,14 @@
         </p>
         {% endfor %}
     </div>
+
+    <h3> Ostatnio dołączyli... </h3>
+    <ul>
+        {% for observer in new_observers %}
+            <li>
+                <b>{{observer.name}}</b> dołączył(a) {{observer.joined | timeago}}
+            </li>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock %}

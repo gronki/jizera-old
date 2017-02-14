@@ -14,5 +14,7 @@ import jizera.filters
 import jizera.cli
 import jizera.views
 
+app.secret_key = r't.8(g0(XQgc|*Z85f-D;u0^Q[;h-VQvy`4x.r_KNCnY7M{kGiU>1@ht]EW%dGQg'
+
 if __name__ == '__main__':
     app.run(debug=True)

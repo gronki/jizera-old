@@ -1,21 +1,23 @@
 jsdir 	= ../static/js
 cssdir 	= ../static/css
-stylecss = expanded
+stylecss = compressed
 
 all: 	$(jsdir)/jizera.js $(jsdir)/landing.js \
 		$(cssdir)/light.css \
 		$(cssdir)/grid.css
 
-VPATH = scss:coffee
+VPATH = sass:coffee
 
-$(cssdir)/grid.css: scss/grid.scss scss/_respond.scss
-	sass -C --sourcemap=none --style $(stylecss) $<:$@
+$(cssdir)/grid.css: _respond.sass
+$(cssdir)/light.css: _style_core.sass _buttons.sass _forms.sass _landing.scss _nav.sass _placelist.scss _respond.sass 
 
-$(cssdir)/%.css: scss/%.scss $(wildcard scss/_*.scss)
-	sass -C --sourcemap=none --style $(stylecss) $<:$@
+$(cssdir)/%.css: sass/%.scss
+	scss --style $(stylecss) $<:$@
+$(cssdir)/%.css: sass/%.sass
+	sass --style $(stylecss) $<:$@
 
 $(jsdir)/%.js: %.coffee
 	coffee -cbp $< > $@
 
 clean:
-	rm -rf *.map .sass-cache
+	rm -rf $(cssdir)/*.map .sass-cache

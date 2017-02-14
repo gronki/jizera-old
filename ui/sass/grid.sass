@@ -1,0 +1,103 @@
+/****************************************************
+ ****************** WARSAW GRID *********************
+ ****************************************************
+ *   Yet another (probably useless) grid system     *
+ *                written in SASS.                  *
+ *      (If you don't like it, don't use it.)       *
+ ****************************************************
+ *     Copyright (c) 2017 Dominik Gronkiewicz       *
+ *              All rights reserved.                *
+ * Distributed under MIT license (see LICENSE file) *
+ *      http://github.com/gronki/warsaw-grid        *
+ ****************************************************
+ ****************************************************
+ */
+
+@import "respond"
+
+// this can be changed to any values that suit you
+$gutter:    3%
+$grid-base: 12
+
+=reset
+    /* this fixes elements that are not divs */
+    box-sizing: border-box
+    display: block
+    border: none
+
+.container
+    +reset
+
+    /* in collapsed state, we want some margins near the edge of the viewport */
+    margin:     0 $gutter
+    padding:    0
+
+    +breakpoint
+        /* starting from medium size, auto-center */
+        margin: 0 auto
+
+    /* set width for containers at different screen sizes */
+    @for $i from 2 through length($sizes)
+        $sz: nth($sizes,$i)
+        $bp: nth($brkpnt,$i)
+        +breakpoint($sz)
+            // the number 0.97 is arbitrary and can be changed
+            max-width: floor($bp * 0.97)
+
+
+.row
+    +reset
+    /* negative margins allow us to keep margins consistent in nested columns */
+    /* and also with content not wrapped in rows/columns */
+    margin: $gutter (- $gutter / 2)
+
+    .col
+        +reset
+        float: left
+        /* no vertical padding and half gutter on each side */
+        margin: 0px ($gutter / 2)
+        /* by default, the column has 100% width (minus gutter) */
+        width: 100% - $gutter
+        .row
+            /* this is to handle rows nested in grid */
+            margin: 0px (- $gutter / 2)
+
+    // iterate through all screen sizes
+    @for $j from 1 through length($sizes)
+        $bp: nth($sizes,$j)
+        // first, extend the .col class so we get the basic properties
+        @for $i from 1 through $grid-base
+            .col-#{$bp}-#{$i}
+                @extend .col
+        // second, for a given screen size...
+        +breakpoint($bp)
+            // ..set column widths
+            @for $i from 1 through $grid-base
+                .col-#{$bp}-#{$i}
+                    width: percentage($i / $grid-base) - $gutter
+
+    // generate the "default" col-N classes
+    @for $i from 1 through $grid-base
+        .col-#{$i}
+            @extend .col-#{$size-uncollapse}-#{$i}
+
+    &::after
+        /* "the clear fix" */
+        content: ""
+        display: table
+        border: none
+        height: 0px
+        width: 0px
+        margin: 0px
+        padding: 0px
+        clear: both
+
+// this causes the given div to behave like a column of width $g
+// starting from size $bp
+=column($g, $bp: $size-uncollapse)
+    @if $g > $grid-base
+        /* Warning: #{$g} exceeds #{$grid-base}. */
+        /* Column width trimmed to #{$grid-base}. */
+        @extend .col-#{$bp}-#{$grid-base}
+    @else
+        @extend .col-#{$bp}-#{$g}

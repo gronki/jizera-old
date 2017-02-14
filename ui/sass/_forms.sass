@@ -1,0 +1,110 @@
+
+=placeholder-color($color)
+    &::-webkit-input-placeholder,
+    &:-moz-placeholder,
+    &::-moz-placeholder,
+    &:-ms-input-placeholder
+        color: $color
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="email"],
+input[type="number"],
+select,
+textarea
+    font-family: inherit
+    font-size: 18px
+    width: 100%
+    box-sizing: border-box
+    padding: 8px
+    border: none
+    background-color: mix($clr-text,$clr-bkg,5%)
+    +placeholder-color(mix($clr-text,$clr-bkg,25%))
+    &.error
+        border: solid 1px #D52317
+        background-color: mix(#D52317,$clr-bkg,5%)
+        +placeholder-color(mix(#D52317,$clr-bkg,25%))
+
+form
+    input,
+    label,
+    select,
+    textarea
+        margin: 5px 0px
+
+    .form-group
+        // margin: 30px 0px
+        // +breakpoint(md)
+        //     margin: 40px 0px
+        // +breakpoint(lg)
+        //     margin: 55px 0px
+        &.error
+            border: solid 1px red
+            background-color: rgba(#FF0000,0.08)
+    p.description
+        color: mix($clr-text, $clr-bkg, 60%)
+        font-size: 80%
+        font-style: italic
+        line-height: normal
+        margin: 2px 0px
+
+    p.error,
+    p.error-message
+        color: #D52317
+        line-height: normal
+        font-size: 80%
+        font-weight: bold
+        margin: 3px 0px
+
+    label.required::after
+        content: " *"
+        color: #D52317
+
+    label.optional::after
+        content: " (opcjonalne)"
+        color: mix($clr-text, $clr-bkg, 30%)
+        font-style: italic
+
+div.checkbox
+    position: relative
+    input[type="checkbox"]
+        position: absolute
+        top: 3px
+        left: 3px
+    label, p.error, p.error-message
+        margin-left: 30px
+    label
+        display: inline-block
+    &.error
+        border: solid 1px red
+        background-color: rgba(#FF0000,0.08)
+
+input[type="date"],
+input[type="time"]
+    &::-webkit-datetime-edit-text
+        color: mix($clr-text,$clr-bkg,50%)
+    &::-webkit-datetime-edit,
+    &::-webkit-datetime-edit-month-field,
+    &::-webkit-datetime-edit-day-field,
+    &::-webkit-datetime-edit-hour-field,
+    &::-webkit-datetime-edit-minute-field,
+    &::-webkit-datetime-edit-year-field
+        color: $clr-text
+        background-color: inherit
+        &:focus
+            background-color: $clr-primary
+            color: $clr-bkg
+
+
+    &::-webkit-clear-button
+        background-color: $clr-text
+
+    &::-webkit-inner-spin-button
+        background-color: red
+        height: 30px
+        // color: $foreground-color
+
+    &::-webkit-calendar-picker-indicator
+        background-color: inherit
+        // color: $t-color
