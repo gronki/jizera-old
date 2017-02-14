@@ -7,9 +7,8 @@
     {% if name in validation %}
         {% set class = class + ' error' %}
     {% endif %}
-    {% set required = 'required' in class %}
     <label for="input_field_{{ name }}" class="{{ class }}">{{ label }}</label>
-    <input id="input_field_{{ name }}" type="{{ input }}" name="{{ name }}" placeholder="{{ placeholder }}" value="{{ request.form[name] }}" class="{{ class }}" {% if required %}required{% endif %} {{attr}} />
+    <input id="input_field_{{ name }}" type="{{ input }}" name="{{ name }}" placeholder="{{ placeholder }}" value="{{ request.form[name] }}" class="{{ class }}" {{attr}} />
     {% if name in validation %}
         <p class="error"> {{ validation[name] }} </p>
     {% endif %}
@@ -41,10 +40,10 @@
         <h3>Miejsce obserwacji</h3>
         <div class="padded row">
             <div class="col-sm-6">
-                {{ render_field('text','latitude','Szerokość geograficzna',placeholder='51.109371',class='required') }}
+                {{ render_field('text','latitude','Szerokość geograficzna',placeholder='51.109371',class='required',attr='required') }}
             </div>
             <div class="col-sm-6">
-                {{ render_field('text','longitude','Długość geograficzna',placeholder='17.085699',class='required') }}
+                {{ render_field('text','longitude','Długość geograficzna',placeholder='17.085699',class='required',attr='required') }}
             </div>
         </div>
 
@@ -75,17 +74,17 @@
        <div class="padded row">
            <div class="col-lg-4">
 
-               {{ render_field('date','date','Data obserwacji',class='required') }}
+               {{ render_field('date','date','Data obserwacji',class='required',attr='required') }}
 
            </div>
            <div class="col-lg-8">
 
                <div class="collapsed row">
                    <div class="col-6">
-                       {{ render_field('time','time_start','Godzina rozpoczęcia','23:00','required') }}
+                       {{ render_field('time','time_start','Godzina rozpoczęcia','23:00','required',attr='required') }}
                    </div>
                    <div class="col-6">
-                       {{ render_field('time','time_end','Godzina zakończenia','01:00','required') }}
+                       {{ render_field('time','time_end','Godzina zakończenia','01:00','required',attr='required') }}
                    </div>
                </div>
            </div>
@@ -140,15 +139,27 @@
    <!-- ******************* ZLICZENIA GWIAZD ******************* -->
 
    <div class="form-group">
+
        <h3>Zliczenia gwiazd przez tubę</h3>
-       <div class="row">
+
+       <div class="checkbox">
+           <input id="check-tube-data"
+                type="checkbox"
+                name="check_tube_data"
+                class="toggle"
+                data-toggle="form-tube-data" />
+           <label for="check-tube-data">Wykonano obserwację</label>
+       </div>
+
+       <div id="form-tube-data" class="row"
+            style="display:none">
            <div class="col-8">
                <div class="row">
                    <div class="col-lg-6">
-                       {{ render_field('text','tube_length','Długość tuby', placeholder='cm') }}
+                       {{ render_field('text','tube_length','Długość tuby', placeholder='cm',  class='required') }}
                    </div>
                    <div class="col-lg-6">
-                       {{ render_field('text','tube_diam','Średnica tuby', placeholder='cm') }}
+                       {{ render_field('text','tube_diam','Średnica tuby', placeholder='cm', class='required') }}
                    </div>
                </div>
            </div>
@@ -165,7 +176,7 @@
                </div>
            </div>
            <div class="col-12">
-               {{ render_field('text','tube_data','Zliczenia gwiazd w tubie (oddzielone spacjami)') }}
+               {{ render_field('text','tube_data','Zliczenia gwiazd w tubie (oddzielone spacjami)', class='required') }}
            </div>
        </div>
    </div>
@@ -191,5 +202,8 @@
 
 </form>
 
+<script type="text/javascript" src="{{
+        url_for('static',filename='js/report.js') 
+}}"></script>
 
 {% endblock %}
