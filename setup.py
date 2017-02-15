@@ -9,6 +9,7 @@ setup(name = 'jizera',
     packages = ['jizera'],
     install_requires = [
         'flask',
+        'loremipsum',
     ],
     include_package_data=True,
 )
