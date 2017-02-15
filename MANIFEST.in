@@ -1,1 +1,3 @@
-include static/*
+recursive-include jizera/templates *
+recursive-include jizera/sql *
+recursive-include jizera/static *
