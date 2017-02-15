@@ -8,7 +8,6 @@ setup(name = 'jizera',
     url = 'https://github.com/gronki/jizera',
     packages = ['jizera'],
     install_requires = [
-        'sqlite3',
         'flask',
     ],
     include_package_data=True,
