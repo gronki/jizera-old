@@ -1,5 +1,5 @@
-jsdir 	= ../static/js
-cssdir 	= ../static/css
+jsdir 	= ../jizera/static/js
+cssdir 	= ../jizera/static/css
 stylecss = compressed
 
 all: 	$(jsdir)/jizera.js $(jsdir)/landing.js \

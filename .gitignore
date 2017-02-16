@@ -2,3 +2,7 @@
 /scratch/*
 *.pyc
 /test/.ipynb*
+/dist/
+/*.egg-info
+/build
+/MANIFEST
