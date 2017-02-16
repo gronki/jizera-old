@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
 
-from jizera import app, get_db
-from jizera.db import get_db_filename
+from jizera import app, get_db, db_filename
 from jizera.dummy_init import cli_dummy_init
 from shutil import copy2
+import os.path
+from datetime import datetime
 
 @app.cli.command('drop')
 def cli_drop_db():
     db = get_db()
-    fn = get_db_filename()
-    if os.path.exists(fn):
-        print(u'Znaleziono bazę w lokalizacji: %s' % fn)
-        fn_copy = os.path.join(os.path.dirname(fn),
+    if os.path.exists(db_filename):
+        print(u'Znaleziono bazę w lokalizacji: %s' % db_filename)
+        db_filename_copy = os.path.join(os.path.dirname(db_filename),
             'jizera.%s.db' % datetime.utcnow().strftime('%y%m%d.%H%M%S'))
-        copy2(fn,fn_copy)
-        print(u'Wykonano kopię: %s' % fn_copy)
+        copy2(db_filename,db_filename_copy)
+        print(u'Wykonano kopię: %s' % db_filename_copy)
 
     with app.open_resource('sql/drop.sql', mode='r') as f:
         db.cursor().executescript(f.read())
