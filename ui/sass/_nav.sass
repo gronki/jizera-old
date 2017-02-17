@@ -1,7 +1,7 @@
 $nav-height: $btn-size
-$nav-textsize: 16px
+$nav-textsize: 1rem
 $nav-margin: ($nav-height - $nav-textsize) * 0.5
-$nav-icon-size: 16px
+$nav-icon-size: 1rem
 $nav-icon-margin: ($nav-height - $nav-icon-size)*0.5
 
 nav.top
@@ -11,19 +11,19 @@ nav.top
         clear: both
 
     img.logo
-        width: $nav-height - 4px
-        height: $nav-height - 4px
-        margin: 2px
+        width: $nav-height - (0.0625*4rem)
+        height: $nav-height - (0.0625*4rem)
+        margin: 0.125rem
 
     ul.menu
         float: right
         list-style: none
-        margin: 0px
-        padding: 0px
+        margin: 0rem
+        padding: 0rem
         text-transform: uppercase
         li
             float: left
-            margin: 0px
+            margin: 0rem
             a.button
                 // +button-helper($nav-height, $nav-textsize, $nav-icon-size)
                 display: block

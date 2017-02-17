@@ -14,15 +14,15 @@ input[type="number"],
 select,
 textarea
     font-family: inherit
-    font-size: 18px
+    font-size: (0.0625*18rem)  
     width: 100%
     box-sizing: border-box
-    padding: 8px
+    padding: (0.0625*8rem)  
     border: none
     background-color: mix($clr-text,$clr-bkg,5%)
     +placeholder-color(mix($clr-text,$clr-bkg,25%))
     &.error
-        border: solid 1px #D52317
+        border: solid 0.0625rem #D52317
         background-color: mix(#D52317,$clr-bkg,5%)
         +placeholder-color(mix(#D52317,$clr-bkg,25%))
 
@@ -31,23 +31,23 @@ form
     label,
     select,
     textarea
-        margin: 5px 0px
+        margin: (0.0625*5rem)   0rem
 
     .form-group
-        margin: 30px 0px
+        margin: (0.0625*30rem)   0rem
         +breakpoint(md)
-            margin: 50px 0px
+            margin: (0.0625*50rem)   0rem
         +breakpoint(lg)
-            margin: 65px 0px
+            margin: (0.0625*65rem)   0rem
         &.error
-            border: solid 1px red
+            border: solid 0.0625rem red
             background-color: rgba(#FF0000,0.08)
     p.description
         color: mix($clr-text, $clr-bkg, 60%)
         font-size: 80%
         font-style: italic
         line-height: normal
-        margin: 2px 0px
+        margin: 0.125rem 0rem
 
     p.error,
     p.error-message
@@ -55,7 +55,7 @@ form
         line-height: normal
         font-size: 80%
         font-weight: bold
-        margin: 3px 0px
+        margin: (0.0625*3rem)   0rem
 
     label.required::after
         content: " *"
@@ -70,14 +70,14 @@ div.checkbox
     position: relative
     input[type="checkbox"]
         position: absolute
-        top: 3px
-        left: 3px
+        top: (0.0625*3rem)  
+        left: (0.0625*3rem)  
     label, p.error, p.error-message
-        margin-left: 30px
+        margin-left: (0.0625*30rem)  
     label
         display: inline-block
     &.error
-        border: solid 1px red
+        border: solid 0.0625rem red
         background-color: rgba(#FF0000,0.08)
 
 input[type="date"],
@@ -102,7 +102,7 @@ input[type="time"]
 
     &::-webkit-inner-spin-button
         background-color: red
-        height: 30px
+        height: (0.0625*30rem)  
         // color: $foreground-color
 
     &::-webkit-calendar-picker-indicator

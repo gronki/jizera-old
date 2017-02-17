@@ -8,7 +8,7 @@ table#placelist tr.clickableitem {
     &.sel {
         background-color: #444;
         color: #ddd;
-        border: solid 1px #222;
+        border: solid 0.0625rem #222;
     }
 
 }
@@ -19,36 +19,36 @@ tr#PlaceDetailsPopupWrapper {
     box-sizing:border-box;
     td {
         position: relative;
-        padding: 0px;
+        padding: 0rem;
     }
-    padding: 0px;
+    padding: 0rem;
 }
 
 div#PlaceDetailsPopup {
     z-index: 300;
-    border: solid 1px #ccc;
-    @media(min-width: 768px) {
+    border: solid 0.0625rem #ccc;
+    @media(min-width: (0.0625*768rem)  ) {
         width:98%;
         position:absolute;
         background-color:white;
 
-        box-shadow: 3px 5px 10px rgba(0,0,0,0.1);
-        margin-top: 14px;
+        box-shadow: (0.0625*3rem)   (0.0625*5rem)   (0.0625*10rem)   rgba(0,0,0,0.1);
+        margin-top: (0.0625*14rem)  ;
         img.staticmap {
             margin: auto inherit;
         }
         img.tip {
-            top: -12px;
-            left:100px;
+            top: -(0.0625*12rem)  ;
+            left:(0.0625*100rem)  ;
         }
 
     }
-    @media(max-width: 768px) {
+    @media(max-width: (0.0625*768rem)  ) {
         background-color:#f0f0f0;
         img.tip {
             display: none;
         }
-        margin-bottom: 10px;
+        margin-bottom: (0.0625*10rem)  ;
     }
     img.tip {
         position: absolute;
@@ -56,32 +56,32 @@ div#PlaceDetailsPopup {
 
     a.closelink {
         position:absolute;
-        top: 10px;
-        right: 10px;
+        top: (0.0625*10rem)  ;
+        right: (0.0625*10rem)  ;
     }
 
     h1, h2, h3 {
-        margin-top: 4px;
-        margin-top: 4px;
+        margin-top: (0.0625*4rem)  ;
+        margin-top: (0.0625*4rem)  ;
     }
 
-    padding: 15px;
+    padding: (0.0625*15rem)  ;
     // position: relative;
 }
 
 
 div.redgreenbar {
     display: block;
-    height:26px;
-    padding:0px;
+    height:(0.0625*26rem)  ;
+    padding:0rem;
 
-    font-size: 12px;
+    font-size: (0.0625*12rem)  ;
     div {
         display: inline-block;
-        margin:0; padding:0; height:24px;
-        min-width: 20px;
+        margin:0; padding:0; height:(0.0625*24rem)  ;
+        min-width: (0.0625*20rem)  ;
         color:white;
-        p { text-align:center; margin-top:3px; }
+        p { text-align:center; margin-top:(0.0625*3rem)  ; }
         // p:last-child { display:none; }
         // &:hover {
         //     &:first-child { visible:false; }

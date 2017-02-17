@@ -6,7 +6,7 @@
 // 3. the upper boundary of the largest size is equal to "infinity"
 // 4. $size-uncollapse variable is set properly (see below)
 $sizes:            sm    ,   md    ,   lg
-$brkpnt:       0px  ,  640px  ,  960px  ,   infinity
+$brkpnt:        0  ,  40rem  ,  64rem  ,  infinity
 // This variable should contain the name of the smallest non-mobile
 // display size. At this point,m ost elements should go from mobile-like
 // to desktop-like
@@ -21,9 +21,9 @@ $size-uncollapse: md
         @if $size == $sz
             $b-lo: nth($brkpnt,$i)
             $b-hi: nth($brkpnt,$i+1)
-            @if $b-lo == 0px
+            @if $b-lo == 0
                 // smallest devices
-                @media  (max-width: $b-hi - 1px)
+                @media  (max-width: $b-hi - 0.0625rem)
                     @content
             @else if $b-hi == infinity
                 // largest devices
@@ -31,7 +31,7 @@ $size-uncollapse: md
                     @content
             @else
                 // medium devices
-                @media  (min-width: $b-lo) and (max-width: $b-hi - 1px)
+                @media  (min-width: $b-lo) and (max-width: $b-hi - 0.0625rem)
                     @content
 
 // This mixin allows you to define a style for given-or-larger devices
@@ -42,7 +42,7 @@ $size-uncollapse: md
         $sz: nth($sizes,$i)
         @if $size == $sz
             $b-lo: nth($brkpnt,$i)
-            @if $b-lo == 0px
+            @if $b-lo == 0
                 @content
             @else
                 @media  (min-width: $b-lo)

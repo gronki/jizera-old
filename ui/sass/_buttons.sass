@@ -1,9 +1,9 @@
 
-$btn-size: 42px
-$btn-font-size: 16px
-$btn-icon-size: 16px
+$btn-size: (0.0625*42rem)  
+$btn-font-size: 1rem
+$btn-icon-size: 1rem
 
-=button-helper($size:44px, $font-size:16px, $icon-size:18px, $border:1px)
+=button-helper($size:(0.0625*44rem)  , $font-size:1rem, $icon-size:(0.0625*18rem)  , $border:0.0625rem)
     $padding-vertical: round($size - $font-size*1.25) / 2 - $border
     $padding-horizontal: ($size - $font-size) / 2 - $border
 
@@ -26,7 +26,7 @@ $btn-icon-size: 16px
     $icon-padding-iconly: ($size - $icon-size-iconly) / 2 - $border
     &.icon-only
         position: relative
-        font-size: 0px
+        font-size: 0rem
         width: $size
         height: $size
         img:first-of-type
@@ -38,7 +38,7 @@ $btn-icon-size: 16px
 
     &.icon-responsive
         position: relative
-        font-size: 0px
+        font-size: 0rem
         width: $size
         height: $size
         img:first-of-type
