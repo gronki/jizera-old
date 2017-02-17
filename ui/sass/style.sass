@@ -1,16 +1,25 @@
-// light scheme
+@import "normalize.css"
+@import "grid.css"
 
-$clr-text: #2F2F2F
-$clr-bkg: #FAFAFA
-$clr-inv-text: #FCFCFC
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,700&subset=latin-ext')
 
-$clr-primary: #1395D4
-$clr-secondary: mix($clr-text,$clr-bkg,12%)
-$clr-complementary: mix(complement($clr-primary),$clr-bkg,95%)
+@import "respond"
+@import "palette"
 
-$clr-header: mix($clr-primary,$clr-text,80%)
+body
+    background-color: palette(background)
+    color: palette(foreground)
+    font-family: 'Fira Sans', 'Roboto', 'Open Sans', 'Arial', sans-serif
+    font-weight: 400
 
-$clr-success: #289526
-$clr-danger: #CB271C
+h1,h2,h3,h4,h5
+    font-family: 'Fira Sans', 'Roboto', 'Open Sans', 'Arial', sans-serif
+    font-weight: 300
+    color: palette(primary)
 
-@import "style_core"
+
+@import "buttons"
+@import "nav"
+@import "forms"
+@import "landing"
+@import "placelist"

@@ -1,5 +1,5 @@
 
-$btn-size: (0.0625*42rem)  
+$btn-size: (0.0625*42rem)
 $btn-font-size: 1rem
 $btn-icon-size: 1rem
 
@@ -75,25 +75,27 @@ a.button
         border-color: inherit
 
     @import "brightness"
+    @import "palette"
 
-    =button-color-helper($bg,$text)
-        background-color: mix($clr-text,$bg,8%)
-        border-color: mix($clr-text,$bg,12%)
-        color: choose-pen-color($bg,$clr-text,$clr-inv-text)
+    =button-color-helper($palette)
+        color: choose-pen-color(palette($palette),palette(foreground),palette(background))
+        background-color: palette($palette)
+        border-color: palette($palette)
+        &:hover, &:active
+            background-color: palette($palette,2)
+            border-color: palette($palette,2)
         &.hollow
             background-color: none
-            color: $bg
+            color: palette($palette)
 
     &.primary
-        +button-color-helper($clr-primary,$clr-inv-text)
+        +button-color-helper(primary)
     &.secondary
-        +button-color-helper($clr-secondary,$clr-text)
-    &.complementary
-        +button-color-helper($clr-complementary,$clr-inv-text)
-    &.success
-        +button-color-helper($clr-success,$clr-inv-text)
-    &.danger
-        +button-color-helper($clr-danger,$clr-inv-text)
+        +button-color-helper(secondary)
+    &.accent
+        +button-color-helper(accent)
+    &.error
+        +button-color-helper(error)
 
     +button-helper($btn-size, $btn-font-size, $btn-icon-size)
     &.small

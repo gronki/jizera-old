@@ -14,17 +14,17 @@ input[type="number"],
 select,
 textarea
     font-family: inherit
-    font-size: (0.0625*18rem)  
+    font-size: (0.0625*18rem)
     width: 100%
     box-sizing: border-box
-    padding: (0.0625*8rem)  
+    padding: (0.0625*8rem)
     border: none
-    background-color: mix($clr-text,$clr-bkg,5%)
-    +placeholder-color(mix($clr-text,$clr-bkg,25%))
+    background-color: palette(background,-2)
+    +placeholder-color(palette(background,-4))
     &.error
-        border: solid 0.0625rem #D52317
-        background-color: mix(#D52317,$clr-bkg,5%)
-        +placeholder-color(mix(#D52317,$clr-bkg,25%))
+        border: solid 0.0625rem palette(error)
+        background-color: palette(error,15)
+        +placeholder-color(palette(error,10))
 
 form
     input,
@@ -39,11 +39,8 @@ form
             margin: (0.0625*50rem)   0rem
         +breakpoint(lg)
             margin: (0.0625*65rem)   0rem
-        &.error
-            border: solid 0.0625rem red
-            background-color: rgba(#FF0000,0.08)
     p.description
-        color: mix($clr-text, $clr-bkg, 60%)
+        color: palette(foreground,4)
         font-size: 80%
         font-style: italic
         line-height: normal
@@ -63,17 +60,17 @@ form
 
     label.optional::after
         content: " (opcjonalne)"
-        color: mix($clr-text, $clr-bkg, 30%)
+        color: palette(foreground,5)
         font-style: italic
 
 div.checkbox
     position: relative
     input[type="checkbox"]
         position: absolute
-        top: (0.0625*3rem)  
-        left: (0.0625*3rem)  
+        top: (0.0625*3rem)
+        left: (0.0625*3rem)
     label, p.error, p.error-message
-        margin-left: (0.0625*30rem)  
+        margin-left: (0.0625*30rem)
     label
         display: inline-block
     &.error
@@ -83,26 +80,26 @@ div.checkbox
 input[type="date"],
 input[type="time"]
     &::-webkit-datetime-edit-text
-        color: mix($clr-text,$clr-bkg,50%)
+        color: mix(palette(foreground),palette(background),50%)
     &::-webkit-datetime-edit,
     &::-webkit-datetime-edit-month-field,
     &::-webkit-datetime-edit-day-field,
     &::-webkit-datetime-edit-hour-field,
     &::-webkit-datetime-edit-minute-field,
     &::-webkit-datetime-edit-year-field
-        color: $clr-text
+        color: palette(foreground)
         background-color: inherit
         &:focus
-            background-color: $clr-primary
-            color: $clr-bkg
+            background-color: palette(primary)
+            color: palette(background)
 
 
     &::-webkit-clear-button
-        background-color: $clr-text
+        background-color: palette(foreground)
 
     &::-webkit-inner-spin-button
         background-color: red
-        height: (0.0625*30rem)  
+        height: (0.0625*30rem)
         // color: $foreground-color
 
     &::-webkit-calendar-picker-indicator

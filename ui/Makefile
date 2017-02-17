@@ -11,7 +11,7 @@ all: 	$(jsdir)/jizera.js\
 VPATH = sass:coffee
 
 $(cssdir)/grid.css: _respond.sass
-$(cssdir)/style.css: _style_core.sass _buttons.sass _forms.sass _landing.scss _nav.sass _placelist.scss _respond.sass
+$(cssdir)/style.css: _brightness.sass _buttons.sass _forms.sass _landing.scss _nav.sass _palette.sass _placelist.scss _respond.sass
 
 $(cssdir)/%.css: sass/%.sass
 	sass --style $(stylecss) $<:$@
