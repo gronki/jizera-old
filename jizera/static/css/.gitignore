@@ -1,5 +1,3 @@
-dark.css
-light.css
-night.css
-grid.css
+*.css
+!normalize.css
 *.map
