@@ -1,49 +1,5 @@
+$collapse-width: 40rem
 
-// This defines the sizes and breakpoints. Any sizes can be defined here, as long
-// as following conditions are satisfied:
-// 1. there are at least 2 size classes
-// 2. the lower boundary of the smallest size is equal to 0
-// 3. the upper boundary of the largest size is equal to "infinity"
-// 4. $size-uncollapse variable is set properly (see below)
-$sizes:            sm    ,   md    ,   lg
-$brkpnt:       0px  ,  640px  ,  960px  ,   infinity
-// This variable should contain the name of the smallest non-mobile
-// display size. At this point,m ost elements should go from mobile-like
-// to desktop-like
-$size-uncollapse: md
-
-// This mixin allows you to define style only for a given size.
-// Use this only if absolutely needed. If designing a new website,
-// better stick to using breakpoint mixin (below).
-=respond ($size)
-    @for $i from 1 through length($sizes)
-        $sz: nth($sizes,$i)
-        @if $size == $sz
-            $b-lo: nth($brkpnt,$i)
-            $b-hi: nth($brkpnt,$i+1)
-            @if $b-lo == 0px
-                // smallest devices
-                @media  (max-width: $b-hi - 1px)
-                    @content
-            @else if $b-hi == infinity
-                // largest devices
-                @media  (min-width: $b-lo)
-                    @content
-            @else
-                // medium devices
-                @media  (min-width: $b-lo) and (max-width: $b-hi - 1px)
-                    @content
-
-// This mixin allows you to define a style for given-or-larger devices
-// which is useful during the mobile-first approach. It is a recommended
-// way to design new webpages.
-=breakpoint($size: $size-uncollapse)
-    @for $i from 1 through length($sizes)
-        $sz: nth($sizes,$i)
-        @if $size == $sz
-            $b-lo: nth($brkpnt,$i)
-            @if $b-lo == 0px
-                @content
-            @else
-                @media  (min-width: $b-lo)
-                    @content
+=breakpoint($width: $collapse-width)
+    @media screen and (min-width: $width)
+        @content
