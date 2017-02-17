@@ -74,15 +74,20 @@ def new_observation():
     from jizera.validators import *
     validation = {}
     if request.method == 'POST':
+        print "{k:20} {v:20}".format(k='NAME',v='VALUE')
+        if app.debug:
+            for k,v in request.form.items():
+                print "{k:20} {v:20}".format(k=k,v=v)
         validate(validation,['email','required'],'email')
         validate(validation,'date','date')
         validate(validation,'time','time_start')
         validate(validation,'time','time_end')
         validate(validation,'float','latitude')
         validate(validation,'float','longitude')
-        validate(validation,['float','required'],'tube_length')
-        validate(validation,['float','required'],'tube_diam')
-        validate(validation,['int_list','required'],'tube_data')
+        if 'check_tube_data' in request.form:
+            validate(validation,['float','required'],'tube_length')
+            validate(validation,['float','required'],'tube_diam')
+            validate(validation,['int_list','required'],'tube_data')
         if len(validation) == 0:
             db = get_db()
             cur = db.cursor()

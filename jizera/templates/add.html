@@ -148,7 +148,7 @@
            <input id="check-tube-data"
                 type="checkbox"
                 name="check_tube_data"
-                class="toggle"
+                {{ "checked" if "check_tube_data" in request.form }}
                 data-toggle="form-tube-data" />
            <label for="check-tube-data">Wykonano obserwację</label>
        </div>
