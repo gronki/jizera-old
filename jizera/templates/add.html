@@ -20,7 +20,7 @@
 
     <div class="form-group">
         <div class="padded row">
-            <div class="col-md-7">
+            <div class="col-7">
                 {{ render_field('text','fullname','Imię i nazwisko',placeholder='Jan Kowalski',class='optional') }}
                 <p class="description">
                     Podanie imienia i nazwiska nie jest obowiązkowe,
@@ -28,7 +28,7 @@
                     osobowych w ramach działania bazy.
                 </p>
             </div>
-            <div class="col-md-5">
+            <div class="col-5">
                 {{ render_field('email','email','Adres e-mail','jan@kowalski.pl','required') }}
             </div>
         </div>
@@ -37,17 +37,21 @@
     <!-- ******************* MIEJSCE OBSERWACJI ******************* -->
 
     <div class="form-group secondary">
-        <h3>Miejsce obserwacji</h3>
+        <div class="row">
+
+            <h3>Miejsce obserwacji</h3>
+        </div>
         <div class="padded row">
-            <div class="col-sm-6">
+            <div class="col">
                 {{ render_field('text','latitude','Szerokość geograficzna',placeholder='51.109371',class='required',attr='required') }}
             </div>
-            <div class="col-sm-6">
+            <div class="col">
                 {{ render_field('text','longitude','Długość geograficzna',placeholder='17.085699',class='required',attr='required') }}
             </div>
         </div>
 
         {{ render_field('text','location_name','Nazwa tej lokalizacji',placeholder='np. Polana przy Instytucie Astronomicznym lub nazwa miejscowości',class='optional') }}
+
     </div>
 
 
@@ -70,28 +74,26 @@
    <!-- ******************* WARUNKI OBSERWACJI ******************* -->
 
    <div class="form-group">
-       <h3>Warunki obserwacyjne</h3>
+       <div class="row">
+           <h3>Warunki obserwacyjne</h3>
+       </div>
        <div class="padded row">
-           <div class="col-lg-4">
+           <div class="col">
 
                {{ render_field('date','date','Data obserwacji',class='required',attr='required') }}
 
            </div>
-           <div class="col-lg-8">
 
-               <div class="collapsed row">
-                   <div class="col-6">
-                       {{ render_field('time','time_start','Godzina rozpoczęcia','23:00','required',attr='required') }}
-                   </div>
-                   <div class="col-6">
-                       {{ render_field('time','time_end','Godzina zakończenia','01:00','required',attr='required') }}
-                   </div>
-               </div>
+           <div class="col">
+               {{ render_field('time','time_start','Godzina rozpoczęcia','23:00','required',attr='required') }}
+           </div>
+           <div class="col">
+               {{ render_field('time','time_end','Godzina zakończenia','01:00','required',attr='required') }}
            </div>
        </div>
 
        <div class="row">
-           <div class="col-md-6">
+           <div class="col-6">
                <label for="select-cloudcover">Zachmurzenie (w oktantach)</label>
                <select id="select-cloudcover">
                    <option value="-1">nie pamiętam</option>
@@ -101,7 +103,7 @@
                    <option value="6">zachmurzone 6/8</option>
                </select>
            </div>
-           <div class="col-md-6">
+           <div class="col-6">
                <label for="select-milkyway">Widoczność drogi mlecznej</label>
                <select id="select-milkyway">
                    <option value="yes">Droga mleczna widoczna</option>
@@ -155,10 +157,10 @@
             style="display:none">
            <div class="col-8">
                <div class="row">
-                   <div class="col-lg-6">
+                   <div class="col-6">
                        {{ render_field('text','tube_length','Długość tuby', placeholder='cm',  class='required') }}
                    </div>
-                   <div class="col-lg-6">
+                   <div class="col-6">
                        {{ render_field('text','tube_diam','Średnica tuby', placeholder='cm', class='required') }}
                    </div>
                </div>
@@ -203,7 +205,7 @@
 </form>
 
 <script type="text/javascript" src="{{
-        url_for('static',filename='js/report.js') 
+        url_for('static',filename='js/report.js')
 }}"></script>
 
 {% endblock %}

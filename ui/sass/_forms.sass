@@ -14,40 +14,35 @@ input[type="number"],
 select,
 textarea
     font-family: inherit
-    font-size: 18px
+    font-size: 1.125rem
     width: 100%
     box-sizing: border-box
-    padding: 8px
+    padding: 0.75rem
     border: none
-    background-color: mix($clr-text,$clr-bkg,5%)
-    +placeholder-color(mix($clr-text,$clr-bkg,25%))
+    background-color: palette(background,-1)
+    +placeholder-color(palette(background,-4))
     &.error
-        border: solid 1px #D52317
-        background-color: mix(#D52317,$clr-bkg,5%)
-        +placeholder-color(mix(#D52317,$clr-bkg,25%))
+        border: solid 0.0625rem palette(error)
+        background-color: palette(error,15)
+        +placeholder-color(palette(error,10))
 
 form
     input,
     label,
     select,
     textarea
-        margin: 5px 0px
+        margin: (0.0625*5rem)   0rem
 
     .form-group
-        margin: 30px 0px
-        +breakpoint(md)
-            margin: 50px 0px
-        +breakpoint(lg)
-            margin: 65px 0px
-        &.error
-            border: solid 1px red
-            background-color: rgba(#FF0000,0.08)
+        margin: 0.5rem 0
+        +breakpoint
+            margin: 1rem 0
     p.description
-        color: mix($clr-text, $clr-bkg, 60%)
+        color: palette(foreground,4)
         font-size: 80%
         font-style: italic
         line-height: normal
-        margin: 2px 0px
+        margin: 0.125rem 0rem
 
     p.error,
     p.error-message
@@ -55,7 +50,7 @@ form
         line-height: normal
         font-size: 80%
         font-weight: bold
-        margin: 3px 0px
+        margin: (0.0625*3rem)   0rem
 
     label.required::after
         content: " *"
@@ -63,46 +58,46 @@ form
 
     label.optional::after
         content: " (opcjonalne)"
-        color: mix($clr-text, $clr-bkg, 30%)
+        color: palette(foreground,5)
         font-style: italic
 
 div.checkbox
     position: relative
     input[type="checkbox"]
         position: absolute
-        top: 3px
-        left: 3px
+        top: (0.0625*3rem)
+        left: (0.0625*3rem)
     label, p.error, p.error-message
-        margin-left: 30px
+        margin-left: (0.0625*30rem)
     label
         display: inline-block
     &.error
-        border: solid 1px red
+        border: solid 0.0625rem red
         background-color: rgba(#FF0000,0.08)
 
 input[type="date"],
 input[type="time"]
     &::-webkit-datetime-edit-text
-        color: mix($clr-text,$clr-bkg,50%)
+        color: mix(palette(foreground),palette(background),50%)
     &::-webkit-datetime-edit,
     &::-webkit-datetime-edit-month-field,
     &::-webkit-datetime-edit-day-field,
     &::-webkit-datetime-edit-hour-field,
     &::-webkit-datetime-edit-minute-field,
     &::-webkit-datetime-edit-year-field
-        color: $clr-text
+        color: palette(foreground)
         background-color: inherit
         &:focus
-            background-color: $clr-primary
-            color: $clr-bkg
+            background-color: palette(primary)
+            color: palette(background)
 
 
     &::-webkit-clear-button
-        background-color: $clr-text
+        background-color: palette(foreground)
 
     &::-webkit-inner-spin-button
         background-color: red
-        height: 30px
+        height: (0.0625*30rem)
         // color: $foreground-color
 
     &::-webkit-calendar-picker-indicator
