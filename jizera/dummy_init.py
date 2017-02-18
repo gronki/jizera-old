@@ -88,10 +88,16 @@ def cli_dummy_init():
         u'yahoo.com', u'microsoft.com' ]
 
 
-    for i in range(12):
-        nam1 = pickrandom(obs_names)
-        nam2 = pickrandom(obs_lastnames)
-        em = emailize(nam1 + u' ' + nam2) + u'@' + pickrandom(em_domain)
+    for i in range(24):
+        while True:
+            nam1 = pickrandom(obs_names)
+            nam2 = pickrandom(obs_lastnames)
+            em = emailize(nam1 + u' ' + nam2) + u'@' + pickrandom(em_domain)
+            cur.execute('SELECT count(*) from observers where observers.email = ?;',
+                (em,))
+            if cur.fetchone()[0] == 0:
+                break
+            print u"E-mail {em} jest juz w bazie. Probuje dalej...".format(em=em)
         cur.execute('insert into observers (created,modified,name,lastname,email) ' +
             'values (?,?,?,?,?);', (rightnow,rightnow,nam1,nam2,em))
 
@@ -107,12 +113,20 @@ def cli_dummy_init():
     loc_names_a = [ u'Przyłęcze', u'Zadupie', u'Ostrowo', u'Konolipie', u'Nietopie',
             u'Durniewo', u'Gajowo', u'Koniowo', u'Świniarowo', u'Kozłowo', u'Kurowo',
             u'Zabrodzie', u'Sarniewo', u'Przystronie', u'Zalewo', u'Konotopy',
-            u'Niedociągi' ]
+            u'Niedociągi', u'Pałoryje', u'Niezakłapy', u'Wilkowyje', u'Zakątrzewy',
+            u'Podbiesiory', u'Dorycze', u'Kołacze', u'Dzikowo', u'Bobrowo',
+            u'Pstrągowo', u'Zapieciory', u'Rzęwuszewo', u'Druszczyny' ]
     loc_names_b = [ u'Dolnośląskie', u'Łódzkie', u'Górne', u'Dolne', u'Wielkie', u'Małe',
                     u'Wielkopolskie', u'Mazowieckie', u'Wiślańskie', u'Rządowe',
-                    u'Pierwsze', u'Drugie' ]
-    for i in range(25):
-        name = u'%s %s' % (pickrandom(loc_names_a), pickrandom(loc_names_b))
+                    u'Pierwsze', u'Drugie', u'Gdańskie', u'Osiedle', u'Niestraszne' ]
+    for i in range(88):
+        while True:
+            name = u'%s %s' % (pickrandom(loc_names_a), pickrandom(loc_names_b))
+            cur.execute('SELECT COUNT(*) FROM locations \
+                WHERE locations.name = ?;', (name,))
+            if cur.fetchone()[0] == 0:
+                break
+            print u"Wieś {vill} istnieje. Próbuję innej nazwy...".format(vill=name)
         l_lat = uniform(49.5,54.5)
         l_lng = uniform(14.7,23.7)
         cur.execute('insert into locations (created, modified, name, latitude, longitude) values (?,?,?,?,?);',
@@ -125,7 +139,7 @@ def cli_dummy_init():
     # dodajemy jakies recenzje
     print hh1('RECENZJE')
 
-    for i in range(200):
+    for i in range(160):
         print hh3('Recenzja %d' % (i+1))
         rev = (u' '.join(get_sentences(randrange(1,9))))
         location_id = pickrandom(locations.keys())
@@ -148,7 +162,7 @@ def cli_dummy_init():
 
     m_pi = 3.1415
 
-    for i in range(250):
+    for i in range(640):
         print hh3('Obserwacja %d' % (i+1))
         yrsback = uniform(0,5)
         time = time0 - (yrsback * 365) * 24 * 3600

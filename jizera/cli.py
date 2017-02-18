@@ -18,7 +18,10 @@ def cli_drop_db():
 
     with app.open_resource('sql/drop.sql', mode='r') as f:
         db.cursor().executescript(f.read())
-    db.commit()
+        db.commit()
+    with app.open_resource('sql/schema.sql', mode='r') as f:
+        db.cursor().executescript(f.read())
+        db.commit()
 
 @app.cli.command('init')
 def cli_init_db():
