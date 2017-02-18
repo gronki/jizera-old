@@ -189,22 +189,20 @@ def cli_dummy_init():
 
         print u'Jasność bazowa: %.2f' % data_base
 
+        obsy = []
         if uniform(0,1) < 0.5:
             field_nr = randint(1,10)
             magnitude = data_base + gauss(0,0.1)
             cur.execute('insert into dslr_data ' +
                 '(observation_id, field_nr, magnitude) values (?,?,?);',
                 (obs_id, field_nr, magnitude))
+            obsy.append('dslr')
             print '%18s %6d %10d %10.2f' % ('DSLR',cur.lastrowid,field_nr,magnitude)
-        if uniform(0,1) < 0.95:
-            bortle_degrees = round(yfun(16,7,23.5,1,data_base))
-            cur.execute('insert into bortle_data (observation_id, degrees) ' +
-                'values (?,?);', (obs_id, bortle_degrees))
-            print '%18s %6d %d' % ('BORTLE',cur.lastrowid,bortle_degrees)
         if uniform(0,1) < 0.3:
             num_stars = round(yfun(16,300,22.5,2800,data_base + gauss(0,1.0)))
             cur.execute('insert into tube_data (observation_id,num_stars) ' +
                 'values (?,?);', (obs_id,num_stars))
+            obsy.append('tuba')
             print '%18s %6d %d' % ('TUBA',cur.lastrowid,num_stars)
         if uniform(0,1) < 0.4:
             field_nr = randint(1,10)
@@ -213,6 +211,7 @@ def cli_dummy_init():
             cur.execute('insert into meteor_data (observation_id, ' +
                 'field_nr, num_stars, magnitude) values (?,?,?,?);',
                 ( obs_id, field_nr, num_stars, magnitude ))
+            obsy.append('meteor')
             print '%18s %6d %10d %10d %8.2f' % ('METEOR',cur.lastrowid,field_nr,num_stars,magnitude)
         if uniform(0,1) < 0.7:
             magnitude_z = data_base + gauss(0,0.1)
@@ -224,8 +223,15 @@ def cli_dummy_init():
                 'magnitude_z, magnitude_n, magnitude_e, magnitude_s, magnitude_w) ' +
                 'values (?,?,?,?,?,?);', (obs_id, magnitude_z, magnitude_n,
                 magnitude_e, magnitude_s, magnitude_w))
+            obsy.append('sqm')
             print '%18s %6d %7.2f %7.2f %7.2f %7.2f %7.2f' % ('SQM',cur.lastrowid,
                 magnitude_z, magnitude_n, magnitude_e, magnitude_s, magnitude_w)
+        if uniform(0,1) < 0.6 or len(obsy) == 0:
+            bortle_degrees = round(yfun(16,7,23.5,1,data_base))
+            cur.execute('insert into bortle_data (observation_id, degrees) ' +
+                'values (?,?);', (obs_id, bortle_degrees))
+            obsy.append('bortle')
+            print '%18s %6d %d' % ('BORTLE',cur.lastrowid,bortle_degrees)
 
 
         db.commit()
