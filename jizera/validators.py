@@ -9,6 +9,7 @@ rexp_email = compile(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
 rexp_date_ddmmyyyy = compile(r"^([0-9]{2})\.([0-9]{2})\.([0-9]{4})$")
 rexp_date_yyyymmdd = compile(r"^([0-9]{4})\-([0-9]{2})\-([0-9]{2})$")
 rexp_time_hhmm = compile(r"^([0-9]{2})\:([0-9]{2})$")
+rexp_float = compile(r"^\-?[0-9]+(|[\,\.][0-9]+)$")
 
 def validate(validation, what, field):
     value = request.form[field]
@@ -42,3 +43,6 @@ def validate(validation, what, field):
         else:
             validation[field] = u"W San Escobar zapisujemy czas w formacie %s." % datetime.now().strftime('%H:%M')
             return
+    if 'float' in what:
+        if not match(rexp_float,value):
+            validation[field] = u"Nie potrafię odczytać liczby: {value}".format(value=value)
