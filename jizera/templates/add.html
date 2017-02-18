@@ -20,17 +20,26 @@
 
     <div class="form-group">
         <div class="padded row">
-            <div class="col-7">
-                {{ render_field('text','fullname','Imię i nazwisko',placeholder='Jan Kowalski',class='optional') }}
+            <div class="col-5">
+                {{ render_field('email','email','Adres e-mail','jan@kowalski.pl','required') }}
+                <p class="description">
+                    Twój adres e-mail służy nam wyłącznie do komunikacji
+                    z Tobą w razie potrzeby. Nie udostępniamy nikomu
+                    nazwisk ani adresów e-mail obserwatorów, jedynie
+                    wyniki obserwacji (pomiary).
+                </p>
                 <p class="description">
                     Podanie imienia i nazwiska nie jest obowiązkowe,
                     lecz oznacza zgodę na przetwarzanie danych
                     osobowych w ramach działania bazy.
                 </p>
             </div>
-            <div class="col-5">
-                {{ render_field('email','email','Adres e-mail','jan@kowalski.pl','required') }}
+            <div class="col-7" id="name-box">
+                {{ render_field('text','name','Imię',placeholder='Jan',class='optional') }}
+                {{ render_field('text','name','Nazwisko',placeholder='Kowalski',class='optional') }}
+
             </div>
+
         </div>
     </div>
 
@@ -95,7 +104,7 @@
        <div class="row">
            <div class="col-6">
                <label for="select-cloudcover">Zachmurzenie (w oktantach)</label>
-               <select id="select-cloudcover">
+               <select id="select-cloudcover" name="cond_clouds_octants">
                    <option value="-1">nie pamiętam</option>
                    <option value="0">zachmurzone 0/8</option>
                    <option value="2">zachmurzone 2/8</option>
@@ -105,7 +114,7 @@
            </div>
            <div class="col-6">
                <label for="select-milkyway">Widoczność drogi mlecznej</label>
-               <select id="select-milkyway">
+               <select id="select-milkyway" name="cond_milkyway">
                    <option value="yes">Droga mleczna widoczna</option>
                    <option value="no">Droga mleczna niewidoczna</option>
                    <option value="unknown">Nie wiem</option>
@@ -148,7 +157,7 @@
            <input id="check-tube-data"
                 type="checkbox"
                 name="check_tube_data"
-                class="toggle"
+                {{ "checked" if "check_tube_data" in request.form }}
                 data-toggle="form-tube-data" />
            <label for="check-tube-data">Wykonano obserwację</label>
        </div>

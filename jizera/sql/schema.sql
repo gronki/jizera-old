@@ -11,7 +11,7 @@ create table observers (
 	lastname varchar(60),
 	nickname varchar(60),
 	email varchar(255),
-	anonymous boolean default 1,
+	anonymous boolean default 0,
 	openid varchar(255),
 	openid_identity varchar(255),
 	openid_server varchar(255),
@@ -63,14 +63,14 @@ create table observations (
 	modified timestamp,
 	date_start datetime,
 	date_end datetime,
-	cond_clouds_octants varchar(9),
-	cond_milkyway boolean,
+	cond_clouds_octants integer default -1,
+	cond_milkyway varchar(12) default 'unknown',
 	location_id integer not null,
 	observer_id integer not null,
 	published boolean default 1,
 	primary key (id),
-	check (cond_clouds_octants in ('clear', 'scattered', 'broken', 'overcast')),
-	check (cond_milkyway in (0, 1)),
+	check (cond_clouds_octants >= -1 and cond_clouds_octants <= 8),
+	check (cond_milkyway in ('yes','no','unknown')),
 	foreign key(location_id) references locations (id),
 	foreign key(observer_id) references observers (id)
 );
@@ -80,6 +80,8 @@ create table observations (
 -- Oceny metodą Bortla.
 create table bortle_data (
 	id integer not null,
+	created timestamp,
+	modified timestamp,
 	degrees integer,
 	comment varchar,
 	observation_id integer,
@@ -90,6 +92,8 @@ create table bortle_data (
 -- Pomiary z tuby.
 create table tube_data (
 	id integer not null,
+	created timestamp,
+	modified timestamp,
 	tube_diam float,
 	tube_length float,
 	tube_type varchar(6),
@@ -106,6 +110,8 @@ create table tube_data (
 -- Pomiary z sqm
 create table sqm_data (
 	id integer not null,
+	created timestamp,
+	modified timestamp,
 	sqm_model varchar(45),
 	sqm_serial varchar(45),
 	data varchar(500),
@@ -135,6 +141,8 @@ create table meteor_data (
 -- Pomiary z lustrzanek.
 create table dslr_data (
 	id integer not null,
+	created timestamp,
+	modified timestamp,
 	info_camera varchar(200),
 	info_lens varchar(200),
 	field_nr integer,
