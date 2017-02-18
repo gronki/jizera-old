@@ -16,6 +16,11 @@
         <nav class="top">
             <div class="container">
                 <img src="{{ url_for('static', filename='img/kolko-128.png') }}" alt="Baza WYGASZ" class="logo" />
+                <span class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </span>
                 <ul class="menu">
                     <li><a id="menu-new" class="button icon-responsive" href="{{ url_for('new_observation') }}" title="Nowa obserwacja">
                         Dodaj obserwację
@@ -48,5 +53,12 @@
             Hmmm. I see nothing in here.
             {% endblock %}
         </div>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('nav span.hamburger').click(function(){
+                    $('nav ul.menu').toggle();
+                });
+            });
+        </script>
     </body>
 </html>
