@@ -34,7 +34,7 @@ def new_observation():
             validate(validation,['int_list','required'],'tube_data')
 
         if len(validation) != 0:
-            return render_template("add.html",validation=validation)
+            return render_template("report.html",validation=validation)
         # brak błędów walidacji
         db = get_db()
         cur = db.cursor()
@@ -147,11 +147,11 @@ def new_observation():
         if len(data_types) == 0:
             db.rollback()
             flash(u"Musisz wysłać jakiś rodzaj pomiaru!", "error")
-            return render_template("add.html")
+            return render_template("report.html")
 
         # koniec
         db.commit()
         flash(u'Obserwacja dodana!', 'success')
         return redirect(url_for('index'))
 
-    return render_template("add.html")
+    return render_template("report.html")
