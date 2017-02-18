@@ -18,6 +18,7 @@ $(cssdir)/style.css: 				\
 			sass/_forms.sass		\
 			sass/_landing.scss		\
 			sass/_nav.sass			\
+			sass/_tables.sass		\
 			sass/_palette.sass		\
 			sass/_placelist.scss	\
 			sass/_respond.sass		\
