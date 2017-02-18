@@ -5,6 +5,7 @@ stylecss = compressed
 all: 							\
 		$(jsdir)/jizera.js		\
 	 	$(jsdir)/landing.js 	\
+	 	$(jsdir)/browser.js 	\
 		$(jsdir)/report.js 		\
 		$(cssdir)/style.css 	\
 		$(cssdir)/grid.css
