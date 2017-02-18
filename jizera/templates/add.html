@@ -162,33 +162,31 @@
            <label for="check-tube-data">Wykonano obserwację</label>
        </div>
 
-       <div id="form-tube-data" class="row"
+       <div id="form-tube-data"
             style="display:none">
-           <div class="col-8">
-               <div class="row">
-                   <div class="col-6">
-                       {{ render_field('text','tube_length','Długość tuby', placeholder='cm',  class='required') }}
-                   </div>
-                   <div class="col-6">
-                       {{ render_field('text','tube_diam','Średnica tuby', placeholder='cm', class='required') }}
-                   </div>
-               </div>
-           </div>
-           <div class="col-4">
-               <label for="select-tubetype">Rodzaj tuby</label>
-               <select id="select-tubetype" name="tube_type">
-                   <option value="single">Pojedyncza</option>
-                   <option value="double">Podwójna (&bdquo;lornetka&rdquo;)</option>
-               </select>
+            <div class="row">
+                <div class="col">
+                    {{ render_field('text','tube_length','Długość tuby', placeholder='cm',  class='required') }}
 
-               <div class="checkbox">
-                   <input id="check-glasses" type="checkbox" name="tube_glasses" />
-                   <label for="check-glasses">Czy obserwator nosił okulary w czasie obserwacji?</label>
-               </div>
-           </div>
-           <div class="col-12">
-               {{ render_field('text','tube_data','Zliczenia gwiazd w tubie (oddzielone spacjami)', class='required') }}
-           </div>
+                    {{ render_field('text','tube_diam','Średnica tuby', placeholder='cm', class='required') }}
+                </div>
+                <div class="col">
+                    <label for="select-tubetype">Rodzaj tuby</label>
+                    <select id="select-tubetype" name="tube_type">
+                        <option value="single">Pojedyncza</option>
+                        <option value="double">Podwójna (&bdquo;lornetka&rdquo;)</option>
+                    </select>
+
+                    <div class="checkbox">
+                        <input id="check-glasses" type="checkbox" name="tube_glasses" />
+                        <label for="check-glasses">Czy obserwator nosił okulary w czasie obserwacji?</label>
+                        <p class="description">Noszenie okularów zmienia odległość
+                            pomiędzy źrenicą oka a końcem tuby. Jeżeli obserwator
+                            nosił okulary, program doda do długości tuby 1cm.</p>
+                    </div>
+                </div>
+            </div>
+           {{ render_field('text','tube_data','Zliczenia gwiazd w tubie (oddzielone spacjami)', class='required') }}
        </div>
    </div>
 
