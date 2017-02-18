@@ -17,6 +17,8 @@ from jizera.db import get_db, get_db_cursor, close_db
 import jizera.filters
 import jizera.cli
 import jizera.views
+import jizera.report
+import jizera.browse
 
 if __name__ == '__main__':
     app.run()
