@@ -18,14 +18,11 @@
                 <img src="{{ url_for('static', filename='img/kolko-128.png') }}" alt="Baza WYGASZ" class="logo" />
                 <ul class="menu">
                     <li><a id="menu-new" class="button icon-responsive" href="{{ url_for('new_observation') }}" title="Nowa obserwacja">
-                        <img src="{{ url_for('static',filename='img/icons/plus.svg') }}" />
                         Dodaj obserwację
                     </a></li>
-                    <li><a id="menu-browse" class="button icon-responsive" href="{{ url_for('browser') }}" title="Przeglądaj bazę">
-                        <img src="{{ url_for('static',filename='img/kolko-64.png') }}" /> Przeglądaj bazę
+                    <li><a id="menu-browse" class="button" href="{{ url_for('browser') }}" title="Przeglądaj bazę"> Przeglądaj bazę
                     </a></li>
-                    <li><a id="menu-bug" class="button icon-responsive" href="https://github.com/gronki/jizera/issues/" target="_blank" title="Zgłoś błąd w bazie!">
-                        <img src="{{ url_for('static',filename='img/kolko-64.png') }}" /> Zgłoś błąd
+                    <li><a id="menu-bug" class="button icon-responsive" href="https://github.com/gronki/jizera/issues/" target="_blank" title="Zgłoś błąd w bazie!"> Zgłoś błąd
                     </a></li>
                 </ul>
                 <div class="clearfix"></div>
