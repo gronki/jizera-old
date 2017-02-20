@@ -9,18 +9,22 @@ rexp_email = compile(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
 rexp_date_ddmmyyyy = compile(r"^([0-9]{2})\.([0-9]{2})\.([0-9]{4})$")
 rexp_date_yyyymmdd = compile(r"^([0-9]{4})\-([0-9]{2})\-([0-9]{2})$")
 rexp_time_hhmm = compile(r"^([0-9]{2})\:([0-9]{2})$")
+rexp_float = compile(r"^\-?[0-9]+(|[\,\.][0-9]+)$")
 
 def validate(validation, what, field):
     value = request.form[field]
     value_print = Markup.escape(value)
-    if 'required' in what:
-        if value == '':
+
+    if value == '':
+        if not 'optional' in what:
             validation[field] = u'To pole nie może być puste.'
-            return
+        return
+
     if 'email' in what:
         if not match(rexp_email,value):
             validation[field] = u'To nie wygląda mi na poprawny adres e-mail :('
             return
+
     if 'date' in what:
         m = match(rexp_date_yyyymmdd,value)
         if m:
@@ -42,3 +46,6 @@ def validate(validation, what, field):
         else:
             validation[field] = u"W San Escobar zapisujemy czas w formacie %s." % datetime.now().strftime('%H:%M')
             return
+    if 'float' in what:
+        if not match(rexp_float,value):
+            validation[field] = u"Nie potrafię odczytać liczby: {value}".format(value=value_print)
